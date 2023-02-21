@@ -23,6 +23,7 @@ include("../database.php");
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
     <link rel="stylesheet" href="./helper/index.css">
+    <link rel="stylesheet" href="./helper/sidebar.css">
     <link rel="stylesheet" href="./helper/viewStudent.css">
     <title>View Student</title>
 </head>
@@ -42,7 +43,7 @@ include("../database.php");
                                     <div class="col-sm-4 bg-c-lite-green user-profile">
                                         <div class="card-block text-center text-white">
                                             <div class="m-b-25">
-                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                                <img src="http://localhost/tpc-main/images/Dhyey.png" class="img-radius" alt="User-Profile-Image"> <button class="text-center btn my-2 btn-success">Upload</button>
                                             </div>
                                             <p>
                                                 <span class="badge text-white badge-lg badge-dot">
@@ -50,9 +51,9 @@ include("../database.php");
                                                 </span>
                                             </p>
                                             <h2 class="f-w-600">Dhyey Badheka</h2>
+                                            <p>19IT450@bvmengineering.ac.in</p>
                                             <p>19IT450</p>
-                                            <p>Regular</p=>
-                                            <p>Computer</p>
+                                            <p>Information Technology</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-8">
@@ -85,156 +86,296 @@ include("../database.php");
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <p class="m-b-5 f-w-600">Gender</p>
-                                                    <p> <input type="radio" id="Male" name="gender" value="male" checked>Male</input>
-                                                        <input type="radio" id="Female" name="gender" value="female">Female</input>
+                                                    <p> <input type="radio" id="Male" name="gender" value="male" checked> Male</input> </p>
+
+                                                    <p>
+                                                        <input type="radio" id="Female" name="gender" value="female"> Female</input>
                                                     </p>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <p class="m-b-5 f-w-600">Linkedin URL</p>
                                                     <input type="text" class="m-b-5 form-control" name="" id="" value="www.linked.in.com">
                                                 </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Father's Information</h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">First Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="f_name">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Last Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="l_name">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Father's Occupation</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="f_occu">
-                                                </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Mother's Information</h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">First Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="f_name">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Last Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="l_name">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Mother's Occupation</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="m_occu">
-                                                </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">SSC Details </h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Passing Year</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Percentile</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Percentage</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">out of 600</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="550">
-                                                </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">D2D Details </h6>
-                                            <div class="row m-b-20">
                                                 <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Passing Year</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">CGPA</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="9.33">
-                                                </div>
-
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">HSC Details </h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Passing Year</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Percentile</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="93%">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">Percentage</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="93%">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <p class="m-b-5 f-w-600">out of 600</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="567">
+                                                    <p class="m-b-5 f-w-600">Date of Birth</p>
+                                                    <input type="date" class="m-b-5 form-control" name="" id="" value="23-10-2001">
                                                 </div>
                                             </div>
+
+                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Other Details </h6>
                                             <div class="row m-b-20">
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Physics</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="89">
+                                                <div class="col-sm-3">
+                                                    <p class="m-b-5 f-w-600">Enrollment Number</p>
+                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="190080116006">
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Chemistry</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="78">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <p class="m-b-5 f-w-600">Maths</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="29">
-                                                </div>
+                                                <div class="col-sm-3">
+                                                    <p class="m-b-5 f-w-600">Category</p>
+                                                    <p> <input type="radio" id="general" name="category" value="general" checked> General</input> </p>
+                                                    <p> <input type="radio" id="scst" name="category" value="scst"> SC/ST</input> </p>
+                                                    <p> <input type="radio" id="obc" name="category" value="obc"> OBC</input> </p>
 
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Documents </h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-4">
-                                                    <button class="text-center btn btn-success">Upload</button>
-                                                    <a href="http://localhost/tpc-main/demopdf/1.pdf">
-                                                        <p class="m-b-5 f-w-600">Aadhar Card</p>
-                                                    </a>
 
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf">
-                                                        <p class="m-b-5 f-w-600">PAN Card</p>
-                                                    </a>
+                                                <div class="col-sm-3">
+                                                    <p class="m-b-5 f-w-600">Future Goals(1st Priority)</p>
+                                                    <p> <input type="radio" id="pplacement" name="pgoal" value="pplacement" checked> Campus Placement</input> </p>
+                                                    <p> <input type="radio" id="pstudy" name="pgoal" value="pstudy"> Further Studies</input> </p>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf">
-                                                        <p class="m-b-5 f-w-600">Resume</p>
-                                                    </a>
+                                                <div class="col-sm-3">
+                                                    <p class="m-b-5 f-w-600">Future Goals(2nd Priority)</p>
+                                                    <p> <input type="radio" id="splacement" name="sgoal" value="splacement"> Campus Placement</input> </p>
+                                                    <p> <input type="radio" id="sstudy" name="sgoal" value="sstudy" checked> Further Studies</input> </p>
                                                 </div>
-
                                             </div>
                                             <div class="row m-b-20">
                                                 <div class="col-sm-6">
-                                                    <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf">
-                                                        <p class="m-b-5 f-w-600">SSC Marksheet</p>
-                                                    </a>
+                                                    <p class="m-b-5 f-w-600">Permanent Address</p>
+                                                    <input type="text" placeholder="Plot No and Landmark" class="m-b-5 form-control" name="" id="" value="C-1512">
+                                                    <input type="text" placeholder="City" class="m-b-5 form-control" name="" id="" value="Bhavnagar">
+                                                    <input type="text" placeholder="District" class="m-b-5 form-control" name="" id="" value="Bhavnagar">
+                                                    <input type="number" placeholder="pincode" class="m-b-5 form-control" name="" id="" value="364002">
+                                                    <input type="number" placeholder="State" class="m-b-5 form-control" name="" id="" value="Gujarat">
+                                                    <input type="number" placeholder="Country" class="m-b-5 form-control" name="" id="" value="India">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf">
-                                                        <p class="m-b-5 f-w-600">HSC Marksheet</p>
-                                                    </a>
+                                                    <p class="m-b-5 f-w-600">Current Address</p>
+                                                    <input type="text" placeholder="Plot No and Landmark" class="m-b-5 form-control" name="" id="" value="C-1512">
+                                                    <input type="text" placeholder="City" class="m-b-5 form-control" name="" id="" value="Bhavnagar">
+                                                    <input type="text" placeholder="District" class="m-b-5 form-control" name="" id="" value="Bhavnagar">
+                                                    <input type="number" placeholder="pincode" class="m-b-5 form-control" name="" id="" value="364002">
+                                                    <input type="number" placeholder="State" class="m-b-5 form-control" name="" id="" value="Gujarat">
+                                                    <input type="number" placeholder="Country" class="m-b-5 form-control" name="" id="" value="India">
+                                                </div>
+                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">SSC Details </h6>
+                                                <div class="row m-b-20">
+                                                    <div class="col-sm-3">
+                                                        <p class="m-b-5 f-w-600">Passing Year</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <p class="m-b-5 f-w-600">Percentile</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <p class="m-b-5 f-w-600">Percentage</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <p class="m-b-5 f-w-600">out of 600
+                                                            or out of 10(other board)
+                                                        </p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="550">
+                                                    </div>
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Board of SSC</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="GSEB">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p class="m-b-5 f-w-600">School Name</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="Gyanmanjari Vidyapith">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Upload Marksheet</p>
+                                                            <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="row m-b-20">
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">Educational Gaps after SSC(0 if NA)</p>
+                                                                <input type="text" class="m-b-5 form-control" name="" id="" value="0">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">HSC/Diploma</p>
+                                                                <p> <input type="radio" id="isdiploma" name="isdiploma" value="0" checked> HSC</input> </p>
+                                                                <p> <input type="radio" id="isdiploma" name="isdiploma" value="1"> Diploma</input> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">HSC Details </h6>
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Passing Year</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Percentile</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <p class="m-b-5 f-w-600">Percentage(Theory+Practical)</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">Percentage(Theory)</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="99%">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">Theory Marks out of 500(410 if CBSE)
+                                                            </p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="450">
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">(Theory+Practical) Marks out of 650(500 if CBSE)
+                                                            </p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="550">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">Board of HSC</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="GSEB">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p class="m-b-5 f-w-600">School Name</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="Gyanmanjari Vidyapith">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Upload Marksheet</p>
+                                                            <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Educational Gaps after HSC(0 if NA)</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="0">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">D2D Details </h6>
+                                                <div class="row m-b-20">
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-5 f-w-600">Passing Year</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="2019">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-5 f-w-600">Final CGPA</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="9.33">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-5 f-w-600">Final CPI</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="9.33">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-5 f-w-600">College Name</p>
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="Gyanmanjari Vidyapith">
+                                                    </div>
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 1 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 2 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 3 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 4 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 5 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 6 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-b-20">
+
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Total Backlogs</p>
+                                                            <input type="number" class="m-b-5 form-control" name="" id="" value="0">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <p class="m-b-5 f-w-600">Diploma Certificate</p>
+                                                            <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <p class="m-b-5 f-w-600">Educational Gaps after Diploma(0 if NA)</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="0">
+                                                        </div>
+
+                                                    </div>
                                                 </div>
 
+                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">College Details</h6>
+                                                <div class="row m-b-20">
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 1 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
 
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 2 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 3 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+
+
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 4 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 5 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <p class="m-b-5 f-w-600">SEM 6 SPI</p>
+                                                            <input type="text" class="m-b-5 form-control" name="" id="" value="9.1"> <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-b-20">
+                                                        <div class="row m-b-20">
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">Current CPI</p>
+                                                                <input type="text" class="m-b-5 form-control" name="" id="" value="9.1">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">Active Backlog</p>
+                                                                <input type="text" class="m-b-5 form-control" name="" id="" value="9.1">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">Cleared Backlog</p>
+                                                                <input type="text" class="m-b-5 form-control" name="" id="" value="9.1">
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <p class="m-b-5 f-w-600">Total Backlog</p>
+                                                                <input type="text" class="m-b-5 form-control" name="" id="" value="9.1">
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <button class="text-center btn btn-primary">Update and Save</button>
                                             </div>
-
                                         </div>
-
                                     </div>
-                                    <button class="text-center btn btn-primary">Update and Save</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         </main>
 
     </div>

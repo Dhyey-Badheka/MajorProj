@@ -27,17 +27,17 @@
         <div class="p-5 bg-light" style="margin-top: 30px;">
             <h3 class="mb-3 he">CREST Infosystem</h3>
             <p><i class="fa fa-calendar" aria-hidden="true"></i> 23/01/2022</p>
-            <span>Shortlisted for Round 1</span>
+            <span>Application Submitted to admin</span>
         </div>
         <div class="p-5 bg-light" style="margin-top: 30px;">
             <h3 class="mb-3 he">Zeus Learning</h3>
             <p><i class="fa fa-calendar" aria-hidden="true"></i> 05/01/2023</p>
-            <span>Shortlisted for Round 2</span>
+            <span>Application Submitted to admin</span>
         </div>
         <div class="p-5 bg-light" style="margin-top: 30px;">
             <h3 class="mb-3 he">Infocusp</h3>
             <p><i class="fa fa-calendar" aria-hidden="true"></i> 10/02/2023</p>
-            <span>Rejected</span>
+            <span>Application Submitted to admin</span>
         </div>
 
 

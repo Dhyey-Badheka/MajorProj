@@ -32,31 +32,21 @@ a {
 	color: #e00000;
 }
 .he {
-	color: #ff5733;
-}
-.ur {
-	color: #273746;
-}
-.jr {
-	color: #c70039;
+	/* color: #ff5733; */
+	color: rgb(7, 73, 114);
 }
 p {
-	color: rgb(52, 138, 167);
 	font-weight: 500;
 }
-p span {
-	color: rgb(7, 73, 114);
-	font-weight: 600;
+.ins {
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	background-color: #c70039;
+	color: rgb(255, 255, 255);
 }
-li {
-	color: rgb(221, 26, 85);
-	font-weight: 500;
-}
-#eligible {
-	color: rgb(0, 161, 0);
-}
-#ineligible {
-	color: rgb(161, 0, 0);
-	cursor: not-allowed;
-	pointer-events: none;
+.btn {
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
 }

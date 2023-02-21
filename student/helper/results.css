@@ -278,6 +278,12 @@ a {
 .copyright {
 	color: #e00000;
 }
+#res {
+	align-items: right;
+	align-content: right;
+	margin-left: 10px;
+	float: right;
+}
 * {
 	border: 0 solid #4a4dc4;
 }

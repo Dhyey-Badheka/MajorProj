@@ -56,6 +56,10 @@
             </p>
             <p>Download the attached PDF: </p>
             <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
+            <p><span id="eligible">You are eligible for this drive
+                    <button class="btn btn-success">Apply with Primary Resume</button>
+                    <button class="btn btn-danger">Apply with Secondary Resume</button></span>
+            </p>
         </div>
 
 
@@ -98,6 +102,10 @@
             </p>
             <p>Download the attached PDF: </p>
             <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
+            <p><span id="ineligible">You are not eligible for this drive
+                    <button class="btn btn-success">Apply with Primary Resume</button>
+                    <button class="btn btn-danger">Apply with Secondary Resume</button></span>
+            </p>
         </div>
 
 
