@@ -6,7 +6,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	/* color: rgb(255, 255, 255); */
 }
 
 :root {
@@ -387,4 +386,7 @@ body.shrink .admin-profile {
 
 body.shrink .tooltip {
 	display: grid;
+}
+* {
+	color: white;
 }

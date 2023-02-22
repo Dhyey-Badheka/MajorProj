@@ -25,7 +25,7 @@
                     <div class="ins">
                         <span>The Primary resume will be created
                             with the data submitted by
-                            student from “Your Profile” tab.</span>
+                            student from "Profile" tab.</span>
                     </div>
                     <button type="button" class="btn btn-success">View Resume</button>
                 </div>

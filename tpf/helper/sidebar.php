@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="2">
-                <a href="#" data-active="2">
+                <a href="results.php" data-active="2">
                     <div class="icon">
                         <i class='bx bx-message-square-detail'></i>
                         <i class='bx bxs-message-square-detail'></i>
@@ -38,29 +38,44 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="3">
-                <a href="#" data-active="3">
+                <a href="regisstu.php" data-active="3">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">Register TPF</span>
+                    <span class="link hide">Register TPC</span>
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="4">
-                <a href="#" data-active="4">
+                <a href="currentdrives.php" data-active="4">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
                     </div>
-                    <span class="link hide">Drives</span>
+                    <span class="link hide">Current Drives</span>
                 </a>
             </li>
             <div class="tooltip">
                 <span class="show">Dashboard</span>
                 <span>Announcements</span>
                 <span>Results</span>
-                <span>Register TPF</span>
-                <span>Drives</span>
+                <span>Register TPC</span>
+                <span>Current Drives</span>
+            </div>
+        </ul>
+        <h4 class="hide">Shortcuts</h4>
+        <ul>
+            <li class="tooltip-element" data-tooltip="0">
+                <a href="settings.php" data-active="5">
+                    <div class="icon">
+                        <i class='bx bx-cog'></i>
+                        <i class='bx bxs-cog'></i>
+                    </div>
+                    <span class="link hide">Settings</span>
+                </a>
+            </li>
+            <div class="tooltip">
+                <span class="show">Settings</span>
             </div>
         </ul>
     </div>
@@ -72,7 +87,7 @@
             <div class="admin-profile hide">
                 <img src="../../tpc/images/logo.png" alt="">
                 <div class="admin-info">
-                    <h3>Admin</h3>
+                    <h3>TPF</h3>
                 </div>
             </div>
             <a href="#" class="log-out">

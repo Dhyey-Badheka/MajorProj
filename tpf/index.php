@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>TPO</title>
+    <title>TPF</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Students</span>
-                                <span class="h3 font-bold mb-0">650</span>
+                                <span class="h3 font-bold mb-0">82</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Interested Students</span>
-                                <span class="h3 font-bold mb-0">432</span>
+                                <span class="h3 font-bold mb-0">62</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i>218
+                                <i class='bx bxs-error'></i>20
                             </span>
                             <span class="text-nowrap text-xs text-muted">Not Interested</span>
                         </div>
@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Students Placed</span>
-                                <span class="h3 font-bold mb-0">352</span>
+                                <span class="h3 font-bold mb-0">47/62</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -76,7 +76,7 @@
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i>120
+                                <i class='bx bxs-error'></i>15
                             </span>
                             <span class="text-nowrap text-xs text-muted">Remaining for Placement</span>
                         </div>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Companies Visited</span>
-                                <span class="h3 font-bold mb-0">14</span>
+                                <span class="h3 font-bold mb-0">18</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -99,7 +99,7 @@
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-soft-success text-success me-2">
-                                <i class='bx bx-share bx-flip-horizontal'></i>5
+                                <i class='bx bx-share bx-flip-horizontal'></i>3
                             </span>
                             <span class="text-nowrap text-xs text-muted">On-Going</span>
                         </div>
@@ -135,7 +135,7 @@
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Student Coordinators</span>
-                                <span class="h3 font-bold mb-0">19</span>
+                                <span class="h3 font-bold mb-0">2</span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -163,126 +163,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Information Technology</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Civil</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electrical</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Mechanical</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics Communications</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Computer</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-auto">
-                                <span class="h6 font-semibold text-muted text-sm d-block mb-2">Production</span>
-                            </div>
-                            <div class="col-auto">
-                                <span class="h4  mb-0">Placed: 54/62</span>
-                                <span class="h4 mb-0">Average: 5.32 LPA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         </div>
         </div>
