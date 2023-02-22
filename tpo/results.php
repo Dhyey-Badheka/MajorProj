@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg-10 pr-0">
                         <section aria-label="Announcements" class="announcements">
-                            <a href="addannouncement.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
+                            <a href="addresult.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
                             <h2 class="font-weight-bold border-bottom pb-3 mt-3 mb-0 pr-5">Results</h2>
 
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
@@ -34,7 +34,7 @@
                                         <li class="border-bottom pb-3 mt-3">
                                             <span class="meta text-uppercase">April 02nd, 2018</span>
                                             <div style="float:right;" class="mt-5">
-                                                <a href="updateannounce.php"><button type="button" class="btn btn-success float-right">Update</button></a>
+                                                <a href="updateresult.php"><button type="button" class="btn btn-success float-right">Update</button></a>
                                                 <button type="button" class="btn btn-danger float-right">Delete</button>
                                             </div>
                                             <h3 class="font-weight-bold mt-0">
@@ -46,7 +46,7 @@
 
                                             <span class="meta text-uppercase">January 30th, 2018</span>
                                             <div style="float:right;" class="mt-5">
-                                                <a href="updateannounce.php"> <button type="button" class="btn btn-success float-right">Update</button></a>
+                                                <a href="updateresult.php"> <button type="button" class="btn btn-success float-right">Update</button></a>
                                                 <button type="button" class="btn btn-danger float-right">Delete</button>
                                             </div>
                                             <h3 class="font-weight-bold mt-0">
@@ -59,7 +59,7 @@
                                         <li class="border-bottom pb-3 mt-3">
                                             <span class="meta text-uppercase">April 02nd, 2018</span>
                                             <div style="float:right;" class="mt-5">
-                                                <a href="updateannounce.php"><button type="button" class="btn btn-success float-right">Update</button></a>
+                                                <a href="updateresult.php"><button type="button" class="btn btn-success float-right">Update</button></a>
                                                 <button type="button" class="btn btn-danger float-right">Delete</button>
                                             </div>
                                             <h3 class="font-weight-bold mt-0">

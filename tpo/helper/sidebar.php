@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="2">
-                <a href="#" data-active="2">
+                <a href="results.php" data-active="2">
                     <div class="icon">
                         <i class='bx bx-message-square-detail'></i>
                         <i class='bx bxs-message-square-detail'></i>
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="3">
-                <a href="#" data-active="3">
+                <a href="registertpf.php" data-active="3">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
@@ -47,7 +47,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="4">
-                <a href="#" data-active="4">
+                <a href="drives.php" data-active="4">
                     <div class="icon">
                         <i class='bx bx-bar-chart-square'></i>
                         <i class='bx bxs-bar-chart-square'></i>
