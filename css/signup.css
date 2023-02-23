@@ -63,8 +63,8 @@ form .input-box span.details {
 	margin-bottom: 5px;
 }
 .user-details .input-box input {
-	height: 45px;
-	width: 100%;
+	/* height: 45px;
+	width: 100%; */
 	outline: none;
 	font-size: 16px;
 	border-radius: 5px;
@@ -125,9 +125,9 @@ form .category label .dot {
 	background: #913175;
 	border-color: #d9d9d9;
 }
-form input[type="radio"] {
+/* form input[type="radio"] {
 	display: none;
-}
+} */
 form .button {
 	height: 45px;
 	margin: 35px 0;
@@ -184,4 +184,11 @@ form .button input {
 	.container .content .category {
 		flex-direction: column;
 	}
+}
+
+.radiorow {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	display: flex;
 }

@@ -23,6 +23,12 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
+                <div class="radiorow">
+                    TPO<input type="radio" id="TPO" name="user_type" value="TPO">
+                    TPF<input type="radio" id="TPF" name="user_type" value="TPF">
+                    TPC<input type="radio" id="TPC" name="user_type" value="TPC">
+                    Student<input type="radio" id="student" name="user_type" value="student">
+                </div>
                 <div class="pass"><a href="./forgotPassword.php">Forgot password?</a></div>
                 <div class="row button">
                     <input type="submit" name="login" value="Login">

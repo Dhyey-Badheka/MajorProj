@@ -1,16 +1,11 @@
 footer {
 	background-color: black;
 	color: white;
-	bottom: 0;
-	/* width: 100vw; */
-	font-size: 16px;
+	font-size: 18px;
 }
 footer * {
 	box-sizing: border-box;
-	border: none;
-	outline: none;
 }
-
 .row {
 	padding: 1em 1em;
 }
@@ -20,11 +15,21 @@ footer * {
 	align-items: stretch;
 }
 .column {
+	margin-left: 10%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	padding: 0 2em;
-	min-height: 15em;
+	color: #a7a7a7;
+}
+.column.link {
+	margin-left: 50%;
+}
+.column.contact {
+	margin-left: 40%;
+}
+.column:hover {
+	color: #e9e8e8;
 }
 h3 {
 	width: 100%;
@@ -45,15 +50,11 @@ ul {
 } */
 ul li a {
 	color: #a7a7a7;
+	font-size: 18px;
 	text-decoration: none;
 }
 ul li a:hover {
 	color: #e9e8e8;
-}
-.about p {
-	text-align: justify;
-	line-height: 2;
-	margin: 0;
 }
 input,
 button {
@@ -69,22 +70,19 @@ button {
 	cursor: pointer;
 }
 div.social {
-	display: flex;
-	justify-content: space-around;
+	margin-top: 8px;
 	font-size: 2.4em;
 	flex-direction: row;
-	margin-top: 0.5em;
 }
 .social i {
 	color: #bac6d9;
 }
-
+/* 
 .copyright {
-	padding: 0.3em 1em;
+	padding: 0.1em 1em;
 	background-color: #20262e;
-}
+} */
 .footer-menu {
-	float: left;
 	margin-top: 20px;
 }
 .footer-menu a {

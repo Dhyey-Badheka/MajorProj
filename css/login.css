@@ -100,3 +100,9 @@ form .button input:hover {
 form .signup-link a:hover {
 	text-decoration: underline;
 }
+.radiorow {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	display: flex;
+}

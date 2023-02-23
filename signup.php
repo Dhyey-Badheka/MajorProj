@@ -26,30 +26,28 @@ include("./database.php");
             <form action="./addUser.php" method="POSt" onsubmit="validate()">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Regular or D2D</span>
-                        <select name="typeStudent" id="typeStudent">
-                            <option value="1">Regular</option>
-                            <option value="2">Diploma to Degree (D2D)</option>
-                        </select>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">ID Number</span>
-                        <input type="text" name="id" placeholder="Enter your ID number" required>
+                        <span class="details">Name</span>
+                        <input type="text" name="id" placeholder="Enter your Name" required />
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="email" name="email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Mobile Number</span>
-                        <input type="number" name="mobile" placeholder="Enter your number" required>
+                        <input type="email" name="email" placeholder="Enter your email" required />
                     </div>
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" name="password" id="password" placeholder="Enter your password" required />
                         <span class="extra"> Must be 8 character long </br> Must include atleast one digit </span>
-
                     </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" name="cpassword" id="cpassword" placeholder="Confirm your password" required />
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Mobile Number</span>
+                        <input type="number" name="mobile" placeholder="Enter your number" required />
+                    </div>
+
                     <div class="input-box">
                         <span class="details">Department</span>
                         <select name="department" id="dept">
@@ -68,28 +66,17 @@ include("./database.php");
                         </select>
                     </div>
                     <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input type="password" id="cPassword" placeholder="Confirm your password" required>
+                        <span class="details">ID number(If student)</span>
+                        <input type="text" id="idno" placeholder="Enter your ID number" required>
                     </div>
-                </div>
-                <div class="gender-details">
-                    <input type="radio" name="gender" value="male" id="dot-1">
-                    <input type="radio" name="gender" value="female" id="dot-2">
-                    <input type="radio" name="gender" value="other" id="dot-3">
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Male</span>
-                        </label>
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">Female</span>
-                        </label>
-                        <label for="dot-3">
-                            <span class="dot three"></span>
-                            <span class="gender">Prefer not to say</span>
-                        </label>
+                    <div class="input-box">
+                        <span class="details">User Type</span>
+                        <div class="radiorow">
+                            TPO<input type="radio" id="TPO" name="user_type" value="TPO">
+                            TPF<input type="radio" id="TPF" name="user_type" value="TPF">
+                            TPC<input type="radio" id="TPC" name="user_type" value="TPC">
+                            Student<input type="radio" id="student" name="user_type" value="student">
+                        </div>
                     </div>
                 </div>
                 <div class="button">

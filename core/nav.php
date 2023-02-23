@@ -20,17 +20,9 @@
 
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Team</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Results</a></li>
             <li><a href="login.php" class="login">Login</a></li>
-            <!-- <li class="services">
-                <a href="/">Login</a>
-                 DROPDOWN MENU 
-                <ul class="dropdown">
-                    <li><a href="/">Sign In </a></li>
-                    <li><a href="/">Sign Up</a></li>
-                </ul>
-            </li> -->
         </div>
 
     </ul>
