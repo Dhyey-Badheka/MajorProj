@@ -39,7 +39,7 @@ $stmt->execute();
 </head>
 
 <body>
-    <form action="./department.php" method="post">
+    <form action="./drive.php" method="post">
         DRIVE
         <input type="submit" value="ADD" name="insert">
     </form>

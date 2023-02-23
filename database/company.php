@@ -28,7 +28,7 @@ $stmt->execute();
 </head>
 
 <body>
-    <form action="./department.php" method="post">
+    <form action="./company.php" method="post">
         COMPANY
         <input type="submit" value="ADD" name="insert">
     </form>

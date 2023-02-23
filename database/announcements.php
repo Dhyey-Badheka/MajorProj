@@ -4,11 +4,11 @@ include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 
 // Department TABLE create query
 
-$drive = "CREATE TABLE IF NOT EXISTS drive(
+$announcement = "CREATE TABLE IF NOT EXISTS announcement(
     announcement_id int(10) PRIMARY KEY,
     heading TEXT,
     description TEXT,
-    deadline DATE ,
+    posted_on DATE ,
 )";
 
 // execute the query
@@ -25,8 +25,8 @@ $stmt->execute();
 </head>
 
 <body>
-    <form action="./department.php" method="post">
-        DRIVE
+    <form action="./announcement.php" method="post">
+        announcement
         <input type="submit" value="ADD" name="insert">
     </form>
 </body>

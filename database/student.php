@@ -93,7 +93,8 @@ $student = "CREATE TABLE IF NOT EXISTS student (
     is_registered int(10) DEFAULT(0),
     is_approved int(10) DEFAULT(0),
     is_placed int(10) DEFAULT(0),
-    company_placed int(10)
+    company_placed varchar(20),
+    drive_role varchar(20)
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
 )";
 

@@ -32,7 +32,7 @@ $stmt->execute();
 </head>
 
 <body>
-    <form action="./department.php" method="post">
+    <form action="./placement.php" method="post">
         Placement
         <input type="submit" value="ADD" name="insert">
     </form>
