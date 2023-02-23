@@ -11,7 +11,7 @@ $admin = "CREATE TABLE IF NOT EXISTS admin (
 $conn->query($admin);
 
 if (isset($_POST["admin"])) {
-    $insert = "INSERT INTO admin values('admin','1234')";
+    $insert = "INSERT INTO admin values('admin','123456')";
     $conn->query($insert);
 }
 

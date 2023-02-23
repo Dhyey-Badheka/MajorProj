@@ -64,6 +64,15 @@
                     <span class="link hide">Current Drives</span>
                 </a>
             </li>
+            <li class="tooltip-element" data-tooltip="6">
+                <a href="companies.php" data-active="6">
+                    <div class="icon">
+                        <i class='bx bx-bar-chart-square'></i>
+                        <i class='bx bxs-bar-chart-square'></i>
+                    </div>
+                    <span class="link hide">Upcoming Companies</span>
+                </a>
+            </li>
             <div class="tooltip">
                 <span class="show">Dashboard</span>
                 <span>Announcements</span>
@@ -71,12 +80,13 @@
                 <span>Register Student</span>
                 <span>Approve Profile</span>
                 <span>Current Drives</span>
+                <span>Upcoming Companies</span>
             </div>
         </ul>
         <h4 class="hide">Shortcuts</h4>
         <ul>
             <li class="tooltip-element" data-tooltip="0">
-                <a href="settings.php" data-active="6">
+                <a href="settings.php" data-active="7">
                     <div class="icon">
                         <i class='bx bx-cog'></i>
                         <i class='bx bxs-cog'></i>

@@ -1,0 +1,62 @@
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+.meta {
+	font-family: Helvetica, Arial, open-sans;
+	font-size: 0.8571rem;
+	font-weight: 600;
+	color: #0093e0 !important;
+}
+
+@media (max-width: 991px) {
+	.announcements h2 {
+		border-bottom: none;
+	}
+}
+
+@media (max-width: 991px) {
+	.announcements h2.events-heading {
+		padding-left: 15px;
+		margin-top: 20px;
+	}
+}
+a {
+	color: #0093e0 !important;
+	transition: all, 0.4s, ease;
+}
+.bl {
+	color: #e07400;
+}
+.copyright {
+	color: #e00000;
+}
+.he {
+	color: #ff5733;
+}
+.ur {
+	color: #273746;
+}
+.jr {
+	color: #c70039;
+}
+p {
+	color: rgb(52, 138, 167);
+	font-weight: 500;
+}
+p span {
+	color: rgb(7, 73, 114);
+	font-weight: 600;
+}
+li {
+	color: rgb(221, 26, 85);
+	font-weight: 500;
+}
+#eligible {
+	color: rgb(0, 161, 0);
+}
+#ineligible {
+	color: rgb(161, 0, 0);
+	cursor: not-allowed;
+	pointer-events: none;
+}
