@@ -27,8 +27,9 @@ $user_id = $_GET["user_id"];
             <div class="details">
                 <p>User Name : <strong> <?php echo $user_id ?> </strong>
                 </p>
-                <p> Your account is in <strong>IN-ACTIVE</strong> state. It will be active only if you fill in all the details in your profile including all supporting documents once you <a href="./login.php"> LOGIN </a> </p>
-                <p> Once you fill your details <strong>ADMIN</strong> will approve your profile.</p>
+                <p> Your account is in <strong>IN-ACTIVE</strong> state. It will be active only once it is approved by TPC of your department. </p>
+                <p> Once you are approved by <strong>TPC</strong> you can login from below and must fill your other details.</p>
+                <p><a href="./login.php"> LOGIN </a></p>
             </div>
         </div>
     </div>

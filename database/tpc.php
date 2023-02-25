@@ -7,8 +7,8 @@ include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 $tpc = "CREATE TABLE IF NOT EXISTS tpc(
     tpc_id int(10) PRIMARY KEY,
     tpc_name varchar(10) NOT NULL,
-    tpc_email varchar(10),
-    tpc_password varchar(10),
+    tpc_email varchar(50),
+    tpc_password varchar(50),
     tpc_mobile varchar(10),
     tpc_dept_id varchar(10),
     tpc_is_approved int(10) DEFAULT(0),

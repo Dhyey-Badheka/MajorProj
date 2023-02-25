@@ -5,26 +5,27 @@ include("./database.php");
 // Taking the values from the form 
 if (isset($_POST["register"])) {
     // Values from the Register Form
-    $is_d2d = $_POST["typeStudent"] == 1 ? 0 : 1;
+    // $is_d2d = $_POST["typeStudent"] == 1 ? 0 : 1;
     $id_number = $_POST["id"];
     $email = $_POST["email"];
+    $name = $_POST["name"];
     $mobile = $_POST["mobile"];
     $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
     $dept = $_POST["department"];
-    $gender = $_POST["gender"];
 
     // Encrypting the password with MD5 and base64_encode
     $password = base64_encode(strrev(md5($password)));
 
-    //check if the id number exists in the system or not
-    $check = "SELECT id_number FROM student WHERE id_number = '$id_number'";
+    //check if the email exists in the system or not
+    $check = "SELECT pemail FROM student WHERE pemail = '$email'";
     $check_result = $conn->query($check);
 
 
     // if user id not found then add the user
     if ($check_result->num_rows == 0) {
 
-        $add_query = "INSERT INTO `student`(`id_number`, `password`, `gender`, `mobile`, `email`, `dept_id`,`is_d2d`) VALUES ('$id_number','$password','$gender','$mobile','$email','$dept','$is_d2d')";
+        $add_query = "INSERT INTO `student`(`id_number`, `password`, `first_name`, `mobile`, `pemail`, `dept_id`) VALUES ('$id_number','$password','$name','$mobile','$email','$dept')";
 
         // run the query 
 
@@ -33,7 +34,7 @@ if (isset($_POST["register"])) {
             header("Location: showUserDetails.php?user_id=$id_number");
         } else {
             // else display the error 
-            echo "Error" . "<br>" ;
+            echo "Error" . "<br>";
         }
     } else {
         // if user found in the database then alert the user

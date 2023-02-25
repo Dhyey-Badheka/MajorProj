@@ -15,27 +15,34 @@ $dept = "CREATE TABLE IF NOT EXISTS department(
     dept_avgpack int(10),
     dept_company_visited int(10),
     dept_drive_completed int(10)
-    FOREIGN KEY (dept_tpf_id) REFERENCES tpf(tpf_id)
-    FOREIGN KEY (dept_tpc_id) REFERENCES tpc(tpc_id)
+    -- FOREIGN KEY (dept_tpf_id) REFERENCES tpf(tpf_id),
+    -- FOREIGN KEY (dept_tpc_id) REFERENCES tpc(tpc_id)
 )";
 
 // execute the query
-$stmt = $conn->prepare($dept);
-$stmt->execute();
+if ($conn->query($dept) === TRUE) {
+    echo "Table created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
 if (isset($_POST["insert"])) {
-    $rec1 = "INSERT INTO department values (1,'CE')";
-    $rec2 = "INSERT INTO department values (2,'CP')";
-    $rec3 = "INSERT INTO department values (3,'EC')";
-    $rec4 = "INSERT INTO department values (4,'EE')";
-    $rec5 = "INSERT INTO department values (5,'EL')";
-    $rec6 = "INSERT INTO department values (6,'IT')";
-    $rec7 = "INSERT INTO department values (7,'ME')";
-    $rec8 = "INSERT INTO department values (8,'PE')";
+    $rec1 = "INSERT INTO department(dept_id,dept_name) values (1,'CE');";
+    $rec2 = "INSERT INTO department(dept_id,dept_name) values (2,'CP');";
+    $rec3 = "INSERT INTO department(dept_id,dept_name) values (3,'EC');";
+    $rec4 = "INSERT INTO department(dept_id,dept_name) values (4,'EE');";
+    $rec5 = "INSERT INTO department(dept_id,dept_name) values (5,'EL');";
+    $rec6 = "INSERT INTO department(dept_id,dept_name) values (6,'IT');";
+    $rec7 = "INSERT INTO department(dept_id,dept_name) values (7,'ME');";
+    $rec8 = "INSERT INTO department(dept_id,dept_name) values (8,'PE');";
     $stmts = array($rec1, $rec2, $rec2, $rec3, $rec4, $rec5, $rec6, $rec7, $rec8);
     for ($i = 0; $i < count($stmts); $i++) {
-        $stmt = $conn->prepare($stms[$i]);
-        $stmt->execute();
+        $stmt = $stmts[$i];
+        if ($conn->query($stmt) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 

@@ -9,14 +9,14 @@ include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 
 $student = "CREATE TABLE IF NOT EXISTS student (
     id_number varchar(20) PRIMARY KEY,
-    password varchar(30) NOT NULL,
+    password varchar(50) NOT NULL,
     first_name varchar(20),
     middle_name varchar(20),
     last_name varchar(20),
     gender varchar(10),
     mobile varchar(10),
-    pemail varchar(30) UNIQUE,
-    semail varchar(30) UNIQUE,
+    pemail varchar(50) UNIQUE,
+    semail varchar(50) UNIQUE,
     dept_id int(10),
     linkedinurl varchar(30) ,
     dob DATE NOT NULL,
@@ -86,7 +86,7 @@ $student = "CREATE TABLE IF NOT EXISTS student (
     bvm_sem6 varchar(20),
     bvm_cpi decimal(4,2),
     bvm_activebcklog int(10),
-    bvm_activebcklog int(10),
+    bvm_clearedbcklog int(10),
     bvm_totalbcklog int(10),
     resume varchar(20),
     photo varchar(30),
@@ -94,13 +94,13 @@ $student = "CREATE TABLE IF NOT EXISTS student (
     is_approved int(10) DEFAULT(0),
     is_placed int(10) DEFAULT(0),
     company_placed varchar(20),
-    drive_role varchar(20)
+    drive_role varchar(20),
     FOREIGN KEY (dept_id) REFERENCES department(dept_id)
 )";
 
 // create table query run 
 if ($conn->query($student) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "Table Students created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }

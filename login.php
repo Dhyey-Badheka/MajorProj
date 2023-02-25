@@ -17,17 +17,17 @@
             <form action="./checkLogin.php" method="POST">
                 <div class="row">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="row">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Enter your Password" required>
                 </div>
                 <div class="radiorow">
-                    TPO<input type="radio" id="TPO" name="user_type" value="TPO">
-                    TPF<input type="radio" id="TPF" name="user_type" value="TPF">
-                    TPC<input type="radio" id="TPC" name="user_type" value="TPC">
-                    Student<input type="radio" id="student" name="user_type" value="student">
+                    TPO<input type="radio" id="TPO" name="user_type" value="0">
+                    TPF<input type="radio" id="TPF" name="user_type" value="1">
+                    TPC<input type="radio" id="TPC" name="user_type" value="2">
+                    Student<input type="radio" id="student" name="user_type" value="3" checked>
                 </div>
                 <div class="pass"><a href="./forgotPassword.php">Forgot password?</a></div>
                 <div class="row button">

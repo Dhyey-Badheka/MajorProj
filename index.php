@@ -59,7 +59,8 @@ require_once("database.php");
             </div>
         </div>
     </section>
-
+    <?php
+    ?>
     <!-- Footer -->
     <?php require_once("./core/footer.php") ?>
 

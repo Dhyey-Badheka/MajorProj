@@ -2,21 +2,29 @@
 include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 
 
+// $add_query = "INSERT INTO 'student'('id_number', 'password', 'first_name', 'mobile', 'pemail', 'dept_id') VALUES ('$id_number','$password','$name','$mobile','$email','$dept')";
+
+// // run the query 
+
+// if ($conn->query($add_query))
 
 // admin login table creation query
+
 $admin = "CREATE TABLE IF NOT EXISTS admin (
-    user_name varchar(20) PRIMARY KEY,
-    password varchar(20) NOT NULL
+    tpo_email varchar(50) PRIMARY KEY,
+    password varchar(50) NOT NULL
 )";
 $conn->query($admin);
 
-if (isset($_POST["admin"])) {
-    $insert = "INSERT INTO admin values('admin','123456')";
-    $conn->query($insert);
+$password = base64_encode(strrev(md5("123456")));
+$insert = "INSERT INTO admin (tpo_email,password) values ('admin@bvmengineering.ac.in','$password')";
+if (mysqli_query($conn, $insert)) {
+    echo "New record created successfully";
+} else {
+    echo mysqli_error($conn);
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

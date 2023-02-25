@@ -77,7 +77,7 @@ li {
 
 .menu {
 	display: flex;
-
+	margin-top: 15px;
 	gap: 1em;
 }
 
@@ -90,7 +90,7 @@ li {
 }
 
 .menu li {
-	padding: 14px;
+	padding: 15px;
 	align-items: baseline;
 }
 
