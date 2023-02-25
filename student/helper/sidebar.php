@@ -13,8 +13,7 @@
             <li class="tooltip-element" data-tooltip="0">
                 <a href="index.php">
                     <div class="icon">
-                        <i class='bx bx-notification'></i>
-                        <i class='bx bxs-notification'></i>
+                        <box-icon type='solid' name='report' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Announcements</span>
                 </a>
@@ -22,8 +21,7 @@
             <li class="tooltip-element" data-tooltip="1">
                 <a href="results.php">
                     <div class="icon">
-                        <i class='bx bx-notepad'></i>
-                        <i class='bx bxs-notepad'></i>
+                        <box-icon type='solid' name='book-bookmark' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Results</span>
                 </a>
@@ -31,8 +29,7 @@
             <li class="tooltip-element" data-tooltip="2">
                 <a href="companies.php">
                     <div class="icon">
-                        <i class='bx bx-institution'></i>
-                        <i class='bx bxs-institution'></i>
+                        <box-icon name='buildings' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Upcoming Companies</span>
                 </a>
@@ -40,17 +37,16 @@
             <li class="tooltip-element" data-tooltip="3">
                 <a href="drives.php">
                     <div class="icon">
-                        <i class='bx bx-bar-chart'></i>
-                        <i class='bx bxs-bar-chart'></i>
+                        <box-icon type='solid' name='plane-take-off' color='#FF9600'></box-icon>
                     </div>
-                    <span class="link hide si">Drives</span>
+                    <span class="link hide si">Current Drives</span>
                 </a>
             </li>
             <div class="tooltip">
                 <span>Announcements</span>
                 <span>Results</span>
                 <span>Upcoming Companies</span>
-                <span>Drives</span>
+                <span>Current Drives</span>
             </div>
         </ul>
         <h4 class="hide">Shortcuts</h4>
@@ -58,8 +54,7 @@
             <li class="tooltip-element" data-tooltip="0">
                 <a href="resume.php" data-active="4">
                     <div class="icon">
-                        <i class='bx bx-user-detail'></i>
-                        <i class='bx bxs-user-detail'></i>
+                        <box-icon name='clipboard' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Resume</span>
                 </a>
@@ -67,8 +62,7 @@
             <li class="tooltip-element" data-tooltip="1">
                 <a href="viewStudent.php" data-active="5">
                     <div class="icon">
-                        <i class='bx bx-user'></i>
-                        <i class='bx bxs-user'></i>
+                        <box-icon name='street-view' color='#FF9600' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Profile</span>
                 </a>
@@ -76,8 +70,8 @@
             <li class="tooltip-element" data-tooltip="2">
                 <a href="settings.php" data-active="6">
                     <div class="icon">
-                        <i class='bx bx-cog'></i>
-                        <i class='bx bxs-cog'></i>
+                        <box-icon name='cog' type='solid' color='#FF9600'></box-icon>
+
                     </div>
                     <span class="link hide si">Settings</span>
                 </a>
@@ -101,7 +95,9 @@
                 </div>
             </div>
             <a href="#" class="log-out">
-                <i class='bx bx-log-out'></i>
+                <box-icon name='log-out' color='#ff9600'></box-icon>
+
+
             </a>
         </div>
         <div class="tooltip">

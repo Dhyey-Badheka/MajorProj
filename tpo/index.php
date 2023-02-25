@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>TPO</title>
 </head>
 
@@ -29,8 +30,8 @@
                                 <span class="h3 font-bold mb-0">650</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                    <i class="bi bi-credit-card"></i>
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                    <i class="bi bi-people"></i>
                                 </div>
                             </div>
                         </div>
@@ -46,14 +47,14 @@
                                 <span class="h3 font-bold mb-0">432</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                    <i class="bi bi-credit-card"></i>
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                    <i class="bi bi-person-hearts"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-2 mb-0 text-sm">
-                            <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i>218
+                        <div class=" mb-0 text-sm">
+                            <span class="badge badge-pill bg-primary bg-soft-warning text-danger">
+                                <i class='bx bxs-error'></i> 218
                             </span>
                             <span class="text-nowrap text-xs text-muted">Not Interested</span>
                         </div>
@@ -70,13 +71,13 @@
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
-                                    <i class='bx bxs-bar-chart-square'></i>
+                                    <i class="bi bi-person-rolodex"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-2 mb-0 text-sm">
-                            <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i>120
+                            <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
+                                <i class='bx bxs-error'></i> 120
                             </span>
                             <span class="text-nowrap text-xs text-muted">Remaining for Placement</span>
                         </div>
@@ -92,14 +93,14 @@
                                 <span class="h3 font-bold mb-0">14</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
-                                    <i class="bi bi-clock-history"></i>
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                    <i class="bi bi-building-fill-check"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-2 mb-0 text-sm">
-                            <span class="badge badge-pill bg-soft-success text-success me-2">
-                                <i class='bx bx-share bx-flip-horizontal'></i>5
+                            <span class="badge badge-pill bg-primary bg-soft-success text-success me-2">
+                                <i class='bx bx-share bx-flip-horizontal'></i> 5
                             </span>
                             <span class="text-nowrap text-xs text-muted">On-Going</span>
                         </div>
@@ -115,15 +116,14 @@
                                 <span class="h3 font-bold mb-0">19</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
                                     <i class='bx bx-sitemap'></i>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-2 mb-0 text-sm">
-                            <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i>7
-                            </span>
+                            <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
+                                <i class="bi bi-hourglass-split"></i> 3</span>
                             <span class="text-nowrap text-xs text-muted">On-Going</span>
                         </div>
                     </div>
@@ -138,8 +138,7 @@
                                 <span class="h3 font-bold mb-0">19</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                    <i class='bx bx-sitemap'></i>
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"><i class="bi bi-award-fill"></i>
                                 </div>
                             </div>
                         </div>
@@ -155,8 +154,8 @@
                                 <span class="h3 font-bold mb-0">5.6 LPA</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                    <i class='bx bx-sitemap'></i>
+                                <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                    <i class="bi bi-currency-rupee"></i>
                                 </div>
                             </div>
                         </div>

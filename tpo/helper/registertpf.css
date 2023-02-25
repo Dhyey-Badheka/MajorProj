@@ -22,7 +22,7 @@
 	}
 }
 a {
-	color: #0093e0 !important;
+	/* color: #0093e0 !important; */
 	transition: all, 0.4s, ease;
 }
 .bl {

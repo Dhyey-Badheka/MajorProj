@@ -86,7 +86,7 @@ main .copyright span {
 }
 
 .sidebar-top .logo {
-	width: 2.1rem;
+	width: 5rem;
 	margin: 0 0.8rem;
 }
 
@@ -160,7 +160,7 @@ nav:hover .shrink-btn,
 
 .sidebar-links li {
 	position: relative;
-	padding: 2.5px 0;
+	/* padding: 2.5px 0; */
 }
 
 .sidebar-links a {

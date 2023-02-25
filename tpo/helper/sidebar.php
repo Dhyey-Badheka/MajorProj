@@ -13,8 +13,7 @@
             <li class="tooltip-element" data-tooltip="0">
                 <a href="index.php" data-active="0">
                     <div class="icon">
-                        <i class='bx bx-tachometer'></i>
-                        <i class='bx bxs-tachometer'></i>
+                        <box-icon name='dashboard' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide">Dashboard</span>
                 </a>
@@ -22,8 +21,7 @@
             <li class="tooltip-element" data-tooltip="1">
                 <a href="announcements.php" data-active="1">
                     <div class="icon">
-                        <i class='bx bx-folder'></i>
-                        <i class='bx bxs-folder'></i>
+                        <box-icon type='solid' name='message-alt-detail' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide">Announcements</span>
                 </a>
@@ -31,8 +29,7 @@
             <li class="tooltip-element" data-tooltip="2">
                 <a href="results.php" data-active="2">
                     <div class="icon">
-                        <i class='bx bx-message-square-detail'></i>
-                        <i class='bx bxs-message-square-detail'></i>
+                        <box-icon type='solid' name='report' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide">Results</span>
                 </a>
@@ -40,8 +37,7 @@
             <li class="tooltip-element" data-tooltip="3">
                 <a href="registertpf.php" data-active="3">
                     <div class="icon">
-                        <i class='bx bx-bar-chart-square'></i>
-                        <i class='bx bxs-bar-chart-square'></i>
+                        <box-icon type='solid' name='book-bookmark' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide">Register TPF</span>
                 </a>
@@ -49,8 +45,7 @@
             <li class="tooltip-element" data-tooltip="4">
                 <a href="drives.php" data-active="4">
                     <div class="icon">
-                        <i class='bx bx-bar-chart-square'></i>
-                        <i class='bx bxs-bar-chart-square'></i>
+                        <box-icon name='objects-vertical-bottom' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide">Drives</span>
                 </a>
@@ -76,7 +71,7 @@
                 </div>
             </div>
             <a href="#" class="log-out">
-                <i class='bx bx-log-out'></i>
+                <box-icon name='log-out' color='#ff9600'></box-icon>
             </a>
         </div>
         <div class="tooltip">

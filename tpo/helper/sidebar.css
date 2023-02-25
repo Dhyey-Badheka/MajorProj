@@ -13,7 +13,7 @@
 	--main-color: #913175;
 	--main-color-dark: #561c45;
 	--main-color-light: #df4bb3;
-	--text-color: #cfcde7;
+	--text-color: #ffffff;
 }
 
 body {
@@ -86,7 +86,8 @@ main .copyright span {
 }
 
 .sidebar-top .logo {
-	width: 2.1rem;
+	width: 5rem;
+
 	margin: 0 0.8rem;
 }
 
@@ -388,3 +389,7 @@ body.shrink .admin-profile {
 body.shrink .tooltip {
 	display: grid;
 }
+
+/* * {
+	color: white;
+} */
