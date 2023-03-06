@@ -2,7 +2,19 @@
 
 include("./database.php");
 
-$user_id = $_GET["user_id"];
+// Session
+session_start();
+
+
+// it will only be shown once when the student register 
+// it will be shown for showing the user name of the student
+if (!empty($_GET["user_id"]) && isset($_SESSION["showUser"])) {
+    $user_id = $_GET["user_id"];
+}
+// if any user try to see this page through URL then he will be restricted and redirected to index page
+else {
+    header("Location: index.php");
+}
 
 ?>
 <!DOCTYPE html>

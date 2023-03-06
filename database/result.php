@@ -10,6 +10,7 @@ $result = "CREATE TABLE IF NOT EXISTS result(
     description TEXT,
     no_of_stu int(10),
     posted_on DATE,
+    student_placed json,
     company_placed varchar(20),
     drive_role varchar(20), 
     drive_id int(10) ,

@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["showUser"])) {
+    unset($_SESSION["showUser"]);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +15,9 @@
     <?php include("./core/header.php") ?>
     <link rel="stylesheet" href="./css/login.css">
     <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>

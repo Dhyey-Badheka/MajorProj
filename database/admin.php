@@ -11,8 +11,11 @@ include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 // admin login table creation query
 
 $admin = "CREATE TABLE IF NOT EXISTS admin (
-    tpo_email varchar(50) PRIMARY KEY,
-    password varchar(50) NOT NULL
+    tpo_id varchar(20) PRIMARY KEY,
+        tpo_name varchar(50),
+        tpo_email varchar(40),
+        tpo_number varchar(10),
+        tpo_password varchar(64)
 )";
 $conn->query($admin);
 

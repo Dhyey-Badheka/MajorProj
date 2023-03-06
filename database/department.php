@@ -6,9 +6,9 @@ include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 
 $dept = "CREATE TABLE IF NOT EXISTS department(
     dept_id int(10) PRIMARY KEY,
-    dept_name varchar(10) NOT NULL,
-    dept_tpf_id varchar(10) ,
-    dept_tpc_id varchar(10) ,
+    dept_name varchar(50) NOT NULL,
+    dept_tpf_name varchar(50) ,
+    dept_tpc_id varchar(50) ,
     dept_totalstu int(10),
     dept_intereststu int(10),
     dept_placedstu int(10),
@@ -20,11 +20,9 @@ $dept = "CREATE TABLE IF NOT EXISTS department(
 )";
 
 // execute the query
-if ($conn->query($dept) === TRUE) {
-    echo "Table created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+$stmt = $conn->prepare($dept);
+$stmt->execute();
+
 
 if (isset($_POST["insert"])) {
     $rec1 = "INSERT INTO department(dept_id,dept_name) values (1,'CE');";

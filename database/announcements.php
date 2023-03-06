@@ -1,18 +1,17 @@
 <?php
 
-include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
+include("E../database.php");
 
 // Department TABLE create query
 
-$announcement = "CREATE TABLE IF NOT EXISTS announcement(
+$create = "CREATE TABLE IF NOT EXISTS announcement(
     announcement_id int(10) PRIMARY KEY,
-    heading TEXT,
+    title TEXT,
     description TEXT,
-    posted_on DATE ,
+    posted_on DATE 
 )";
 
-// execute the query
-$stmt = $conn->prepare($dept);
+$stmt = $conn->prepare($create);
 $stmt->execute();
 
 ?>

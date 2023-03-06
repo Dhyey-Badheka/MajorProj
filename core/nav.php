@@ -2,8 +2,8 @@
 
     <!-- LOGO -->
 
-    <div class="logo">TPC</div>
-
+    <div class="logo">TPC
+    </div>
     <!-- NAVIGATION MENU -->
 
     <ul class="nav-links">
@@ -20,8 +20,8 @@
 
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Team</a></li>
-            <li><a href="#">Announcements</a></li>
-            <li><a href="#">Results</a></li>
+            <li><a href="/tpc-main/student/index.php">Announcements</a></li>
+            <li><a href="/tpc-main/student/results.php">Results</a></li>
             <li><a href="login.php" class="login">Login</a></li>
         </div>
 

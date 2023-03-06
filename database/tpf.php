@@ -12,6 +12,7 @@ $tpf = "CREATE TABLE IF NOT EXISTS tpf(
     tpf_mobile varchar(10),
     tpf_dept_id varchar(10),
     tpf_is_approved int(10) DEFAULT(0),
+        academic_year int(10),
     FOREIGN KEY (tpf_dept_id) REFERENCES department(dept_id)
 )";
 
