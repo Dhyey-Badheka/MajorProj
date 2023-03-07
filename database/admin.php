@@ -1,19 +1,18 @@
 <?php
-include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
 
+include("../database.php");
 
 // $add_query = "INSERT INTO 'student'('id_number', 'password', 'first_name', 'mobile', 'pemail', 'dept_id') VALUES ('$id_number','$password','$name','$mobile','$email','$dept')";
 
-// // run the query 
 
 // if ($conn->query($add_query))
 
 // admin login table creation query
 
 $admin = "CREATE TABLE IF NOT EXISTS admin (
-    tpo_id varchar(20) PRIMARY KEY,
-        tpo_name varchar(50),
-        tpo_email varchar(40),
+        tpo_id varchar(20) PRIMARY KEY,
+        tpo_name varchar(64),
+        tpo_email varchar(64),
         tpo_number varchar(10),
         tpo_password varchar(64)
 )";

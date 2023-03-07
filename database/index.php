@@ -1,7 +1,7 @@
 <?php
 
 include("../database.php");
-include("../database/department.php");
+include("../database/admin.php");
 include("../database/company.php");
 include("../database/tpo.php");
 include("../database/tpc.php");
@@ -9,121 +9,119 @@ include("../database/tpf.php");
 include("../database/student.php");
 include("../database/student_academic.php");
 include("../database/student_document.php");
-include("../database/student_placed.php");
 include("../database/annoucements.php");
 include("../database/drive.php");
 include("../database/result.php");
 
-$result["message"] = "";
-// DEPARTMENT TABLE
-if (isset($_POST["create-dept"])) {
-    $result = json_decode(create_dept($conn), true);
-
-    echo $result["message"];
-}
-if (isset($_POST["add-dept"])) {
-    $result = json_decode(insert_data_dept($conn), true);
-    echo $result["message"];
-}
-
-
-// COMPANY TABLE
-if (isset($_POST["create-company"])) {
-    $result = json_decode(create_company($conn), true);
-}
-if (isset($_POST["add-company"])) {
-    $result = json_decode(insert_data_company($conn), true);
-}
+// $result["message"] = "";
+// // DEPARTMENT TABLE
+// if (isset($_POST["create-dept"])) {
+//     $result = json_decode(create_dept($conn), true);
+//     echo $result["message"];
+// }
+// if (isset($_POST["add-dept"])) {
+//     $result = json_decode(insert_data_dept($conn), true);
+//     echo $result["message"];
+// }
 
 
-// TPO TABLE
-if (isset($_POST["create-tpo"])) {
-    $result = json_decode(create_tpo($conn), true);
-}
-if (isset($_POST["add-tpo"])) {
-    $result = json_decode(insert_data_tpo($conn), true);
-}
+// // COMPANY TABLE
+// if (isset($_POST["create-company"])) {
+//     $result = json_decode(create_company($conn), true);
+// }
+// if (isset($_POST["add-company"])) {
+//     $result = json_decode(insert_data_company($conn), true);
+// }
 
 
-// TPC TABLE
-if (isset($_POST["create-tpc"])) {
-    $result = json_decode(create_tpc($conn), true);
-}
-if (isset($_POST["add-tpc"])) {
-    $result = json_decode(insert_data_tpc($conn), true);
-}
+// // TPO TABLE
+// if (isset($_POST["create-tpo"])) {
+//     $result = json_decode(create_tpo($conn), true);
+// }
+// if (isset($_POST["add-tpo"])) {
+//     $result = json_decode(insert_data_tpo($conn), true);
+// }
 
 
-// TPF TABLE
-if (isset($_POST["create-tpf"])) {
-    $result = json_decode(create_tpf($conn), true);
-}
-if (isset($_POST["add-tpf"])) {
-    $result = json_decode(insert_data_tpf($conn), true);
-}
+// // TPC TABLE
+// if (isset($_POST["create-tpc"])) {
+//     $result = json_decode(create_tpc($conn), true);
+// }
+// if (isset($_POST["add-tpc"])) {
+//     $result = json_decode(insert_data_tpc($conn), true);
+// }
 
 
-// Student TABLE
-if (isset($_POST["create-stu"])) {
-    $result = json_decode(create_student($conn), true);
-}
-if (isset($_POST["add-stu"])) {
-    $result = json_decode(insert_data_student($conn), true);
-}
+// // TPF TABLE
+// if (isset($_POST["create-tpf"])) {
+//     $result = json_decode(create_tpf($conn), true);
+// }
+// if (isset($_POST["add-tpf"])) {
+//     $result = json_decode(insert_data_tpf($conn), true);
+// }
 
 
-// Student Academic TABLE
-if (isset($_POST["create-aca"])) {
-    $result = json_decode(create_student_academic($conn), true);
-}
-if (isset($_POST["add-aca"])) {
-    $result = json_decode(insert_data_student_academic($conn), true);
-}
+// // Student TABLE
+// if (isset($_POST["create-stu"])) {
+//     $result = json_decode(create_student($conn), true);
+// }
+// if (isset($_POST["add-stu"])) {
+//     $result = json_decode(insert_data_student($conn), true);
+// }
 
 
-// Student Document TABLE
-if (isset($_POST["create-doc"])) {
-    $result = json_decode(create_student_document($conn), true);
-}
-if (isset($_POST["add-doc"])) {
-    $result = json_decode(insert_data_student_document($conn), true);
-}
+// // Student Academic TABLE
+// if (isset($_POST["create-aca"])) {
+//     $result = json_decode(create_student_academic($conn), true);
+// }
+// if (isset($_POST["add-aca"])) {
+//     $result = json_decode(insert_data_student_academic($conn), true);
+// }
 
 
-// Student Placed TABLE
-if (isset($_POST["create-pla"])) {
-    $result = json_decode(create_student_placed($conn), true);
-}
-if (isset($_POST["add-pla"])) {
-    $result = json_decode(insert_data_student_placed($conn), true);
-}
+// // Student Document TABLE
+// if (isset($_POST["create-doc"])) {
+//     $result = json_decode(create_student_document($conn), true);
+// }
+// if (isset($_POST["add-doc"])) {
+//     $result = json_decode(insert_data_student_document($conn), true);
+// }
 
 
-// Result TABLE
-if (isset($_POST["create-res"])) {
-    $result = json_decode(create_result($conn), true);
-}
-if (isset($_POST["add-res"])) {
-    $result = json_decode(insert_data_result($conn), true);
-}
+// // Student Placed TABLE
+// if (isset($_POST["create-pla"])) {
+//     $result = json_decode(create_student_placed($conn), true);
+// }
+// if (isset($_POST["add-pla"])) {
+//     $result = json_decode(insert_data_student_placed($conn), true);
+// }
 
 
-// Annoucements TABLE
-if (isset($_POST["create-ann"])) {
-    $result = json_decode(create_annoucements($conn), true);
-}
-if (isset($_POST["add-ann"])) {
-    $result = json_decode(insert_data_annoucements($conn), true);
-}
+// // Result TABLE
+// if (isset($_POST["create-res"])) {
+//     $result = json_decode(create_result($conn), true);
+// }
+// if (isset($_POST["add-res"])) {
+//     $result = json_decode(insert_data_result($conn), true);
+// }
 
 
-// Annoucements TABLE
-if (isset($_POST["create-drive"])) {
-    $result = json_decode(create_drive($conn), true);
-}
-if (isset($_POST["add-drive"])) {
-    $result = json_decode(insert_data_drive($conn), true);
-}
+// // Annoucements TABLE
+// if (isset($_POST["create-ann"])) {
+//     $result = json_decode(create_annoucements($conn), true);
+// }
+// if (isset($_POST["add-ann"])) {
+//     $result = json_decode(insert_data_annoucements($conn), true);
+// }
+
+
+// // Annoucements TABLE
+// if (isset($_POST["create-drive"])) {
+//     $result = json_decode(create_drive($conn), true);
+// }
+// if (isset($_POST["add-drive"])) {
+//     $result = json_decode(insert_data_drive($conn), true);
+// }
 
 
 ?>

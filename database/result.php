@@ -1,6 +1,6 @@
 <?php
 
-include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
+include("../database.php");
 
 // Department TABLE create query
 
@@ -11,8 +11,8 @@ $result = "CREATE TABLE IF NOT EXISTS result(
     no_of_stu int(10),
     posted_on DATE,
     student_placed json,
-    company_placed varchar(20),
-    drive_role varchar(20), 
+    company_placed varchar(64),
+    drive_role varchar(64), 
     drive_id int(10) ,
     company_id int(10) ,
     FOREIGN KEY (drive_id) REFERENCES drive(drive_id)

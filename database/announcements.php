@@ -1,6 +1,6 @@
 <?php
 
-include("E../database.php");
+include("../database.php");
 
 // Department TABLE create query
 

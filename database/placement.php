@@ -1,6 +1,6 @@
 <?php
 
-include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
+include("../database.php");
 
 // Department TABLE create query
 
@@ -10,11 +10,12 @@ $place = "CREATE TABLE IF NOT EXISTS placement(
     drive_id int(10) ,
     job_role varchar(10) NOT NULL,
     company_name varchar(10) NOT NULL,
-    student_id varchar(10) ,
-    department_id varchar(10),
+    student_id json ,
+    department_id json,
     salary int(10)  
     FOREIGN KEY (company_id) REFERENCES company(comp_id)
     FOREIGN KEY (drive_id) REFERENCES drive(drive_id)
+    FOREIGN KEY (department_id) REFERENCES department(dept_id)
     FOREIGN KEY (student_id) REFERENCES student(id_number)
 )";
 

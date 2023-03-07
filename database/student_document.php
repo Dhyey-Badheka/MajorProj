@@ -12,7 +12,7 @@ function create_student_document($conn)
         bvm_marksheet varchar(64),
         resume varchar(64),
         photo varchar(64),
-        FOREIGN KEY (s_id) REFERENCES student(s_id)
+        FOREIGN KEY (s_id) REFERENCES student(id_number)
         
     )";
     if ($conn->query($create)) {

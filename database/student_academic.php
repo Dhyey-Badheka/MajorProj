@@ -8,20 +8,21 @@ function create_student_academic($conn)
         s_id varchar(20) PRIMARY KEY,
         ssc_passing_year int(10),
         ssc_total int(10),
-        ssc_board varchar(30),
-        ssc_school varchar(60),
+        ssc_board varchar(64),
+        ssc_school varchar(64),
         ssc_educational_gap int(10),
         hsc_passing_year int(10),
         hsc_th_percentage decimal(4,2),
         hsc_th_p_percentage decimal(4,2),
         hsc_th_marks int(10),
         hsc_th_p_marks int(10),
-        hsc_board varchar(40),
-        hsc_school varchar(60),
+        hsc_board varchar(64),
+        hsc_school varchar(64),
+        isd2d int(10) default(0),
         hsc_educational_gap int(10),
         d2d_passing_year int(10),
         d2d_cgpa decimal(4,2),
-        d2d_college varchar(60),
+        d2d_college varchar(64),
         d2d_sem1 decimal(4,2),
         d2d_sem2 decimal(4,2),
         d2d_sem3 decimal(4,2),
@@ -40,8 +41,7 @@ function create_student_academic($conn)
         bvm_dead_backlog int(10),
         bvm_total_backlog int(10),
         bvm_cpi decimal(4,2),
-        FOREIGN KEY (s_id) REFERENCES student(s_id)
-        
+        FOREIGN KEY (s_id) REFERENCES student(id_number)
     )";
     if ($conn->query($create)) {
         $result = array("message" => "Successfully created STUDENT ACADEMIC table");

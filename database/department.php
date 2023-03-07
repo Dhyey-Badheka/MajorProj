@@ -1,22 +1,18 @@
 <?php
 
-include("E:\\software\\xamp\\htdocs\\tpc-main\\database.php");
+include("../database.php");
 
 // Department TABLE create query
 
 $dept = "CREATE TABLE IF NOT EXISTS department(
     dept_id int(10) PRIMARY KEY,
-    dept_name varchar(50) NOT NULL,
-    dept_tpf_name varchar(50) ,
-    dept_tpc_id varchar(50) ,
+    dept_name varchar(64) NOT NULL,
     dept_totalstu int(10),
     dept_intereststu int(10),
     dept_placedstu int(10),
-    dept_avgpack int(10),
+    dept_avgpack decimal(4,2),
     dept_company_visited int(10),
-    dept_drive_completed int(10)
-    -- FOREIGN KEY (dept_tpf_id) REFERENCES tpf(tpf_id),
-    -- FOREIGN KEY (dept_tpc_id) REFERENCES tpc(tpc_id)
+    dept_drive_completed int(10),
 )";
 
 // execute the query
