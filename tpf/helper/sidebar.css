@@ -235,7 +235,7 @@ nav:hover .shrink-btn,
 
 .sidebar-footer {
 	position: relative;
-	margin-top: auto;
+	margin-top: -40px;
 }
 
 .account {

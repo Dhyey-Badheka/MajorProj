@@ -6,3 +6,10 @@
 .copyright {
 	color: #e00000;
 }
+
+.card-body {
+	height: 170px;
+	flex: 1 1 auto;
+	padding: 1.5rem 1.5rem;
+	color: #525f7f;
+}

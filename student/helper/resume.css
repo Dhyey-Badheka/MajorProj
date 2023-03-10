@@ -38,6 +38,10 @@ a {
 p {
 	font-weight: 500;
 }
+.p-5 {
+	padding: 1.25rem !important;
+	height: 250px;
+}
 .ins {
 	margin: auto;
 	padding: 10px;

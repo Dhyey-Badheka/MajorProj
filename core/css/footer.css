@@ -103,3 +103,6 @@ div.social {
 		grid-template-columns: 1fr;
 	}
 }
+body {
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+}

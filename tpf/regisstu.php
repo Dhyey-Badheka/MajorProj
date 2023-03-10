@@ -19,7 +19,7 @@
     <script src="/student/helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
-        <h1>Welcome TPC,Approve the below students for Registration</h1>
+        <h1>Welcome TPF,Approve the below TPCs for Registration</h1>
         <div class="p-5 bg-light back" style="margin-top: 30px;">
             <p>19IT450 , Information Technology</p>
             <div>

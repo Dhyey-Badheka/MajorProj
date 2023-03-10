@@ -59,6 +59,7 @@ require_once("database.php");
             </div>
         </div>
     </section>
+    
     <?php
     ?>
     <!-- Footer -->

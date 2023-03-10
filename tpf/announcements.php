@@ -19,7 +19,8 @@
     <script src="/student/helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
-        <h1>Welcome Student,</h1>
+        <h1>Welcome TPF,</h1>
+
 
 
         <section class="column-list mb-sm-2 pr-lg-1 container-fluid" id="two-column-list">
@@ -33,25 +34,23 @@
                                 <div>
                                     <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
                                         <li class="border-bottom pb-3 mt-3">
-                                            <span class="meta text-uppercase">April 02nd, 2018</span>
+                                            <span class="meta text-uppercase">March 03rd, 2023</span>
                                             <h3 class="font-weight-bold mt-0">
                                                 <a href="#">
-                                                    Solodev Ranked as High Performer on G2 Crowd
+                                                    TCS is coming for placement drive on 18/03/2023.
                                                 </a>
                                             </h3>
-                                            <p class="m-0 post_intro bl">Florida's premier web content management software company ranked favorably in user-based G2 Crowd ratings.</p>
+                                            <p class="m-0 post_intro bl">All the registered students are requested to remain present at auditorium for Pre-Placement talk at 9:00 AM sharp.</p>
                                         </li>
                                         <li class="border-bottom pb-3 mt-3">
 
-                                            <span class="meta text-uppercase">January 30th, 2018</span>
-
-
+                                            <span class="meta text-uppercase">January 30th, 2023</span>
                                             <h3 class="font-weight-bold mt-0">
                                                 <a href="#">
-                                                    Solodev Earns “Highest Ranking Software Tool”
+                                                    InfocusP Placement Drive Round 2 for interview is scheduled.
                                                 </a>
                                             </h3>
-                                            <p class="m-0 post_intro bl">In a national survey, users ranked Solodev as among the best software tools in the country.</p>
+                                            <p class="m-0 post_intro bl">Congratulations to all the students shortlisted for round 2 and reach at B-203 on 12/03/2023 at 5:00 PM for Coding Interview .</p>
                                         </li>
                                         <li class="border-bottom pb-3 mt-3">
                                             <span class="meta text-uppercase">January 18th, 2018</span>
