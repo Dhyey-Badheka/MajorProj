@@ -7,12 +7,14 @@ include("../database.php");
 $dept = "CREATE TABLE IF NOT EXISTS department(
     dept_id int(10) PRIMARY KEY,
     dept_name varchar(64) NOT NULL,
-    dept_totalstu int(10),
-    dept_intereststu int(10),
-    dept_placedstu int(10),
-    dept_avgpack decimal(4,2),
-    dept_company_visited int(10),
-    dept_drive_completed int(10),
+    dept_tpf_id longtext,
+    dept_tpc_id longtext,
+    dept_totalstu int(10) default(0),
+    dept_intereststu int(10) default(0),
+    dept_placedstu int(10) default(0),
+    dept_avgpack decimal(4,2) default(0.00),
+    dept_tot_company_visited int(10) default(0),
+    dept_tot_drive_completed int(10) default(0)
 )";
 
 // execute the query

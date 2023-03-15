@@ -8,13 +8,13 @@ include("../database.php");
 // Student Create Query
 
 $student = "CREATE TABLE IF NOT EXISTS student (
-    id_number varchar(20) PRIMARY KEY,
+    id_number varchar(64) PRIMARY KEY,
     password varchar(64) NOT NULL,
     first_name varchar(64),
     middle_name varchar(64),
     last_name varchar(64),
     gender varchar(10),
-    mobile varchar(10),
+    mobile bigint(10),
     pemail varchar(64) UNIQUE,
     semail varchar(64) UNIQUE,
     dept_id int(10),

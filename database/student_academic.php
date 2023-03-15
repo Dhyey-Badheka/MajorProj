@@ -10,6 +10,7 @@ function create_student_academic($conn)
         ssc_total int(10),
         ssc_board varchar(64),
         ssc_school varchar(64),
+        ssc_th_percentage decimal(4,2),
         ssc_educational_gap int(10),
         hsc_passing_year int(10),
         hsc_th_percentage decimal(4,2),

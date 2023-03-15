@@ -19,7 +19,7 @@
     <script src="/student/helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
-        <h1>Welcome TPC,</h1>
+        <h1>Welcome TPF,</h1>
 
 
         <section class="column-list mb-sm-2 pr-lg-1 container-fluid" id="two-column-list">

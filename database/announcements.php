@@ -6,9 +6,10 @@ include("../database.php");
 
 $create = "CREATE TABLE IF NOT EXISTS announcement(
     announcement_id int(10) PRIMARY KEY,
-    title TEXT,
-    description TEXT,
-    posted_on DATE 
+    title longtext,
+    description longtext,
+    posted_on DATE,
+    dept json 
 )";
 
 $stmt = $conn->prepare($create);

@@ -14,7 +14,7 @@ $drive = "CREATE TABLE IF NOT EXISTS drive(
     location varchar(64) ,
     description TEXT ,
     skillsreq TEXT ,
-    bond int(10),
+    bond decimal(2,1),
     stipend int(10),
     willprovideinternship int(10) DEFAULT(1),
     internship_duration int(10),

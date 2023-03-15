@@ -9,7 +9,7 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
 <html lang="en">
 
 <head>
-    <?php require_once("./core/header.php")    ?>
+    <?php include("./core/header.php") ?>
     <link rel="stylesheet" href="./css/signup.css">
 
     <title>Home</title>
@@ -59,6 +59,11 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
                         </div>
 
                         <div class="input-box">
+                            <span class="details">ID number</span>
+                            <input type="text" name="id" id="idnumber" onkeyup="check_id()" placeholder="Enter your ID number">
+                            <span id="idmessage"></span>
+                        </div>
+                        <div class="input-box">
                             <span class="details">Mobile Number</span>
                             <input type="number" name="mobile" id="mobile" onkeyup="check_mobile()" placeholder="Enter your number" required>
                             <span id="mobilemessage"></span>
@@ -79,12 +84,8 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
                                 ?>
                             </select>
                         </div>
-                        <div class="input-box">
-                            <span class="details">ID number(If student)</span>
-                            <input type="text" name="id" id="idnumber" onkeyup="check_id()" placeholder="Enter your ID number">
-                            <span id="idmessage"></span>
-                        </div>
-                        <div class="input-box">
+
+                        <!-- <div class="input-box">
                             <span class="details">User Type</span>
                             <div class="radiorow">
                                 TPO<input type="radio" id="TPO" name="user_type" value="TPO" onClick="validate_role_dept();validate_role_id();" checked>
@@ -92,15 +93,84 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
                                 TPC<input type="radio" id="TPC" name="user_type" value="TPC" onClick="validate_role_dept();validate_role_id();">
                                 Student<input type="radio" id="student" name="user_type" value="student" onClick="validate_role_dept();validate_role_id();">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class=" button">
                         <span id="finalmessage"></span>
                         <input type="submit" name="register" id="registerStudent" value="Register">
                     </div>
+                    <br>
+                    <div class="signup-link">Company Registration <a href="./signup.php?user=1">I'm a HR</a></div>
+
                     <div class="signup-link">Already Registered <a href="./login.php">Login now</a></div>
+
                 </form><?php } ?>
+            <?php if ($user == 1) { ?>
+                <div class="title">Company Registration</div>
+                <div class="content">
+                    <form action="./addUser.php" method="POSt">
+                        <div class="user-details">
+
+                            <div class="input-box">
+                                <span class="details">Company Name</span>
+                                <input type="text" name="id" placeholder="Enter Company Name" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Company Email</span>
+                                <input type="email" name="email" placeholder="Enter Company Email" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Company Location</span>
+                                <input type="text" name="text" placeholder="Enter Company Location" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">HR Name</span>
+                                <input type="text" name="text" placeholder="Enter HR Name" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">HR Email</span>
+                                <input type="text" name="email" placeholder="Enter HR Email" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">HR Number</span>
+                                <input type="number" name="mobile" placeholder="Enter HR Number" required>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Password</span>
+                                <input type="password" name="password" id="password" placeholder="Enter your password" onkeyup="validate_password()" required>
+                                <span class="extra" id="eightCharacter">Must be atleat 8 characters long</span><br>
+                                <span class="extra" id="oneDigit">Must include 1 digit</span> <br>
+                                <span class="extra" id="oneCapital">Must include 1 Capital Letter</span> <br>
+                                <span class="extra" id="oneSpecial">Must include 1 Special Character </span>
+                            </div>
+                            <div class="input-box">
+                                <span class="details">Confirm Password</span>
+                                <input type="password" id="cPassword" placeholder="Confirm your password" onkeyup="check_password()" required>
+                                <span id="message"></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="button">
+                            <input type="submit" name="registerStudent" value="Register">
+                        </div>
+                        <div class="row d-flex">
+
+                            <div class="col-sm-6">
+
+                                <div class="signup-link">Student Registeration <a href="./signup.php">I'm a Student</a></div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="signup-link">Already Registered <a href="./login.php">Login now</a></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <?php } ?>
             </div>
+    </div>
     </div>
 
     <!-- Footer -->
@@ -117,43 +187,43 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
         finalCheck()
 
         function validate_role_dept() {
-            var userType = document.getElementsByName('user_type');
-            for (var radio of userType) {
-                if (radio.checked) {
-                    if (radio.value == "TPO") {
-                        checkDept = 1;
-                    } else {
-                        var dept = document.getElementById("dept").value;
-                        if (dept != "0") {
-                            checkDept = 1
-                        } else {
-                            checkDept = 0
-                        }
-                    }
-                }
-                //console.log(checkDept)
-                finalCheck()
+            // var userType = document.getElementsByName('user_type');
+            // for (var radio of userType) {
+            //     if (radio.checked) {
+            //         if (radio.value == "TPO") {
+            //             checkDept = 1;
+            //         } else {
+            var dept = document.getElementById("dept").value;
+            if (dept != "0") {
+                checkDept = 1
+            } else {
+                checkDept = 0
             }
+            //         }
+            //     }
+            //     console.log(checkDept)
+            //     finalCheck()
+            // }
         }
 
-        function validate_role_id() {
-            var userType = document.getElementsByName('user_type');
-            for (var radio of userType) {
-                if (radio.checked) {
-                    if (radio.value == "TPC" || radio.value == "student") {
-                        if (checkId == 1) {
-                            checkroleid = 1
-                        } else {
-                            checkroleid = 0
-                        }
-                    } else {
-                        checkroleid = 1
-                    }
-                }
-                //console.log(checkroleid)
-                finalCheck()
-            }
-        }
+        // function validate_role_id() {
+        //     var userType = document.getElementsByName('user_type');
+        //     for (var radio of userType) {
+        //         if (radio.checked) {
+        //             if (radio.value == "TPC" || radio.value == "student") {
+        //                 if (checkId == 1) {
+        //                     checkroleid = 1
+        //                 } else {
+        //                     checkroleid = 0
+        //                 }
+        //             } else {
+        //                 checkroleid = 1
+        //             }
+        //         }
+        //         //console.log(checkroleid)
+        //         finalCheck()
+        //     }
+        // }
 
         function validate_password() {
             var c1, c2, c3, c4 = 0
@@ -243,12 +313,12 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
 
         function check_email() {
             var email = document.getElementById('email').value;
-            if (email.match(/[0-9A-Za-z]+@bvmengineering.ac.in$/)) {
+            if (email.match(/[0-9]{2}[A-Za-z]{2}[0-9]{3}@bvmengineering.ac.in$/)) {
                 document.getElementById('emailmessage').style.color = 'green';
                 document.getElementById('emailmessage').innerHTML = '🗹 Valid Email';
                 checkEmail = 1;
             }
-            if (!email.match(/[0-9A-Za-z]+@bvmengineering.ac.in$/)) {
+            if (!email.match(/[0-9]{2}[A-Za-z]{2}[0-9]{3}@bvmengineering.ac.in$/)) {
                 document.getElementById('emailmessage').style.color = 'red';
                 document.getElementById('emailmessage').innerHTML = '☒ Invalid Email';
                 checkEmail = 0;
@@ -280,7 +350,7 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
             //console.log("cpass:", checkCPassword)
             //console.log("dept:", checkDept)
             //console.log("checkroleid:", checkroleid)
-            if ((checkEmail + checkMobile + checkPassword + checkCPassword + checkDept + checkroleid) == 6) {
+            if ((checkEmail + checkMobile + checkPassword + checkCPassword + checkDept) == 5) {
                 finalSubmit = 1;
             } else {
                 finalSubmit = 0;
@@ -303,3 +373,8 @@ $user = isset($_GET["user"]) ? isset($_GET["user"]) : 0;
 </body>
 
 </html>
+
+
+
+// todo
+<!-- company signup -->

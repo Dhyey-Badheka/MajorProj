@@ -8,6 +8,7 @@ if (isset($_SESSION["showUser"])) {
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,31 +30,66 @@ if (isset($_SESSION["showUser"])) {
             <div class="title"><span>Login Form</span></div>
             <form action="./checkLogin.php" method="POST">
                 <div class="row">
-                    <i class="fas fa-user"></i>
-                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <i class="fa fa-user-o fa-fw"></i>
+
+                    <select name="typeOfUser" required id="user">
+                        <option value="1">Student</option>
+                        <option value="2">Company</option>
+                        <option value="3">Admin</option>
+                    </select>
+                </div>
+                <div class="row d-none" id="admin">
+
+                    <i class="fa fa-user-o fa-fw"></i>
+                    <select name="typeOfAdmin">
+                        <option value="4">TPO</option>
+                        <option value="5">TPF</option>
+                        <option value="6">TPC</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <i class="fa fa-envelope-o fa-fw"></i>
+                    <input type="text" name="email" placeholder="Email" autocomplete="off" required>
                 </div>
                 <div class="row">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Enter your Password" required>
-                </div>
-                <div class="radiorow">
-                    TPO<input type="radio" id="TPO" name="user_type" value="0">
-                    TPF<input type="radio" id="TPF" name="user_type" value="1">
-                    TPC<input type="radio" id="TPC" name="user_type" value="2">
-                    Student<input type="radio" id="student" name="user_type" value="3" checked>
+                    <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                 </div>
                 <div class="pass"><a href="./forgotPassword.php">Forgot password?</a></div>
                 <div class="row button">
                     <input type="submit" name="login" value="Login">
                 </div>
-                <br>
                 <div class="signup-link">Not a member? <a href="./signup.php">Signup now</a></div>
             </form>
         </div>
     </div>
     <!-- Footer -->
     <?php include("./core/footer.php") ?>
+    <script>
+        // var admin = document.getElementById('admin');
+        // document.getElementById('user').addEventListener('change', (event) => {
+        //     if (event.target.value == 3) {
+        //         admin.classList.remove("d-none");
+        //     }
+        //     if (event.target.value != 3) {
+        //         admin.classList.add("d-none");
+        //     }
+        // })
+        $(document).ready(function() {
 
+            $('#user').change(function() {
+                if ($(this).val() == "3") {
+                    $("#admin").removeClass("d-none");
+                } else {
+                    $("#admin").addClass("d-none")
+                }
+
+            })
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
