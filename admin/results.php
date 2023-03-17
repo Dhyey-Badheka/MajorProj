@@ -1,3 +1,13 @@
+<?php
+
+include("../database.php");
+include("../helper/authorization.php");
+
+if ($access == 2 || $access == 3) {
+    $dept = $_SESSION["adminDept"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,52 +37,39 @@
                 <div class="row">
                     <div class="col-lg-10 pr-0">
                         <section aria-label="Announcements" class="announcements">
-                            <a href="addresult.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
+                            <?php if ($access == 1) : ?>
+                                <a href="addresult.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
+                            <?php endif ?>
                             <h2 class="font-weight-bold border-bottom pb-3 mt-3 mb-0 pr-5">Results</h2>
 
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
                                 <div>
-                                    <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
-                                        <li class="border-bottom pb-3 mt-3">
-                                            <span class="meta text-uppercase">April 02nd, 2018</span>
-                                            <div style="float:right;" class="mt-5">
-                                                <a href="updateresult.php"><button type="button" class="btn btn-success float-right">Update</button></a>
-                                                <button type="button" class="btn btn-danger float-right">Delete</button>
-                                            </div>
-                                            <h3 class="font-weight-bold mt-0">
-                                                <a href="#">TCS Digital</a>
-                                            </h3>
-                                            <p class="m-0 post_intro bl">2 students got placed</p>
-                                        </li>
-                                        <li class="border-bottom pb-3 mt-3">
+                                    <?php
+                                    $search = $conn->query("SELECT * FROM  `result`");
 
-                                            <span class="meta text-uppercase">January 30th, 2018</span>
-                                            <div style="float:right;" class="mt-5">
-                                                <a href="updateresult.php"> <button type="button" class="btn btn-success float-right">Update</button></a>
-                                                <button type="button" class="btn btn-danger float-right">Delete</button>
-                                            </div>
-                                            <h3 class="font-weight-bold mt-0">
-                                                <a href="#">
-                                                    TCS Ninja
-                                                </a>
-                                            </h3>
-                                            <p class="m-0 post_intro bl">8 students got placed</p>
-                                        </li>
-                                        <li class="border-bottom pb-3 mt-3">
-                                            <span class="meta text-uppercase">April 02nd, 2018</span>
-                                            <div style="float:right;" class="mt-5">
-                                                <a href="updateresult.php"><button type="button" class="btn btn-success float-right">Update</button></a>
-                                                <button type="button" class="btn btn-danger float-right">Delete</button>
-                                            </div>
-                                            <h3 class="font-weight-bold mt-0">
-                                                <a href="#">InfocusP Learnings</a>
-                                            </h3>
-                                            <p class="m-0 post_intro bl">3 students got placed.</p>
-                                        </li>
-                                    </ul>
-                                    <a class="all pos-stat text-uppercase ml-lg-5" href="#">All Results
+                                    while ($row = $search->fetch_assoc()) {
+                                    ?>
+                                        <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
+                                            <li class="border-bottom pb-3 mt-3">
+                                                <span class="meta text-uppercase"><?php echo $row["posted_on"] ?></span>
+                                                <?php if ($access == 1) : ?>
+                                                    <div style="float:right;" class="mt-5">
+                                                        <a href="updateresult.php?updateId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-success float-right">Update</button></a>
+                                                        <a href="updateresult.php?deleteId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
+                                                        <!-- <button type="button" class="btn btn-danger float-right">Delete</button> -->
+                                                    </div>
+                                                <?php endif ?>
+                                                <h3 class="font-weight-bold mt-0">
+                                                    <?php echo $row["heading"] ?>
+                                                </h3>
+                                                <p class="m-0 post_intro bl"> <?php echo $row["description"] ?> </p>
+                                            </li>
+
+                                        </ul>
+                                    <?php } ?>
+                                    <!-- <a class="all pos-stat text-uppercase ml-lg-5" href="#">All announcements
                                         <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                    </a>
+                                    </a> -->
 
                                 </div>
 
@@ -90,7 +87,7 @@
 
 
         <p class="copyright">
-            &copy; 2023 - <span>Jimish Ravat</span> All Rights Reserved.
+            &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.
         </p>
     </main>
 

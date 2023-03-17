@@ -60,9 +60,10 @@ include("../helper/authorization.php");
                         </div>
                         <div class=" mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-danger">
-                                <i class='bx bxs-error'></i> 218
+                                <h5><i class='bx bxs-error text-m'></i>
+                                    218</h5>
                             </span>
-                            <span class="text-nowrap text-xs text-muted">Not Interested</span>
+                            <span class="text-nowrap text-m text-muted">Not Interested</span>
                         </div>
                     </div>
                 </div>
@@ -83,9 +84,9 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
-                                <i class='bx bxs-error'></i> 120
+                                <h5><i class='bx bxs-error'></i> 120</h5>
                             </span>
-                            <span class="text-nowrap text-xs text-muted">Remaining for Placement</span>
+                            <span class="text-nowrap text-m text-muted">Remaining for Placement</span>
                         </div>
                     </div>
                 </div>
@@ -106,9 +107,10 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-success text-success me-2">
-                                <i class='bx bx-share bx-flip-horizontal'></i> 5
+                                <h5><i class='bx bx-share bx-flip-horizontal'></i> 5
+                                </h5>
                             </span>
-                            <span class="text-nowrap text-xs text-muted">On-Going</span>
+                            <span class="text-nowrap text-m text-muted">On-Going</span>
                         </div>
                     </div>
                 </div>
@@ -129,8 +131,9 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
-                                <i class="bi bi-hourglass-split"></i> 3</span>
-                            <span class="text-nowrap text-xs text-muted">On-Going</span>
+                                <h5> <i class="bi bi-hourglass-split"></i> 3</h5>
+                            </span>
+                            <span class="text-nowrap text-m text-muted">On-Going</span>
                         </div>
                     </div>
                 </div>
@@ -200,7 +203,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Civil Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Civil</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -224,7 +227,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Computer Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Computer</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -247,7 +250,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics and Communications Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics and Communications</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -270,7 +273,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electrical Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electrical </span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -293,7 +296,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -316,7 +319,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Information Technology Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Information Technology</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -339,7 +342,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Mechanical Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Mechanical</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>
@@ -362,7 +365,7 @@ include("../helper/authorization.php");
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Production Department</span>
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Production</span>
                                     <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
                                     <span class="h3 font-bold mb-0">55/60 Placed</span>
                                 </div>

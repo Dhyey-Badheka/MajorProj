@@ -49,7 +49,7 @@ $id_number = $_GET["id"];
                                                     <i class="bg-warning"></i> Pending
                                                 </span>
                                             </p>
-                                            <!-- <h6 class="f-w-600">Jimish Ravat</h6> -->
+                                            <!-- <h6 class="f-w-600">Dhyey Badheka</h6> -->
                                             <p> <a href="#" class="text-reset">Crest Data Systems</a> </p>
                                             <div class="row">
 

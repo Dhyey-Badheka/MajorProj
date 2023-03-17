@@ -139,12 +139,12 @@
         </a>
         <div class="admin-user tooltip-element" data-tooltip="1">
             <div class="admin-profile hide">
-                <img src="../../tpc/images/logo.png" alt="">
+                <img src="../../tpc-main/images/logo.png" alt="">
                 <div class="admin-info">
                     <h3><?php echo $adminUser ?></h3>
                 </div>
             </div>
-            <a href="../../tpc/logout.php" class="log-out">
+            <a href="../../tpc-main/logout.php" class="log-out">
                 <i class='bx bx-log-out'></i>
             </a>
         </div>

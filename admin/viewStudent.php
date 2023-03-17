@@ -49,7 +49,7 @@ include("../database.php");
                                                     <i class="bg-warning"></i> Pending
                                                 </span>
                                             </p>
-                                            <!-- <h6 class="f-w-600">Jimish Ravat</h6> -->
+                                            <!-- <h6 class="f-w-600">Dhyey Badheka</h6> -->
                                             <p>19CP015</p>
                                             <div class="row">
 

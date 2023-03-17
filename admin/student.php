@@ -128,7 +128,7 @@
 
 
         <p class="copyright">
-            &copy; 2023 - <span>Jimish Ravat</span> All Rights Reserved.
+            &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.
         </p>
     </main>
 

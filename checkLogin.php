@@ -1,8 +1,7 @@
 <?php
 
 include("./database.php");
-
-
+session_start();
 
 if (isset($_POST["login"])) {
     $username = strtolower($_POST["email"]);
@@ -50,16 +49,17 @@ if (isset($_POST["login"])) {
             echo "<script> window.location.href = './admin/index.php'; </script>";
         } else if ($check_result->num_rows == 1 && $typeOfUser == 5) {
             $row = $check_result->fetch_assoc();
-            if ($row["isActive"] == 1) {
+            if ($row["isActive"] == "1") {
                 $_SESSION["admin"] = "TPF";
                 $_SESSION["adminUserName"] = $row["tpf_name"];
                 $_SESSION["access"] = 2;
                 $_SESSION["adminDept"] = $row["tpf_dept_id"];
+                // var_dump($_SESSION);
                 echo "<script> window.location.href = './admin/index.php'; </script>";
             }
         } else if ($check_result->num_rows == 1 && $typeOfUser == 6) {
             $row = $check_result->fetch_assoc();
-            if ($row["isActive"] == 1) {
+            if ($row["isActive"] == "1") {
                 $_SESSION["admin"] = "TPC";
                 $_SESSION["adminUserName"] = $row["tpc_name"];
                 $_SESSION["access"] = 3;
@@ -69,16 +69,12 @@ if (isset($_POST["login"])) {
         } else if ($check_result->num_rows == 1 && $typeOfUser == 1) {
             $_SESSION["studentUserId"] = $username;
             echo "<script> window.location.href = './student/index.php'; </script>";
-            exit();
         } else {
-            echo '<script> alert("Credentials Does Not Match. Please Check!! ") </script$username>';
-
-            //  and redirect to the login page
+            echo '<script> alert("Credentials Does Not Match. Please Check!! ") </script>';
             echo '<script> window.location.href="./login.php" </script>';
         }
     } else {
         echo '<script> alert("Please Login from Email Address with bvmengineeing.ac.in !! ") </script>';
-        //  and redirect to the login page
         echo '<script> window.location.href="./login.php" </script>';
     }
 }

@@ -22,7 +22,7 @@ if ($access == 2 || $access == 3) {
 
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <title>Students</title>
+    <title>TPC</title>
 </head>
 
 <body>
@@ -31,8 +31,6 @@ if ($access == 2 || $access == 3) {
     <?php include("./helper/sidebar.php") ?>
     <main>
         <h1>Welcome <?php echo $_SESSION["admin"] ?>,</h1>
-
-
         <section class="column-list mb-sm-2 pr-lg-1 container-fluid" id="two-column-list">
             <div class="container">
                 <div class="row">
@@ -46,25 +44,21 @@ if ($access == 2 || $access == 3) {
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
                                 <div>
                                     <?php
-
                                     if ($access == 1) {
-                                        $search = $conn->query("SELECT * FROM  `annoucements`");
+                                        $search = $conn->query("SELECT * FROM  `announcement`");
                                     } elseif ($access == 2 || $access == 3) {
-                                        $search = $conn->query("SELECT * FROM  `annoucements` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
+                                        $search = $conn->query("SELECT * FROM  `announcement` WHERE JSON_CONTAINS(dept,'$dept')");
                                     }
 
                                     while ($row = $search->fetch_assoc()) {
-
-
-
                                     ?>
                                         <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
                                             <li class="border-bottom pb-3 mt-3">
-                                                <span class="meta text-uppercase"><?php echo $row["date_annouce"] ?></span>
+                                                <span class="meta text-uppercase"><?php echo $row["posted_on"] ?></span>
                                                 <?php if ($access == 1) : ?>
                                                     <div style="float:right;" class="mt-5">
-                                                        <a href="updateannounce.php?updateId=<?php echo $row["annouce_id"]; ?>"><button type="button" class="btn btn-success float-right">Update</button></a>
-                                                        <a href="updateannounce.php?deleteId=<?php echo $row["annouce_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
+                                                        <a href="updateannounce.php?updateId=<?php echo $row["announcement_id"]; ?>"><button type="button" class="btn btn-success float-right">Update</button></a>
+                                                        <a href="updateannounce.php?deleteId=<?php echo $row["announcement_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
                                                         <!-- <button type="button" class="btn btn-danger float-right">Delete</button> -->
                                                     </div>
                                                 <?php endif ?>
@@ -99,7 +93,7 @@ if ($access == 2 || $access == 3) {
 
 
         <p class="copyright">
-            &copy; 2023 - <span>Jimish Ravat</span> All Rights Reserved.
+            &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.
         </p>
     </main>
 

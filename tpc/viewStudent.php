@@ -51,7 +51,7 @@ $id_number = $_GET["id"];
                                                     <i class="bg-warning"></i> Pending
                                                 </span>
                                             </p>
-                                            <!-- <h6 class="f-w-600">Jimish Ravat</h6> -->
+                                            <!-- <h6 class="f-w-600">Dhyey Badheka</h6> -->
                                             <p>19IT450</p>
                                             <div class="row">
 

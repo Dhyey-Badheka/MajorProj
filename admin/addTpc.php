@@ -79,7 +79,7 @@
 
                                                             </td>
                                                             <td id="col1">
-                                                                <p class="m-b-5 f-w-600 "> Jimish Ravat</p>
+                                                                <p class="m-b-5 f-w-600 "> Dhyey Badheka</p>
                                                             </td>
                                                             <td id="col2">
                                                                 <p class="m-b-5 f-w-600 "> jimishravat2802@gmail.com</p>

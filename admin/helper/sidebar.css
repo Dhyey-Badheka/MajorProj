@@ -37,9 +37,9 @@ nav {
 	position: sticky;
 	top: 0;
 	left: 0;
-	height: 100vh;
+	height: 130vh;
 	background-color: var(--main-color);
-	width: 16rem;
+	width: 20rem;
 	padding: 1.8rem 0.85rem;
 	color: #fff;
 	display: flex;

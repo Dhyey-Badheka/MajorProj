@@ -4,7 +4,7 @@ include("../database.php");
 include("../helper/authorization.php");
 
 if ($access != 1) {
-    echo "<script> window.location.href = 'http://localhost/tpc/helper/noAccess.php'; </script>";
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
 
 // add the annoucement
@@ -20,23 +20,20 @@ if (isset($_POST["add-annouce"])) {
     $deptEligible = array();
     foreach ($_POST["eligible_dept"] as $selected) {
         if ($selected == 0) {
-            for ($i = 1; $i <= 10; $i++) {
+            for ($i = 1; $i <= 8; $i++) {
                 array_push($deptEligible, intval($i));
             }
             break;
-        }
-        if ($selected == 1 || $selected == 6) {
+        } else {
             array_push($deptEligible, intval($selected));
-            array_push($deptEligible, intval($selected + 1));
-            continue;
         }
-        array_push($deptEligible, intval($selected));
     }
     $deptEligible = json_encode($deptEligible);
-    $insert = $conn->query("INSERT INTO `annoucements`( `title`, `description`, `date_annouce`, `dept_eligible`) VALUES ('$title','$desc','$date_annouce','$deptEligible')");
+    // var_dump($deptEligible);
+    $insert = $conn->query("INSERT INTO `announcement`( `title`, `description`, `posted_on`, `dept`) VALUES ('$title','$desc','$date_annouce','$deptEligible')");
     if ($conn->affected_rows) {
         $insertSuccess = 1;
-    }else{
+    } else {
         $insertFailure = 1;
     }
     // var_dump($insert);
@@ -52,7 +49,7 @@ if (isset($_POST["add-annouce"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if ($insertSuccess == 1 || $insertFailure == 1) : ?>
-        <meta http-equiv="refresh" content="5;url=http://localhost/tpc/admin/addannouncement.php" />
+        <meta http-equiv="refresh" content="5;url=http://localhost/tpc-main/admin/addannouncement.php" />
     <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -119,25 +116,25 @@ if (isset($_POST["add-annouce"])) {
                                                         <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="1"><label class="form-check-label">Civil</label>
                                                     </div>
                                                     <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3"><label class="form-check-label"> Computer</label>
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="2"><label class="form-check-label"> Computer</label>
                                                     </div>
                                                     <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4"><label class="form-check-label"> Electronics</label>
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3"><label class="form-check-label"> Electronics and Communications</label>
                                                     </div>
                                                     <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5"><label class="form-check-label"> Electrical</label>
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4"><label class="form-check-label"> Electrical</label>
                                                     </div>
                                                     <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6"><label class="form-check-label"> Mechanical</label>
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5"><label class="form-check-label"> Electronics</label>
+                                                    </div>
+                                                    <div class="form-check col-sm-3">
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6"><label class="form-check-label">Information Technology</label>
+                                                    </div>
+                                                    <div class="form-check col-sm-3">
+                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="7"><label class="form-check-label">Mechanical</label>
                                                     </div>
                                                     <div class="form-check col-sm-3">
                                                         <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="8"><label class="form-check-label">Production</label>
-                                                    </div>
-                                                    <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="9"><label class="form-check-label">Electronics & Communication</label>
-                                                    </div>
-                                                    <div class="form-check col-sm-3">
-                                                        <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="10"><label class="form-check-label">Information & Technology</label>
                                                     </div>
                                                 </div>
 
