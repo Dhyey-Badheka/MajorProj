@@ -1,12 +1,45 @@
 <?php
 
 include("../database.php");
+include("../helper/authorization.php");
 
-// $id_number = $_GET["id"];
+if ($access != 1) {
+    echo "<script> window.location.href = 'http://localhost/tpc/helper/noAccess.php'; </script>";
+}
 
+$alreadyRegis = 0;
+$regisSuccess = 0;
+$regisError = 0;
 
+$pass = "Tpf@1234";
 
+// add new tpf
+if (isset($_POST["add-tpf"])) {
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $email = $_POST["email"];
+    $mobile = $_POST["mobile"];
+    $dept = $_POST["department"];
+    $aYear = $_POST["a-year"];
+    $password = base64_encode(strrev(md5($pass)));
 
+    // check if the email address is already registered 
+
+    $checkRegis = $conn->query("SELECT * FROM tpf WHERE tpf_email='$email'");
+
+    if ($checkRegis->num_rows) {
+        $alreadyRegis = 1;
+    }
+    // if not then add the data and show the username and password
+    else {
+        $insert = $conn->query("INSERT INTO `tpf`(`tpf_fname`, `tpf_lname`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_department`,  `academic_year`) VALUES ('$fname','$lname','$email','$mobile','$password','$dept','$aYear')");
+        if ($conn->affected_rows) {
+            $regisSuccess = 1;
+        } else {
+            $regisError = 1;
+        }
+    }
+}
 
 ?>
 
@@ -17,6 +50,10 @@ include("../database.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <?php if ($alreadyRegis == 1 || $regisError == 1) : ?>
+        <meta http-equiv="refresh" content="3;url=http://localhost/tpc/admin/addtpf.php" />
+    <?php endif ?>
     <link rel="stylesheet" href="./helper/addresult.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
 
@@ -39,33 +76,42 @@ include("../database.php");
             <div class="page-content page-container" id="page-content">
                 <div class="padding">
                     <div class="row d-flex justify-content-center">
+                        <?php if ($regisSuccess == 1) : ?>
+                            <p class="bg-success text-white text-center">Successfully Added TPF </p>
+                        <?php endif ?>
+                        <?php if ($regisError == 1) : ?>
+                            <p class="bg-danger text-white text-center">Error in Adding TPF </p>
+                        <?php endif ?>
+                        <?php if ($alreadyRegis == 1) : ?>
+                            <p class="bg-danger text-white text-center">TPF is already Registered </p>
+                        <?php endif ?>
                         <div class="card user-card-full">
                             <div class="row m-l-0 m-r-0">
                                 <div class="col">
                                     <div class="card-block">
                                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Add TPF</h6>
-                                        <form action="#" method="post">
+                                        <form action="./addTpf.php" method="post">
 
                                             <div class="row ">
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">First Name</p>
-                                                    <input type="text" class=" form-control" name="" id="" value="" autocomplete="off" autofocus>
+                                                    <input type="text" class=" form-control" required name="fname" id="" value="" autocomplete="off" autofocus>
                                                 </div>
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Last Name</p>
-                                                    <input type="text" class=" form-control" name="" id="" value="">
+                                                    <input type="text" class=" form-control" required name="lname" id="" value="">
                                                 </div>
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Email</p>
-                                                    <input type="text" class=" form-control" name="" id="" value="">
+                                                    <input type="text" class=" form-control" required name="email" id="" value="">
                                                 </div>
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Mobile</p>
-                                                    <input type="text" class=" form-control" name="" id="" value="">
+                                                    <input type="text" class=" form-control" required name="mobile" id="" value="">
                                                 </div>
                                                 <div class="col-sm-4">
 
@@ -90,11 +136,10 @@ include("../database.php");
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Academic Year</p>
-                                                    <input type="text" maxlength="4" size="4" class=" form-control" name="" id="" value="">
+                                                    <input type="text" maxlength="4" required size="4" class=" form-control" name="a-year" id="" value="">
                                                 </div>
                                                 <div class="col-sm-12">
-
-                                                    <input type="submit" value="Add TPF" class="  text-center btn btn-success m-5" />
+                                                    <input type="submit" value="Add TPF" name="add-tpf" class="  text-center btn btn-success m-5" />
                                                 </div>
                                             </div>
                                         </form>
@@ -103,6 +148,12 @@ include("../database.php");
                                 </div>
                             </div>
                         </div>
+                        <?php if ($regisSuccess) : ?>
+                            <div class="row d-flex flex-column">
+                                <p class="m-b-5 col f-w-600">UserName : <span class="text-muted"><?php echo $email ?></span></p>
+                                <p class="m-b-5 col f-w-600">Password : <span class="text-muted"><?php echo $pass ?></span></p>
+                            </div>
+                        <?php endif ?>
                     </div>
                     <!-- <button class="text-center btn btn-primary">Add </button> -->
                 </div>

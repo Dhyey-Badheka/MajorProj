@@ -1,3 +1,13 @@
+<?php
+
+include("../database.php");
+include("../helper/authorization.php");
+
+if ($access == 2 || $access == 3) {
+    $dept = $_SESSION["adminDept"];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +38,12 @@
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
                         <div class="mx-n1">
-                            <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-pencil"></i>
-                                </span>
-                                <span>Edit</span>
-                            </a>
+
                             <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                 <span class=" pe-2">
                                     <i class="bi bi-plus"></i>
                                 </span>
-                                <span>Create</span>
+                                <span>Download</span>
                             </a>
                         </div>
                     </div>
@@ -51,15 +56,17 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link font-regular">Pending</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Computer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Civil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Mechanical</a>
-                    </li>
+                    <?php
+                    if ($access == 1) {
+                        $search = $conn->query("SELECT dept_name FROM  `department`");
+                    } elseif ($access == 2 || $access == 3) {
+                        $search = $conn->query("SELECT dept_name FROM  `department` WHERE dept_id='$dept'");
+                    }
+                    while ($row = $search->fetch_assoc()) { ?>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular"><?php echo $row["dept_name"] ?></a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
@@ -81,40 +88,63 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                <a class="text-heading font-semibold" href="#">
-                                    Robert Fox
-                                </a>
-                            </td>
-                            <td>
-                                19CP015
-                            </td>
-                            <td>
-                                <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                <a class="text-heading font-semibold" href="#">
-                                    jimishravat2802@gmail.com
-                                </a>
-                            </td>
-                            <td>
-                                Computer
-                            </td>
-                            <td>
-                                <span class="badge badge-lg badge-dot">
-                                    <i class="bg-warning"></i>Pending
-                                </span>
-                            </td>
-                            <td class="text-end">
-                                <a href="./viewStudent.php?id=<?php echo "id" ?>" class="btn btn-sm btn-neutral">View</a>
-                                <a href="./updateStudent.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
-
-                                <a href="./delStudent.php?id=<?php echo "id" ?>" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-
+                        <?php
+                        if ($access == 1) {
+                            $query = "SELECT * FROM  `student`;";
+                            $result = mysqli_query($conn, $query);
+                        } elseif ($access == 2 || $access == 3) {
+                            $query = "SELECT * FROM  `student` WHERE dept_id='$dept';";
+                            $result = mysqli_query($conn, $query);
+                        }
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                            <tr>
+                                <td>
+                                    <a class="text-heading font-semibold" href="#">
+                                        <?php echo $row["first_name"] . " " . $row["last_name"]; ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?php echo $row["id_number"] ?>
+                                </td>
+                                <td>
+                                    <a class="text-heading font-semibold" href="#">
+                                        <?php echo $row["pemail"] ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?php
+                                    $dept_id = $row["dept_id"];
+                                    $search = $conn->query("SELECT dept_name FROM  `department` WHERE dept_id='$dept_id'");
+                                    $row1 = $search->fetch_assoc();
+                                    echo $row1["dept_name"] ?>
+                                </td>
+                                <td>
+                                    <?php if ($row["is_approved"] == 0) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-warning'></i>Pending
+                                </span>";
+                                    } else if ($row["is_approved"] == 1) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-success'></i>Approved
+                                </span>";
+                                    } else if ($row["is_approved"] == 2) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-danger'></i>Rejected
+                                </span>";
+                                    }
+                                    ?>
+                                </td>
+                                <td class="text-end">
+                                    <a href="./viewStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-sm btn-neutral">View</a>
+                                    <a href="./updateStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
+                                    <a href="./delStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php }
+                        ?>
                     </tbody>
                 </table>
             </div>
