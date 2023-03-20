@@ -1,3 +1,11 @@
+<?php
+
+include("../database.php");
+include("../helper/authorization.php");
+if ($access != 1) {
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +42,7 @@
                                 </span>
                                 <span>Edit</span>
                             </a> -->
-                            <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                            <a href="addcompany.php" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                 <span class=" pe-2">
                                     <i class="bi bi-plus"></i>
                                 </span>
@@ -51,7 +59,6 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link font-regular">Pending</a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -64,55 +71,62 @@
                 <table class="table table-hover table-nowrap">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Company Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Location</th>
+                            <th scope="col">HR Name</th>
+                            <th scope="col">HR Mobile</th>
+                            <th scope="col">Logo</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Drive Status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
-                                <a class="text-heading font-semibold" href="#">
-                                    45367
-                                </a>
-                            </td>
-                            <td>
-                                Crest Data Systems
-                            </td>
-                            <td>
-                                <!-- <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2"> -->
-                                <a class="text-heading font-semibold" href="#">
-                                    Ahmedabad
-                                </a>
-                            </td>
-                            <td>
-                                <span class="badge badge-lg badge-dot">
-                                    <i class="bg-success"></i>Approved
-                                </span>
-                            </td>
-                            <td>
-                                <span class="badge badge-lg badge-dot">
-                                    <i class="bg-warning"></i>Ongoing
-                                </span>
-                            </td>
-                            <td class="text-end">
-                                <a href="./viewCompany.php?id=<?php echo "id" ?>" class="btn btn-sm btn-neutral">View</a>
-                                <a href="./updateCompany.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
-                                <a href="./delCompany.php?id=<?php echo "id" ?>" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php
+                        $search = $conn->query("SELECT comp_id,comp_name,comp_hr_name,comp_hr_mobile,active,comp_logo FROM  `company`");
+                        while ($row = $search->fetch_assoc()) {
+                        ?>
+                            <tr>
+                                <td>
+                                    <p class="text-heading font-semibold">
+                                        <?php echo $row["comp_name"] ?>
+                                    </p>
+                                </td>
+                                <td>
+                                    <?php echo $row["comp_hr_name"] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row["comp_hr_mobile"] ?>
+                                </td>
+                                <td>
+                                    <img alt="..." src="uploads/<?php echo $row["comp_logo"]; ?>" class="avatar avatar-xs rounded-circle me-2">
+                                </td>
+                                <td>
+                                    <?php if ($row["active"] == 0) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-warning'></i>Pending
+                                </span>";
+                                    } else if ($row["active"] == 1) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-success'></i>Approved
+                                </span>";
+                                    } else if ($row["active"] == 2) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-danger'></i>Rejected
+                                </span>";
+                                    }
 
+                                    ?>
+                                </td>
+                                <td class="text-end">
+                                    <a href="./viewCompany.php?id=<?php echo $row["comp_id"]; ?>" class="btn btn-sm btn-neutral">View</a>
+                                    <a href="./updateCompany.php?updateId=<?php echo $row["comp_id"]; ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
+                                    <a href="./updateCompany.php?deleteId=<?php echo $row["comp_id"]; ?>" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="card-footer border-0 py-5">
-                <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
             </div>
         </div>
 

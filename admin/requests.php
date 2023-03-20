@@ -3,10 +3,10 @@
 include("../database.php");
 $a = ["3", "10"];
 $a = json_encode($a);
-$query = $conn->query("SELECT * FROM annoucements ");
+$query = $conn->query("SELECT * FROM announcement");
 while ($row = $query->fetch_assoc()) {
 
-    $b = json_decode($row["dept_eligible"], true);
+    $b = json_decode($row["dept"], true);
     foreach ($b as $key) {
         echo intval($key) . " ";
         # code...

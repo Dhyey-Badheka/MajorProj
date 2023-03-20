@@ -49,7 +49,7 @@ if (isset($_POST["add-annouce"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php if ($insertSuccess == 1 || $insertFailure == 1) : ?>
-        <meta http-equiv="refresh" content="5;url=http://localhost/tpc-main/admin/addannouncement.php" />
+        <meta http-equiv="refresh" content="5;url=http://localhost/tpc-main/admin/announcements.php" />
     <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
@@ -85,14 +85,12 @@ if (isset($_POST["add-annouce"])) {
                                         <div class="col d-flex justify-content-start">
                                             <p class="m-b-5 f-w-600">Date</p>
                                             <p class="mx-10">:</p>
-                                            <?php $date = getdate(date("U"));
-                                            $currentDate = $date['month'] . ' ' . $date['mday'] . ', ' . $date['year'];
-
+                                            <?php $date = date("Y-m-d");
                                             ?>
-                                            <p class="mx-10"><?php echo $currentDate ?></p>
+                                            <p class="mx-10"><?php echo $date ?></p>
                                         </div>
                                         <form action="./addannouncement.php" method="post">
-                                            <input type="text" name="annouce-date" id="" value="<?php echo $currentDate; ?>" hidden>
+                                            <input type="text" name="annouce-date" id="" value="<?php echo $date; ?>" hidden>
 
                                             <div class="col">
                                                 <p class="m-b-5 f-w-600 anno">Heading</p>

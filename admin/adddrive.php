@@ -1,12 +1,11 @@
 <?php
 
 include("../database.php");
+include("../helper/authorization.php");
 
-// $id_number = $_GET["id"];
-
-
-
-
+if ($access == 2 || $access == 3) {
+    $dept = $_SESSION["adminDept"];
+}
 
 ?>
 
@@ -59,7 +58,7 @@ include("../database.php");
                                                 <div class="row m-b-20">
                                                     <div class="col-sm-6 ">
                                                         <p class="m-b-5 f-w-600">Company Name</p>
-                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="c_name">
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" placeholder="Comapany's Name">
                                                     </div>
                                                     <!-- <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Job Role</p>
@@ -67,34 +66,30 @@ include("../database.php");
                                                     </div> -->
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Company URL</p>
-                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="l_name">
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" placeholder="Comapany's Website URL">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HR Name</p>
-                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="h_name">
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" placeholder="Comapany's HR Name">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HR Phone</p>
-                                                        <input type="number" class="m-b-5 form-control" name="" id="" value="7984528154">
+                                                        <input type="number" class="m-b-5 form-control" name="" id="" placeholder="Comapany's HR Number">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HR Email</p>
-                                                        <input type="email" class="m-b-5 form-control" name="" id="" value="badheka15@gmail.com">
+                                                        <input type="email" class="m-b-5 form-control" name="" id="" placeholder="Comapany's HR EMail">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Deadline</p>
-                                                        <input type="date" class="m-b-5 form-control" name="" id="" value="2001-03-02">
+                                                        <input type="date" class="m-b-5 form-control" name="" id="">
                                                     </div>
-                                                    <!-- <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Salary</p>
-                                                        <input type="number" class="m-b-5 form-control" name="" id="" value="700000">
-                                                    </div> -->
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Location</p>
-                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="Gandhinagar">
+                                                        <input type="text" class="m-b-5 form-control" name="" id="" placeholder="Comapany's Location">
                                                     </div>
                                                     <div class="col-sm-20">
-                                                        <p class="m-b-5 f-w-600">Job Description</p>
+                                                        <p class="m-b-5 f-w-600">Company Description</p>
                                                         <textarea class="m-b-5 form-control" name="companyDesc" id="">Company Description</textarea>
                                                     </div>
                                                     <div class="col-sm-20">
@@ -103,7 +98,7 @@ include("../database.php");
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Bond(in years)</p>
-                                                        <input type="number" class="m-b-5 form-control" name="" id="" value="1.5">
+                                                        <input type="number" class="m-b-5 form-control" name="" id="" placeholder="0">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Will Provide Internship?</p>
@@ -112,44 +107,60 @@ include("../database.php");
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Stipend(During Internsip)</p>
-                                                        <input type="number" class="m-b-5 form-control" name="" id="" value="15000">
+                                                        <input type="number" class="m-b-5 form-control" name="" id="" placeholder="15000">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Minimum 10th % Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="60">
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Minimum 12th % Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="60">
+                                                        <p class="m-b-5 f-w-600">Minimum 12th % Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" placeholder="80">
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Minimum CPI Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="6">
+                                                        <p class="m-b-5 f-w-600">Minimum CPI Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" placeholder="6">
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Minimum SPI Criteria(in all Sems)</p><input type="number" class="m-b-5 form-control" name="" id="" value="6">
+                                                        <p class="m-b-5 f-w-600">Minimum SPI Criteria(in all Sems)</p><input type="number" class="m-b-5 form-control" name="" id="" placeholder="6">
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Eligible Branches</p>
-                                                        <input type="checkbox" id="IT" name="dept" value="10">
-                                                        <label for="IT"> IT</label><br>
-                                                        <input type="checkbox" id="CP" name="dept" value="3">
-                                                        <label for="CP"> CP</label><br>
-                                                        <input type="checkbox" id="ME" name="dept" value="6">
-                                                        <label for="ME">ME</label><br>
-                                                        <input type="checkbox" id="CE" name="dept" value="1">
-                                                        <label for="CE"> CE</label><br>
-                                                        <input type="checkbox" id="EC" name="dept" value="9">
-                                                        <label for="EC"> EC</label><br>
-                                                        <input type="checkbox" id="EE" name="dept" value="4">
-                                                        <label for="EE"> EE</label><br>
-                                                        <input type="checkbox" id="EL" name="dept" value="5">
-                                                        <label for="EL"> EL</label><br>
-                                                        <input type="checkbox" id="PE" name="dept" value="8">
-                                                        <label for="PE"> PE</label><br>
+                                                        <div class="col">
+                                                            <p class="m-b-5 f-w-600 anno">Department</p>
+
+                                                            <div class="form-check col-m-6">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="0"><label class="form-check-label"> All Department</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="1"><label class="form-check-label">Civil</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="2"><label class="form-check-label"> Computer</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3"><label class="form-check-label"> Electronics and Communications</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4"><label class="form-check-label"> Electrical</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5"><label class="form-check-label"> Electronics</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6"><label class="form-check-label">Information Technology</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="7"><label class="form-check-label">Mechanical</label>
+                                                            </div>
+                                                            <div class="form-check col-sm-3">
+                                                                <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="8"><label class="form-check-label">Production</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">No. Of Job Roles </p>
-                                                        <input type="number" class="m-b-5 form-control" onkeyup="addJobRole()" name="jobRoleNumber" id="jRn">
-                                                    </div>
-                                                    <div class="row my-5" id="noOfJR">
+
+                                                    <div class="row m-b-20">
+                                                        <div class="col-sm-6">
+                                                            <p class="m-b-5 f-w-600">No. Of Job Roles </p>
+                                                            <input type="number" class="m-b-5 form-control" onkeyup="addJobRole()" name="jobRoleNumber" id="jRn">
+                                                        </div>
                                                         <!-- <div class="col-sm-12">
 
                                                             <p class="m-b-5 f-w-600 h4">1. Job Role</p>
