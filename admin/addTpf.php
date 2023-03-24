@@ -4,7 +4,7 @@ include("../database.php");
 include("../helper/authorization.php");
 
 if ($access != 1) {
-    echo "<script> window.location.href = 'http://localhost/tpc/helper/noAccess.php'; </script>";
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
 
 $alreadyRegis = 0;
@@ -17,6 +17,7 @@ $pass = "Tpf@1234";
 if (isset($_POST["add-tpf"])) {
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
+    $name = $fname . " " . $lname;
     $email = $_POST["email"];
     $mobile = $_POST["mobile"];
     $dept = $_POST["department"];
@@ -32,7 +33,7 @@ if (isset($_POST["add-tpf"])) {
     }
     // if not then add the data and show the username and password
     else {
-        $insert = $conn->query("INSERT INTO `tpf`(`tpf_fname`, `tpf_lname`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_department`,  `academic_year`) VALUES ('$fname','$lname','$email','$mobile','$password','$dept','$aYear')");
+        $insert = $conn->query("INSERT INTO `tpf`(`tpf_name`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_dept_id`,  `academic_year`) VALUES ('$name','$email','$mobile','$password','$dept','$aYear')");
         if ($conn->affected_rows) {
             $regisSuccess = 1;
         } else {
@@ -52,7 +53,7 @@ if (isset($_POST["add-tpf"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php if ($alreadyRegis == 1 || $regisError == 1) : ?>
-        <meta http-equiv="refresh" content="3;url=http://localhost/tpc/admin/addtpf.php" />
+        <meta http-equiv="refresh" content="3;url=http://localhost/tpc-main/admin/addtpf.php" />
     <?php endif ?>
     <link rel="stylesheet" href="./helper/addresult.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
@@ -111,13 +112,11 @@ if (isset($_POST["add-tpf"])) {
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Mobile</p>
-                                                    <input type="text" class=" form-control" required name="mobile" id="" value="">
+                                                    <input type="number" minlength="10" maxlength="10" class=" form-control" required name="mobile" id="" value="">
                                                 </div>
                                                 <div class="col-sm-4">
 
                                                     <p class="m-b-5 col f-w-600 ">Department</p>
-                                                    <!-- <input type="text" class=" form-control" name="" id="" value=""> -->
-                                                    <!-- <span class="details">Department</span> -->
                                                     <select name="department" id="dept" class="form-control" required>
                                                         <option value="0">Select Your Department</option>
                                                         <?php

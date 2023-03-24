@@ -3,7 +3,7 @@
 include("../database.php");
 include("../helper/authorization.php");
 if ($access != 1) {
-    echo "<script> window.location.href = 'http://localhost/tpc/helper/noAccess.php'; </script>";
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
 
 $updateSuccess = 0;

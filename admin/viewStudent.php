@@ -2,7 +2,8 @@
 
 include("../database.php");
 include("../helper/authorization.php");
-if ($access != 1) {
+if ($access >= 1 && $access <= 3) {
+} else {
     echo "<script>
     window.location.href = 'http://localhost/tpc-main/helper/noAccess.php';
 </script>";
@@ -112,9 +113,6 @@ if (isset($_POST["approval"])) {
                                                         </div>
                                                     </form>
                                                 </div>
-
-
-
                                             </div>
                                         </div>
                                         <div class="col-sm-8">
@@ -162,94 +160,94 @@ if (isset($_POST["approval"])) {
                                                         <h6 class="text-muted f-w-400"><?php echo $row["category"]; ?></h6>
                                                     </div>
                                                 </div>
-                                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Address Details </h6>
+                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Address Details</h6>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address Line 1</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddressline1"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address Line 1</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["tpaddressline1"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address City</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddresslcity"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address City</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["taddresslcity"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address District</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddressldis"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address District</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["taddressldis"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address Pin</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddresslpin"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address Pin</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["taddresslpin"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address State</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddresslstate"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address State</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["taddresslstate"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Permanent Address Country</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["paddresslcountry"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Current Address Country</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["taddresslcountry"]; ?></h6>
                                                     </div>
                                                 </div>
                                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">SSC Details </h6>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Passing Year</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_passing_year"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Total</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_total"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Percentage</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_th_percentage"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Board</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_board"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">School</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_school"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Educational Gap</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["ssc_educational_gap"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">D2d or HSC</p>
                                                         <input type="radio" name="isd2d" id="HSC" <?php if ($row["isd2d"] == 0) echo "checked='checked'" ?> disabled />
                                                         <label for="HSC">HSC</label>
@@ -260,35 +258,35 @@ if (isset($_POST["approval"])) {
                                                 </div>
                                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">HSC Details </h6>
                                                 <div class="row m-b-20">
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Passing Year</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_passing_year"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Total Theory</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_th_marks"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Total Theory+Practical</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_th_p_marks"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Percentage Theory</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_th_percentage"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Percentage Theory+Practical</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_th_p_percentage"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Board</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_board"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">School</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_school"]; ?></h6>
                                                     </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Educational Gap</p>
                                                         <h6 class="text-muted f-w-400"><?php echo $row["hsc_educational_gap"]; ?></h6>
                                                     </div>
@@ -400,23 +398,22 @@ if (isset($_POST["approval"])) {
                                                 <div class="row m-b-20">
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">SSC Marksheet</p>
-                                                        <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["ssc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HSC Marksheet</p>
-                                                        <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["hsc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">D2D Marksheet</p>
-                                                        <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["d2d_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">BVM Marksheet</p>
-                                                        <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        <p class="m-b-5 f-w-600">BVM Marksheet</p><a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["bvm_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Resume</p>
-                                                        <button class="text-center btn btn-success">Upload</button> <a href="http://localhost/tpc-main/demopdf/1.pdf"></a>
+                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["resume"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                 </div>
 

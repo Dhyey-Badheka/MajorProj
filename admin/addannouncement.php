@@ -3,6 +3,14 @@
 include("../database.php");
 include("../helper/authorization.php");
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
+
 if ($access != 1) {
     echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
@@ -31,6 +39,57 @@ if (isset($_POST["add-annouce"])) {
     $deptEligible = json_encode($deptEligible);
     // var_dump($deptEligible);
     $insert = $conn->query("INSERT INTO `announcement`( `title`, `description`, `posted_on`, `dept`) VALUES ('$title','$desc','$date_annouce','$deptEligible')");
+
+
+
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'badhekadhyey@gmail.com';
+    $mail->Password = 'kjohaebcqvsbijey';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
+    $mail->setFrom('badhekadhyey@gmail.com');
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+
+
+
+    $deptEligible = array($deptEligible);
+    // echo $deptEligible[0][1];
+    $str = '(';
+    for ($i = 1; $i < strlen($deptEligible[0]); $i += 2) {
+        $str .= $deptEligible[0][$i] . ",";
+    }
+    $str .= ")";
+    $str = str_replace(",)", ")", $str);
+    echo $str;
+    $search = $conn->query("select student.first_name,student.pemail from student where dept_id in $str");
+    while ($row = $search->fetch_array(MYSQLI_NUM)) {
+        if ($row[1] != null) {
+            $mail->addAddress($row[1]);
+            $str = "Hi $row[0]," . "<br>" . $title . "<br>" . $desc;
+            $mail->Body = $str;
+            $mail->isHTML(true);
+            $mail->send();
+            $mail->clearAllRecipients();
+            $mail->clearAddresses();
+        }
+    }
+    // echo "Sent successfully";
+    echo "<script>
+        document.location.href='announcements.php';
+        </script>";
+
+
+
+
+
+
+
+
+
     if ($conn->affected_rows) {
         $insertSuccess = 1;
     } else {

@@ -1,15 +1,47 @@
 <?php
 
 include("../database.php");
+include("../helper/authorization.php");
 
-// $id_number = $_GET["id"];
+if ($access == 2 || $access == 3) {
+    $dept = $_SESSION["adminDept"];
+}
 
 
-
-
-
+if (isset($_GET["id"]) || isset($_POST["id"])) {
+    $id = isset($_GET["id"]) ? $_GET["id"] : $_POST["id"];
+    $search = $conn->query("SELECT * FROM `drive` WHERE drive_id = '$id'");
+    if ($search->num_rows == 1) {
+        $row = $search->fetch_assoc();
+        $comp_id = $row["comp_id"];
+        $search1 = $conn->query("SELECT * FROM `company` WHERE comp_id = '$comp_id'");
+        $row1 = $search1->fetch_assoc();
+        $c_name = $row1["comp_name"];
+        $comp_logo = $row1["comp_logo"];
+        $job_role = $row["job_role"];
+        $deadline = $row["deadline"];
+        $salary = $row["salary"];
+        $location = $row["location"];
+        $desc = $row["description"];
+        $skills = $row["skillsreq"];
+        $bond = $row["bond"];
+        $stipend = $row["stipend"];
+        $will_provide_intern = $row["willprovideinternship"];
+        $intern_duration = $row["internship_duration"];
+        $sscc = $row["ssccriteria"];
+        $hscc = $row["hsccriteria"];
+        $cpic = $row["cpicriteria"];
+        $spic = $row["spicriteria"];
+        $abc = $row["active_backlog"];
+        $dbc = $row["dead_backlog"];
+        $doc = $row["pdfdoc"];
+        $inProcess = $row["inProcess"];
+        $no_of_role = $row["no_of_job_role"];
+        $dept = json_decode($row["dept_eligible"], true);
+        $isAll = sizeof($dept) == 8 ? TRUE : FALSE;
+    }
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +50,6 @@ include("../database.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/sidebar.css">
-
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
@@ -35,149 +66,158 @@ include("../database.php");
 
             <div class="page-content page-container" id="page-content">
                 <div class="padding">
-                    <div class="row  d-flex justify-content-center">
-                        <div class="">
-                            <div class="card user-card-full">
-                                <div class="row m-l-0 m-r-0">
-                                    <div class="col-sm-4 bg-c-lite-green user-profile">
-                                        <div class="card-block text-center text-white">
-                                            <div class="m-b-25">
-                                                <!-- <div class="preview"></div> -->
-                                                <img src="#" id="showLogo" class="img-radius my-5" alt="Company-Logo">
-                                                <input type="file" name="file" id="file" class="inputfile" />
-                                                <label for="file">Upload Logo</label>
-                                                <!-- <button class="text-center btn my-2 btn-success">Upload Logo</button> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-block">
-                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Company Information</h6>
-                                            <div class="row m-b-20">
-                                                <div class="col-sm-6 ">
-                                                    <p class="m-b-5 f-w-600">Company Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="c_name">
-                                                </div>
-                                                <!-- <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Job Role</p>
-                                                        <input type="text" class="m-b-5 form-control" name="" id="" value="j_name">
-                                                    </div> -->
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Company URL</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="l_name">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">HR Name</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="h_name">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">HR Phone</p>
-                                                    <input type="number" class="m-b-5 form-control" name="" id="" value="7984528154">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">HR Email</p>
-                                                    <input type="email" class="m-b-5 form-control" name="" id="" value="badheka15@gmail.com">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Deadline</p>
-                                                    <input type="date" class="m-b-5 form-control" name="" id="" value="2001-03-02">
-                                                </div>
-                                                <!-- <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Salary</p>
-                                                        <input type="number" class="m-b-5 form-control" name="" id="" value="700000">
-                                                    </div> -->
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Location</p>
-                                                    <input type="text" class="m-b-5 form-control" name="" id="" value="Gandhinagar">
-                                                </div>
-                                                <div class="col-sm-20">
-                                                    <p class="m-b-5 f-w-600">Job Description</p>
-                                                    <textarea class="m-b-5 form-control" name="companyDesc" id="">Company Description</textarea>
-                                                </div>
-                                                <div class="col-sm-20">
-                                                    <p class="m-b-5 f-w-600">Skills Required</p>
-                                                    <textarea class="m-b-5 form-control" name="" id="">Skills Required </textarea>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Bond(in years)</p>
-                                                    <input type="number" class="m-b-5 form-control" name="" id="" value="1.5">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Will Provide Internship?</p>
-                                                    <p> <input type="radio" id="intern" name="intern" value="0" checked> NO</input> </p>
-                                                    <p> <input type="radio" id="intern" name="intern" value="1"> YES</input> </p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Stipend(During Internsip)</p>
-                                                    <input type="number" class="m-b-5 form-control" name="" id="" value="15000">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Minimum 10th % Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="60">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Minimum 12th % Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="60">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Minimum CPI Criteria</p><input type="number" class="m-b-5 form-control" name="" id="" value="6">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Minimum SPI Criteria(in all Sems)</p><input type="number" class="m-b-5 form-control" name="" id="" value="6">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">Eligible Branches</p>
-                                                    <input type="checkbox" id="IT" name="dept" value="10">
-                                                    <label for="IT"> IT</label><br>
-                                                    <input type="checkbox" id="CP" name="dept" value="3">
-                                                    <label for="CP"> CP</label><br>
-                                                    <input type="checkbox" id="ME" name="dept" value="6">
-                                                    <label for="ME">ME</label><br>
-                                                    <input type="checkbox" id="CE" name="dept" value="1">
-                                                    <label for="CE"> CE</label><br>
-                                                    <input type="checkbox" id="EC" name="dept" value="9">
-                                                    <label for="EC"> EC</label><br>
-                                                    <input type="checkbox" id="EE" name="dept" value="4">
-                                                    <label for="EE"> EE</label><br>
-                                                    <input type="checkbox" id="EL" name="dept" value="5">
-                                                    <label for="EL"> EL</label><br>
-                                                    <input type="checkbox" id="PE" name="dept" value="8">
-                                                    <label for="PE"> PE</label><br>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-5 f-w-600">No. Of Job Roles </p>
-                                                    <input type="number" class="m-b-5 form-control" onkeyup="addJobRole()" name="jobRoleNumber" id="jRn">
-                                                </div>
-                                                <div class="row my-5" id="noOfJR">
-                                                    <!-- <div class="col-sm-12">
+                    <div class="row d-flex justify-content-center">
 
-                                                            <p class="m-b-5 f-w-600 h4">1. Job Role</p>
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">View Drive</h6>
+
+                                        <input type="text" name="id" value="<?php echo $id ?>" hidden>
+                                        <input type="text" name="inProcess" value="<?php echo $inProcess ?>" hidden>
+                                        <div class="card user-card-full">
+                                            <div class="row m-l-0 m-r-0">
+                                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                                    <div class="card-block text-center text-white">
+                                                        <div class="m-b-25">
+                                                            <img id="showLogo" src='http://localhost/tpc-main/admin/uploads/<?php echo $comp_logo ?>' class="img-radius" alt="User-Profile-Image" />
                                                         </div>
+                                                        <p>
+                                                            <span class="badge text-white badge-lg badge-dot">
+                                                                <?php if ($inProcess == 0) {
+                                                                    echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-warning'></i>In Process
+                                </span>";
+                                                                } else if ($inProcess == 1) {
+                                                                    echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-success'></i>Results Out
+                                </span>";
+                                                                }
+                                                                ?>
+                                                            </span>
+                                                        <h2><?php echo $c_name ?> </h2>
+                                                        <h3><?php echo $job_role ?> </h3>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="card-block">
+                                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Company Information</h6>
+                                                        <div class="row m-b-20">
+                                                            <div class="col-sm-6 ">
+                                                                <p class="m-b-5 f-w-600">Company Name</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $c_name; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Drive Name</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $job_role; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Deadline</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $deadline; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Salary</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $salary; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Location</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $location; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <p class="m-b-5 f-w-600">Description</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $desc; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <p class="m-b-5 f-w-600">Skills Required</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $skills; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Bond Period</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $bond; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Will Provide Internship?</p>
+                                                                <p> <input type="radio" id="intern" name="willprovideinternship" value="0" <?php if ($will_provide_intern == 0) echo "checked" ?> disabled> NO</input> </p>
+                                                                <p> <input type="radio" id="intern" name="willprovideinternship" value="1" <?php if ($will_provide_intern == 1) echo "checked" ?> disabled> YES</input> </p>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Stipend(During Internship)</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $stipend; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Internship Duration(Months)</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $intern_duration; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Minimum 10th % Criteria</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $sscc; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Minimum 12th % Criteria</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $hscc; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Minimum CPI Criteria</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $cpic; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Minimum SPI Criteria(in all Sems)</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $spic; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Active Backlogs</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $abc; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Dead Backlogs</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $dbc; ?></h6>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="m-b-5 f-w-600">No. of Openings</p>
+                                                                <h6 name="comp_name" class="text-muted f-w-400"><?php echo $no_of_role; ?></h6>
+                                                            </div>
+                                                            <div class="row">
+                                                                <p class="m-b-5 f-w-600">Eligible Branches</p>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="0" <?php if ($isAll) echo "checked"; ?> disabled><label class="form-check-label"> All Department</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="1" <?php if (in_array(1, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Civil</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="2" <?php if (in_array(2, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Computer</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3" <?php if (in_array(3, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electronics and Communications</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4" <?php if (in_array(4, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electrical</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5" <?php if (in_array(5, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electronics</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6" <?php if (in_array(6, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Information Technology</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="7" <?php if (in_array(7, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Mechanical</label>
+                                                                </div>
+                                                                <div class="form-check col-sm-3">
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="8" <?php if (in_array(8, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Production</label>
+                                                                </div>
+                                                            </div>
 
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-5 f-w-600">Job Role</p>
-                                                            <input type="text" name="jr" id="" class="m-b-5 form-control">
+                                                            <div class=" col-sm-6">
+                                                                <p class="m-b-5 f-w-600">Attached PDF('s)</p>
+                                                                <a href="http://localhost/tpc-main/admin/uploads/<?php echo $doc; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-sm-6">
-                                                            <p class="m-b-5 f-w-600">Salary (LPA)</p>
-                                                            <input type="text" name="salary" id="" class="m-b-5 form-control">
-                                                        </div> -->
-
-                                                    <div class=" col-sm-6">
-                                                        <p class="m-b-5 f-w-600">Attach PDF('s)</p>
-
-                                                        <input type="file" id="actual-btn" name="PDF" multiple hidden />
-
-                                                        <label for="actual-btn" class="label">Upload PDF</label>
-
-                                                        <span id="file-chosen">No file chosen</span>
-
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-                                    <!-- <button class="text-center btn btn-primary">Add</button> -->
                                 </div>
                             </div>
                         </div>
@@ -185,10 +225,7 @@ include("../database.php");
                 </div>
             </div>
         </main>
-
     </div>
-    </div>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./helper/sidebar.js"></script>

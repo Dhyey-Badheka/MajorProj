@@ -26,34 +26,23 @@ if ($access == 2 || $access == 3) {
 <body>
     <?php include("./helper/sidebar.php") ?>
     <main>
-
-        <!-- <h1>Student</h1> -->
         <div class="container-fluid">
             <div class="mb-npx">
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                         <!-- Title -->
-                        <h1 class="h2 mb-0 ls-tight">Welcome, TPO</h1>
+                        <h1>Welcome <?php echo $_SESSION["admin"] ?>,</h1>
                     </div>
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
                         <div class="mx-n1">
-                            <!-- <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-pencil"></i>
-                                </span>
-                                <span>Edit</span>
-                            </a> -->
-                            <a href="./adddrive.php" class="btn d-inline-flex btn-sm btn-primary mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-plus"></i>
-                                </span>
-                                <span>Create</span>
-                            </a>
+                            <?php if ($access == 1) : ?>
+                                <a href="adddrive.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
-                <!-- Nav -->
+
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
                     <li class="nav-item">
                         <a href="#" class="nav-link active">Active</a>
@@ -64,101 +53,70 @@ if ($access == 2 || $access == 3) {
                     <li class="nav-item">
                         <a href="#" class="nav-link font-regular">Completed</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Civil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Mechanical</a>
-                    </li> -->
                 </ul>
             </div>
         </div>
+        <?php
+        if ($access == 1) {
+            $search = $conn->query("SELECT * FROM  `drive`");
+        } elseif ($access == 2 || $access == 3) {
+            $search = $conn->query("SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
+        }
+        while ($row = $search->fetch_assoc()) {
+        ?>
+            <div class="row">
+                <!-- Total Students -->
+                <div class="col-xl-12 col-sm-12 col-12">
+                    <div class="card shadow border-0 my-2 card-width-full">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h2 font-bold d-block mb-2"><?php
+                                                                            $comp_id = $row["comp_id"];
+                                                                            $search1 = $conn->query("SELECT comp_name FROM  `company` WHERE comp_id='$comp_id'");
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            echo $row1["comp_name"] ?></p></span>
+                                    <span class="h5 font-semibold mb-0"><?php echo $row["job_role"] ?></span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="text-white text-lg rounded-circle">
+                                        <?php
+                                        $comp_id = $row["comp_id"];
+                                        $search2 = $conn->query("SELECT comp_logo FROM  `company` WHERE comp_id='$comp_id'");
+                                        $row2 = $search2->fetch_assoc();
+                                        $comp_logo = $row2["comp_logo"];
+                                        echo '<img src="http://localhost/tpc-main/admin/uploads/' . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-0 text-m">
+                                    <span>
 
-        <div class="row">
+                                        <a href="viewDrive.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-primary btn-sm">View</a>
+                                        <?php if ($access == 1) : ?>
+                                            <a href="collectdata.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-warning btn-sm">Collect Data</a>
+                                            <a href="./updatedrive.php?updateid=<?php echo $row["drive_id"]; ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
+                                            <a href="./updatedrive.php?deleteid=<?php echo $row["drive_id"]; ?>" class="btn btn-square btn-sm btn-neutral btn-danger-hover"><i class="bi bi-trash"></i></a>
+                                        <?php endif ?>
+                                    </span>
 
-            <!-- Total Students -->
-            <div class="col-xl-12 col-sm-12 col-12">
-                <div class="card shadow border-0 my-10 card-width-full">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col">
-                                <span class="h2 font-bold  d-block mb-2">Tata Consultancy Services</span>
-                                <span class="h5 font-semibold mb-0">www.tcs.com</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape text-white text-lg rounded-circle">
-                                    <img src="../images/logo.png" alt="">
+                                    <!-- Status -->
+                                    <?php if ($row["inProcess"] == 0) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-warning'></i>In Process
+                                </span>";
+                                    } else if ($row["inProcess"] == 1) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-success'></i>Results out
+                                </span>";
+                                    }
+                                    ?>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mt-2 mb-0 text-sm">
-                            <!-- <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class="bi bi-arrow-up me-1"></i>13%
-                                <i class='bx bxs-error'></i>13
-                            </span> -->
-                            <span>
-
-                                <a href="#" class="btn btn-primary btn-sm">View</a>
-                                <a href="#" class="btn btn-warning btn-sm">Collect Data</a>
-                                <a href="./updateStudent.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
-                                <a href="./updateStudent.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral btn-danger-hover"><i class="bi bi-trash"></i></a>
-
-                            </span>
-
-                            <!-- Status -->
-                            <span class="badge mx-5 badge-lg badge-dot">
-                                <i class="bg-success"></i>Active
-                            </span>
-                            <span class="badge mx-5 badge-lg badge-dot">
-                                <i class="bg-warning"></i>Result
-                            </span>
-                            <!-- <span class="text-nowrap text-xs text-muted">Status</span> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow border-0 my-10 card-width-full">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col">
-                                <span class="h2 font-bold  d-block mb-2">Tata Consultancy Services</span>
-                                <span class="h5 font-semibold mb-0">www.tcs.com</span>
-                            </div>
-                            <div class="col-auto">
-                                <div class="icon icon-shape text-white text-lg rounded-circle">
-                                    <img src="../images/logo.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2 mb-0 text-sm">
-                            <!-- <span class="badge badge-pill bg-soft-warning text-warning me-2">
-                                <i class="bi bi-arrow-up me-1"></i>13%
-                                <i class='bx bxs-error'></i>13
-                            </span> -->
-                            <span>
-
-                                <a href="./viewDrive.php?id=<?php echo "id" ?>" class="btn btn-primary btn-sm">View</a>
-                                <a href="./collectData.php?id=<?php echo "id" ?>" class="btn btn-warning btn-sm">Collect Data</a>
-                                <a href="./updateStudent.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
-                                <a href="./updateStudent.php?id=<?php echo "id" ?>" class="btn btn-square btn-sm btn-neutral btn-danger-hover"><i class="bi bi-trash"></i></a>
-
-                            </span>
-
-                            <!-- Status -->
-                            <span class="badge mx-5 badge-lg badge-dot">
-                                <i class="bg-danger"></i>In-Active
-                            </span>
-                            <span class="badge mx-5 badge-lg badge-dot">
-                                <i class="bg-success"></i>Result
-                            </span>
-                            <!-- <span class="text-nowrap text-xs text-muted">Status</span> -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        <?php } ?>
 
 
         <p class="copyright">

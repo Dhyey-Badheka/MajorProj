@@ -3,7 +3,7 @@ include("../database.php");
 include("../helper/authorization.php");
 
 if ($access != 1) {
-    echo "<script> window.location.href = 'http://localhost/tpc/helper/noAccess.php'; </script>";
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
 
 
@@ -12,11 +12,11 @@ $show = isset($_GET["show"]) ? $_GET["show"] : "active";
 // var_dump($show);
 
 if ($show == "all") {
-    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_fname`, `tpf_lname`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_department`, `is_active`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE department.dept_id = tpf.tpf_department");
+    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_name`, `tpf_email`, `tpf_mobile`,  `isActive`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE department.dept_id = tpf.tpf_dept_id");
 } elseif ($show == "inactive") {
-    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_fname`, `tpf_lname`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_department`, `is_active`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE is_active=0 AND department.dept_id = tpf.tpf_department");
+    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_name`, `tpf_email`, `tpf_mobile`, `isActive`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE isActive=0 AND department.dept_id = tpf.tpf_dept_id");
 } else {
-    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_fname`, `tpf_lname`, `tpf_email`, `tpf_mobile`, `tpf_password`, `tpf_department`, `is_active`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE is_active=1 AND department.dept_id = tpf.tpf_department");
+    $displayTpf = $conn->query("SELECT `tpf_id`, `tpf_name`, `tpf_email`, `tpf_mobile`, `isActive`, `academic_year`, department.dept_name FROM `tpf`,`department` WHERE isActive=1 AND department.dept_id = tpf.tpf_dept_id");
 }
 
 // if action button is clicked
@@ -24,20 +24,24 @@ $action = isset($_GET["action"]) ? $_GET["action"] : 0;
 
 // var_dump($action);
 if ($action == "active") {
-    $id = $_GET["id"];
-    // change the status from 0 to 1
-    $update = $conn->query("UPDATE `tpf` SET `is_active`=1 WHERE tpf_id = '$id'");
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        // change the status from 0 to 1
+        $update = $conn->query("UPDATE `tpf` SET `isActive`=1 WHERE tpf_id = '$id'");
 
-    if ($conn->affected_rows) {
-        echo "<script> window.location.href = 'http://localhost/tpc/admin/tpf.php'; </script>";
+        if ($conn->affected_rows) {
+            echo "<script> window.location.href = 'http://localhost/tpc-main/admin/tpf.php'; </script>";
+        }
     }
 } elseif ($action == "inactive") {
-    $id = $_GET["id"];
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
 
-    // change the status from 1 to 0
-    $update = $conn->query("UPDATE `tpf` SET `is_active`=0 WHERE tpf_id = '$id'");
-    if ($conn->affected_rows) {
-        echo "<script> window.location.href = 'http://localhost/tpc/admin/tpf.php'; </script>";
+        // change the status from 1 to 0
+        $update = $conn->query("UPDATE `tpf` SET `isActive`=0 WHERE tpf_id = '$id'");
+        if ($conn->affected_rows) {
+            echo "<script> window.location.href = 'http://localhost/tpc-main/admin/tpf.php'; </script>";
+        }
     }
 }
 
@@ -76,12 +80,6 @@ if ($action == "active") {
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
                         <div class="mx-n1">
-                            <!-- <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
-                                <span class=" pe-2">
-                                    <i class="bi bi-pencil"></i>
-                                </span>
-                                <span>Edit</span>
-                            </a> -->
                             <a href="./addTpf.php" class="btn d-inline-flex btn-sm btn-primary mx-1">
                                 <span class=" pe-2">
                                     <i class="bi bi-plus"></i>
@@ -129,19 +127,13 @@ if ($action == "active") {
                         ?>
                             <tr>
                                 <td>
-                                    <!-- <img alt="..." src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar-sm rounded-circle me-2"> -->
                                     <a class="text-heading font-semibold" href="#">
-                                        <?php echo $row["tpf_fname"] . " " . $row["tpf_lname"] ?>
+                                        <?php echo $row["tpf_name"]  ?>
                                     </a>
                                 </td>
                                 <td>
                                     <?php echo $row["dept_name"] ?>
                                 </td>
-                                <!-- <td>
-                                <img alt="..." src="https://preview.webpixels.io/web/img/other/logos/logo-1.png" class="avatar avatar-xs rounded-circle me-2">
-                                19C015
-
-                            </td> -->
                                 <td>
                                     <a class="text-heading font-semibold" href="#">
                                         <?php echo $row["tpf_email"] ?>
@@ -153,7 +145,7 @@ if ($action == "active") {
                                     </a>
                                 </td>
                                 <td>
-                                    <?php if ($row['is_active']) : ?>
+                                    <?php if ($row['isActive']) : ?>
                                         <span class="badge badge-lg badge-dot">
                                             <i class="bg-success"></i>Active
                                         </span>
@@ -164,10 +156,9 @@ if ($action == "active") {
                                     <?php endif ?>
                                 </td>
                                 <td class="text-end">
-                                    <!-- <a href="./viewStudent.php?id=<?php echo "id" ?>" class="btn btn-sm btn-neutral">View</a> -->
 
                                     <!-- Check the condition if active then show inactive button and vice versa -->
-                                    <?php if ($row['is_active']) : ?>
+                                    <?php if ($row['isActive']) : ?>
                                         <a href="./tpf.php?id=<?php echo $row["tpf_id"] ?>&action=inactive" class="btn btn-danger-hover btn-sm btn-square btn-neutral text-danger-hover">
                                             <i class="bi bi-bookmark-x "></i>
                                         </a>
@@ -184,14 +175,7 @@ if ($action == "active") {
                     </tbody>
                 </table>
             </div>
-            <!-- <div class="card-footer border-0 py-5">
-                <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
-            </div> -->
         </div>
-
-
-
-
 
         <p class="copyright">
             &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.

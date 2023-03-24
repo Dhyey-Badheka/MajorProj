@@ -9,9 +9,42 @@ if ($access == 2 || $access == 3) {
 // var_dump($_SESSION["adminId"]);
 // var_dump($_SESSION);
 
+$updateFailure = 0;
+$updateSuccess = 0;
+
 if (isset($_POST["update-pass"])) {
     $password = $_POST["newPassword"];
     $password = base64_encode(strrev(md5($password)));
+    $id = $_SESSION["adminId"];
+
+    if ($access == 1) {
+
+        $updatePassword = $conn->query("UPDATE `tp0` SET `tpo_password`='$password' WHERE tpo_id = '$id'");
+        if ($conn->affected_rows) {
+            $updateSuccess = 1;
+        } else {
+            $updateFailure = 1;
+        }
+    }
+
+    if ($access == 2) {
+
+        $updatePassword = $conn->query("UPDATE `tpf` SET `tpf_password`='$password' WHERE tpf_id = '$id'");
+        if ($conn->affected_rows) {
+            $updateSuccess = 1;
+        } else {
+            $updateFailure = 1;
+        }
+    }
+
+    if ($access == 3) {
+        $updatePassword = $conn->query("UPDATE `tpc` SET `tpc_password`='$password' WHERE tpc_id = '$id'");
+        if ($conn->affected_rows) {
+            $updateSuccess = 1;
+        } else {
+            $updateFailure = 1;
+        }
+    }
 }
 ?>
 
@@ -23,15 +56,18 @@ if (isset($_POST["update-pass"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/sidebar.css">
-
+    <?php if ($updateSuccess == 1 || $updateFailure == 1) : ?>
+        <meta http-equiv="refresh" content="3;url=http://localhost/tpc/admin/settings.php" />
+    <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
     <link rel="stylesheet" href="./helper/index.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link rel="stylesheet" href="./helper/viewStudent.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
 
-    <title>View Student</title>
+    <title>Admin | Setting</title>
 
     <style>
         .extra {
@@ -50,12 +86,19 @@ if (isset($_POST["update-pass"])) {
 <body>
     <?php include("./helper/sidebar.php") ?>
 
-    <div class="container">
-        <main>
+    <main>
+        <div class="container-fluid">
 
             <div class="page-content page-container" id="page-content">
                 <div class="padding">
                     <div class="row  d-flex justify-content-center">
+                        <?php if ($updateSuccess == 1) : ?>
+                            <p class="bg-success text-white text-center">Successfully Updated Password </p>
+                        <?php endif ?>
+                        <?php if ($updateFailure == 1) : ?>
+                            <p class="bg-danger text-white text-center">Error in Updating Password </p>
+                        <?php endif ?>
+
                         <div class="card user-card-full">
                             <div class="row m-l-0 m-r-0">
                                 <div class="col-sm-4 bg-c-lite-green user-profile">
@@ -63,9 +106,11 @@ if (isset($_POST["update-pass"])) {
                                         <!-- <div class="m-b-25">
                                             <img src="http://localhost/tpc-main/images/Dhyey.png" class="img-radius" alt="User-Profile-Image">
                                         </div> -->
-                                        <h2 class="f-w-600">Dhyey Badheka</h2>
-                                        <p class="f-w-600">19CP015@bvmengineering.ac.in</p>
-                                        <p class="f-w-600">19CP015</p>
+                                        <h2 class="f-w-600"><?php echo $adminUser ?></h2>
+                                        <p class="f-w-600"><?php echo $_SESSION["adminEmail"] ?></p>
+                                        <?php if ($access == 3) : ?>
+                                            <p class="f-w-600">19CP015</p>
+                                        <?php endif ?>
                                         <!-- <p class="f-w-600">Computer Department</p> -->
                                     </div>
                                 </div>
@@ -114,126 +159,126 @@ if (isset($_POST["update-pass"])) {
                         <input type="submit" name="update-pass" class="text-center btn btn-primary" value="Update">
                     </div>
                     </form>
-        </main>
+    </main>
 
 
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="./helper/sidebar.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./helper/sidebar.js"></script>
 
-        <script>
-            function validate_password() {
-                // var c1, c2, c3, c4 = 0
-                var eightCharacter = document.getElementById('eightCharacter');
-                var oneCapital = document.getElementById('oneCapital');
-                var oneDigit = document.getElementById('oneDigit');
-                var oneSpecial = document.getElementById('oneSpecial');
-                var pass = document.getElementById('password').value;
-                // var confirm_pass = document.getElementById('cPassword').value;
-                console.log(pass.length)
-                if (pass.length >= 8) {
-                    eightCharacter.classList.remove("extra");
-                    eightCharacter.classList.add("done");
-                    // c1 = 1
-                }
-                if (pass.length <= 8) {
-                    eightCharacter.classList.remove("done");
-                    eightCharacter.classList.add("extra");
-                    // c1 = 0
-                }
-                if (pass.match(/[A-Z]+/)) {
-                    oneCapital.classList.remove("extra");
-                    oneCapital.classList.add("done");
-                    // c2 = 1;
-                }
-                if (!pass.match(/[A-Z]+/)) {
-                    oneCapital.classList.remove("done");
-                    oneCapital.classList.add("extra");
-                    // c2 = 0
-                }
-                if (pass.match(/[0-9]+/)) {
-                    oneDigit.classList.remove("extra");
-                    oneDigit.classList.add("done");
-                    // c3 = 1;
-                }
-                if (!pass.match(/[0-9]+/)) {
-                    oneDigit.classList.remove("done");
-                    oneDigit.classList.add("extra");
-                    // c3 = 0
-                }
-                if (pass.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]+/)) {
-                    oneSpecial.classList.remove("extra");
-                    oneSpecial.classList.add("done");
-                    // c4 = 1
-                }
-                if (!pass.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]+/)) {
-                    oneSpecial.classList.remove("done");
-                    oneSpecial.classList.add("extra");
-                    // c4 = 0
-                }
-
-
-
-
+    <script>
+        function validate_password() {
+            // var c1, c2, c3, c4 = 0
+            var eightCharacter = document.getElementById('eightCharacter');
+            var oneCapital = document.getElementById('oneCapital');
+            var oneDigit = document.getElementById('oneDigit');
+            var oneSpecial = document.getElementById('oneSpecial');
+            var pass = document.getElementById('password').value;
+            // var confirm_pass = document.getElementById('cPassword').value;
+            console.log(pass.length)
+            if (pass.length >= 8) {
+                eightCharacter.classList.remove("extra");
+                eightCharacter.classList.add("done");
+                // c1 = 1
+            }
+            if (pass.length <= 8) {
+                eightCharacter.classList.remove("done");
+                eightCharacter.classList.add("extra");
+                // c1 = 0
+            }
+            if (pass.match(/[A-Z]+/)) {
+                oneCapital.classList.remove("extra");
+                oneCapital.classList.add("done");
+                // c2 = 1;
+            }
+            if (!pass.match(/[A-Z]+/)) {
+                oneCapital.classList.remove("done");
+                oneCapital.classList.add("extra");
+                // c2 = 0
+            }
+            if (pass.match(/[0-9]+/)) {
+                oneDigit.classList.remove("extra");
+                oneDigit.classList.add("done");
+                // c3 = 1;
+            }
+            if (!pass.match(/[0-9]+/)) {
+                oneDigit.classList.remove("done");
+                oneDigit.classList.add("extra");
+                // c3 = 0
+            }
+            if (pass.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]+/)) {
+                oneSpecial.classList.remove("extra");
+                oneSpecial.classList.add("done");
+                // c4 = 1
+            }
+            if (!pass.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]+/)) {
+                oneSpecial.classList.remove("done");
+                oneSpecial.classList.add("extra");
+                // c4 = 0
             }
 
-            function check_password() {
-                var pass = document.getElementById('password').value;
-                var confirm_pass = document.getElementById('cPassword').value;
-                if (pass != confirm_pass) {
-                    // document.getElementById('message').style.color = 'red';
-                    document.getElementById('message').innerHTML = 'Password Not Matched';
-                    document.getElementById('message').classList.add('bg-danger')
-                    document.getElementById('message').classList.remove('bg-success')
-                    // checkCPassword = 0;
 
-                } else {
-                    // document.getElementById('message').style.color = 'green';
-                    // document.getElementById('message').innerHTML = '🗹 Password Matched';
-                    document.getElementById('message').innerHTML = 'Password Matched';
-                    document.getElementById('message').classList.remove('bg-danger')
-                    document.getElementById('message').classList.add('bg-success')
-                    // checkCPassword = 1;
-                }
 
+
+        }
+
+        function check_password() {
+            var pass = document.getElementById('password').value;
+            var confirm_pass = document.getElementById('cPassword').value;
+            if (pass != confirm_pass) {
+                // document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Password Not Matched';
+                document.getElementById('message').classList.add('bg-danger')
+                document.getElementById('message').classList.remove('bg-success')
+                // checkCPassword = 0;
+
+            } else {
+                // document.getElementById('message').style.color = 'green';
+                // document.getElementById('message').innerHTML = '🗹 Password Matched';
+                document.getElementById('message').innerHTML = 'Password Matched';
+                document.getElementById('message').classList.remove('bg-danger')
+                document.getElementById('message').classList.add('bg-success')
+                // checkCPassword = 1;
             }
 
-            $(function() {
-                $("#currentPass").keyup(function() {
-                    var searchid = $(this).val();
-                    console.log(searchid);
-                    var dataValues = {
-                        password: searchid,
-                        admin: <?php echo $_SESSION["access"]; ?>,
-                        id: <?php echo $_SESSION["adminId"]; ?>
-                    }
-                    // console.log(dataValues);
-                    if (searchid != '') {
-                        console.log("yes");
-                        $.ajax({
-                            type: "POST",
-                            url: "check.php",
-                            data: dataValues,
-                            cache: false,
-                            success: function(response) {
-                                console.log(response);
-                                if (response == 1) {
+        }
 
-                                    $("#currentmsg").addClass('bg-success');
-                                    $("#currentmsg").removeClass('bg-danger');
-                                    $("#currentmsg").html("Password Matched");
-                                } else {
+        $(function() {
+            $("#currentPass").keyup(function() {
+                var searchid = $(this).val();
+                console.log(searchid);
+                var dataValues = {
+                    password: searchid,
+                    admin: <?php echo $_SESSION["access"]; ?>,
+                    id: <?php echo $_SESSION["adminId"]; ?>
+                }
+                // console.log(dataValues);
+                if (searchid != '') {
+                    console.log("yes");
+                    $.ajax({
+                        type: "POST",
+                        url: "check.php",
+                        data: dataValues,
+                        cache: false,
+                        success: function(response) {
+                            console.log(response);
+                            if (response == 1) {
 
-                                    $("#currentmsg").addClass('bg-danger');
-                                    $("#currentmsg").removeClass('bg-success');
-                                }
+                                $("#currentmsg").addClass('bg-success');
+                                $("#currentmsg").removeClass('bg-danger');
+                                $("#currentmsg").html("Password Matched");
+                            } else {
+
+                                $("#currentmsg").addClass('bg-danger');
+                                $("#currentmsg").removeClass('bg-success');
                             }
-                        });
-                    }
-                    return false;
-                });
-            })
-        </script>
+                        }
+                    });
+                }
+                return false;
+            });
+        })
+    </script>
 
 </body>
 
