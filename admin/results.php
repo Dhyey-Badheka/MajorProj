@@ -52,13 +52,14 @@ if ($access == 2 || $access == 3) {
                                         <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">
                                             <li class="border-bottom pb-3 mt-3">
                                                 <span class="meta text-uppercase"><?php echo $row["posted_on"] ?></span>
-                                                <?php if ($access == 1) : ?>
-                                                    <div style="float:right;" class="mt-5">
-                                                        <a href="updateresult.php?updateId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-success float-right">Update</button></a>
+                                                <div style="float:right;" class="mt-5">
+                                                    <a href="viewresult.php?ViewId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-success float-right">View</button></a>
+                                                    <?php if ($access == 1) : ?>
+                                                        <a href="updateresult.php?updateId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-warning float-right">Update</button></a>
                                                         <a href="updateresult.php?deleteId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
                                                         <!-- <button type="button" class="btn btn-danger float-right">Delete</button> -->
-                                                    </div>
-                                                <?php endif ?>
+                                                    <?php endif ?>
+                                                </div>
                                                 <h3 class="font-weight-bold mt-0">
                                                     <?php echo $row["heading"] ?>
                                                 </h3>

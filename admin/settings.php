@@ -19,7 +19,7 @@ if (isset($_POST["update-pass"])) {
 
     if ($access == 1) {
 
-        $updatePassword = $conn->query("UPDATE `tp0` SET `tpo_password`='$password' WHERE tpo_id = '$id'");
+        $updatePassword = $conn->query("UPDATE `tpo` SET `tpo_password`='$password' WHERE tpo_id = '$id'");
         if ($conn->affected_rows) {
             $updateSuccess = 1;
         } else {
@@ -57,7 +57,7 @@ if (isset($_POST["update-pass"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <?php if ($updateSuccess == 1 || $updateFailure == 1) : ?>
-        <meta http-equiv="refresh" content="3;url=http://localhost/tpc/admin/settings.php" />
+        <meta http-equiv="refresh" content="3;url=http://localhost/tpc-main/admin/settings.php" />
     <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

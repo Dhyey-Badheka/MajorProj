@@ -2,15 +2,64 @@
 
 include("../database.php");
 include("../helper/authorization.php");
+
+if ($access > 2) {
+    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
+}
 if ($access == 2 || $access == 3) {
     $dept = $_SESSION["adminDept"];
 }
-if ($access == 1 || $access == 2) {
-} else {
-    echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
-}
-?>
 
+$foundTpc = 0;
+$regisTpcSuccess = 0;
+$regisTpcError = 0;
+$alreadyRegis = 0;
+$studentRegis = 1;
+$id = "";
+$pass = "Tpc@1234";
+
+if (isset($_POST["searchTpc"])) {
+    $id = $_POST["stdId"];
+
+    $checkRegis = $conn->query("SELECT * FROM tpc WHERE tpc_id='$id'");
+
+    $checkStudent = $conn->query("SELECT * FROM student WHERE id_number='$id'");
+    if ($checkStudent->num_rows) {
+
+        if ($checkRegis->num_rows) {
+            $alreadyRegis = 1;
+        } else {
+            $foundTpc = 1;
+        }
+    } else {
+        $studentRegis = 0;
+    }
+}
+// var_dump($studentRegis, $foundTpc);
+
+if (isset($_POST["addTpc"])) {
+    $id = $_POST["id"];
+    $email = $_POST["email"];
+    $password = base64_encode(strrev(md5($pass)));
+    $dept = $_POST["dept"];
+    $acaYear = $_POST["acaYear"];
+    $mobile = $_POST["mobile"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $name = $fname . ' ' . $lname;
+    // var_dump($password);
+    // var_dump($_POST);
+
+    $insert = $conn->query("INSERT INTO `tpc`(`tpc_id`, `tpc_name`, `tpc_email`, `tpc_mobile`, `tpc_password`, `tpc_dept_id`, `academic_year`) VALUES ('$id','$name','$email','$mobile','$password','$dept','$acaYear')");
+    if ($conn->affected_rows) {
+        $regisTpcSuccess = 1;
+    } else {
+        $regisTpcError = 1;
+    }
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +70,9 @@ if ($access == 1 || $access == 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/addresult.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
-
+    <?php if ($regisTpcError == 1 || $alreadyRegis == 1 || $studentRegis == 0) : ?>
+        <meta http-equiv="refresh" content="3;url=http://localhost/tpc-main/admin/addTpc.php" />
+    <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
@@ -41,28 +92,38 @@ if ($access == 1 || $access == 2) {
             <div class="page-content page-container" id="page-content">
                 <div class="padding">
                     <div class="row d-flex justify-content-center">
+                        <?php if ($regisTpcSuccess == 1) : ?>
+                            <p class="bg-success text-white text-center">Successfully Added TPC </p>
+                        <?php endif ?>
+                        <?php if ($regisTpcError == 1) : ?>
+                            <p class="bg-danger text-white text-center">Error in Adding TPC </p>
+                        <?php endif ?>
+                        <?php if ($studentRegis == 0) : ?>
+                            <p class="bg-danger text-white text-center">Student Not Registered </p>
+                        <?php endif ?>
+                        <?php if ($alreadyRegis == 1) : ?>
+                            <p class="bg-danger text-white text-center">TPC Already Registered </p>
+                        <?php endif ?>
+
                         <div class="card user-card-full">
                             <div class="row m-l-0 m-r-0">
                                 <div class="col">
                                     <div class="card-block">
                                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Add TPC</h6>
-                                        <form action="addTpc.php" method="post">
-
+                                        <form action="./addTpc.php" method="post">
                                             <div class="row ">
                                                 <div class="col-sm-6">
-
                                                     <p class="m-b-5 col f-w-600 ">Enter ID Number</p>
-                                                    <input type="text" class=" form-control" name="idnum" id="" value="">
+                                                    <input type="text" class=" form-control" name="stdId" id="" value="">
                                                 </div>
                                                 <div class="col-sm-6">
-
-                                                    <input type="submit" value="Search" class="  text-center btn btn-success m-5" />
+                                                    <input type="submit" value="Search" name="searchTpc" class="  text-center btn btn-success m-5" />
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="tabl">
-                                        <form action="#" method="post">
+                                        <form action="./addTpc.php" method="post">
                                             <table id="emptbl" class="table">
                                                 <thead>
 
@@ -74,37 +135,58 @@ if ($access == 1 || $access == 2) {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php if ($foundTpc == 1 && $studentRegis == 1) :
+                                                        $tpc = $conn->query("SELECT * FROM student WHERE id_number = '$id'");
+                                                        $row = $tpc->fetch_assoc();
 
-                                                    <tr>
-                                                        <td id="col0">
-                                                            <p class="m-b-5 f-w-600 "> 19CP015</p>
+                                                    ?>
+                                                        <tr>
+                                                            <td id="col0">
+                                                                <p class="m-b-5 f-w-600 "> <?php echo strtoupper($row["id_number"]) ?></p>
 
-                                                        </td>
-                                                        <td id="col1">
-                                                            <p class="m-b-5 f-w-600 "> Dhyey Badheka</p>
-                                                        </td>
-                                                        <td id="col2">
-                                                            <p class="m-b-5 f-w-600 "> jimishravat2802@gmail.com</p>
+                                                            </td>
+                                                            <td id="col1">
+                                                                <p class="m-b-5 f-w-600 "> <?php echo $row["first_name"] . " " . $row["last_name"] ?></p>
+                                                            </td>
+                                                            <td id="col2">
+                                                                <p class="m-b-5 f-w-600 "> <?php echo $row["pemail"] ?></p>
 
-                                                        </td>
-                                                        <td id="col3">
-                                                            <p class="m-b-5 f-w-600 "> 9876543211</p>
+                                                            </td>
+                                                            <td id="col3">
+                                                                <p class="m-b-5 f-w-600 "> <?php echo $row["mobile"] ?></p>
 
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                        </tr>
                                                 </tbody>
                                             </table>
                                             <table>
                                                 <tr>
-                                                    <td><input type="submit" value="Add TPC" class="text-center btn btn-success m-5" /></td>
-
+                                                    <td>
+                                                        <input type="text" hidden name="id" value="<?php echo $id ?>">
+                                                        <input type="text" hidden name="fname" value="<?php echo $row["first_name"] ?>">
+                                                        <input type="text" hidden name="lname" value="<?php echo $row["last_name"] ?>">
+                                                        <input type="text" hidden name="email" value="<?php echo $row["pemail"] ?>">
+                                                        <input type="text" hidden name="mobile" value="<?php echo $row["mobile"] ?>">
+                                                        <input type="text" hidden name="dept" value="<?php echo $row["dept_id"] ?>">
+                                                        <input type="text" hidden name="acaYear" value="<?php echo $row["academic_year"] ?>">
+                                                        <input type="submit" value="Add TPC" name="addTpc" class="text-center btn btn-success m-5" />
+                                                    </td>
+                                                    <!-- <td><input type="button" value="Delete Row" onclick="deleteRows()" class="text-center btn btn-danger m-5" /></td> -->
+                                                    <!-- <td><input type="submit" value="Submit" class="text-center btn btn-primary m-5" /></td> -->
                                                 </tr>
+                                            <?php endif ?>
                                             </table>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <?php if ($regisTpcSuccess) : ?>
+                            <div class="row d-flex flex-column">
+                                <p class="m-b-5 col f-w-600">UserName : <span class="text-muted"><?php echo $email ?></span></p>
+                                <p class="m-b-5 col f-w-600">Password : <span class="text-muted"><?php echo $pass ?></span></p>
+                            </div>
+                        <?php endif ?>
                     </div>
                     <!-- <button class="text-center btn btn-primary">Add </button> -->
                 </div>

@@ -56,16 +56,24 @@ if (isset($_POST["add-annouce"])) {
 
 
 
-    $deptEligible = array($deptEligible);
-    // echo $deptEligible[0][1];
-    $str = '(';
-    for ($i = 1; $i < strlen($deptEligible[0]); $i += 2) {
-        $str .= $deptEligible[0][$i] . ",";
-    }
-    $str .= ")";
-    $str = str_replace(",)", ")", $str);
-    echo $str;
-    $search = $conn->query("select student.first_name,student.pemail from student where dept_id in $str");
+    // $deptEligible = array($deptEligible);
+    // $str = '(';
+    // for ($i = 1; $i < strlen($deptEligible[0]); $i += 2) {
+    //     $str .= $deptEligible[0][$i] . ",";
+    // }
+    // $str .= ")";
+    // $str = str_replace(",)", ")", $str);
+    // echo $str;
+    // $search = $conn->query("select student.first_name,student.pemail from student where dept_id in $str");
+
+
+    $applieddept = json_decode($deptEligible, true);
+    $sql = "select student.first_name,student.pemail from student where dept_id in (" . implode(',', $applieddept) . ");";
+    $search = $conn->query($sql);
+    // while ($row = $search->fetch_assoc()) {
+    //     echo $row["name"] . "<br>";
+    // }
+
     while ($row = $search->fetch_array(MYSQLI_NUM)) {
         if ($row[1] != null) {
             $mail->addAddress($row[1]);

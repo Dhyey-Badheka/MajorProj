@@ -132,7 +132,7 @@
                     </li>
                 <?php endif ?>
                 <li class="tooltip-element" data-tooltip="2">
-                    <a href="#" data-active="6">
+                    <a href="../admin/settings.php" data-active="6">
                         <div class="icon">
                             <box-icon name='cog' type='solid' color='#FF9600'></box-icon>
                         </div>
