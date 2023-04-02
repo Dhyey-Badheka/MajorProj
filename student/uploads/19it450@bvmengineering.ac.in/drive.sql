@@ -44,7 +44,7 @@ CREATE TABLE `drive` (
   `cpicriteria` decimal(4,2) DEFAULT NULL,
   `spicriteria` decimal(4,2) DEFAULT NULL,
   `active_backlog` int(10) DEFAULT NULL,
-  `dead_backlog` int(10) DEFAULT NULL,
+  `total_backlog` int(10) DEFAULT NULL,
   `dept_eligible` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`dept_eligible`)),
   `pdfdoc` varchar(10) DEFAULT NULL,
   `no_of_job_role` int(10) DEFAULT NULL,

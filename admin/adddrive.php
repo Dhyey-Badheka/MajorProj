@@ -69,7 +69,7 @@ if (isset($_POST["add-drive"])) {
         }
     }
     $deptEligible = json_encode($deptEligible);
-    $query = "INSERT INTO drive (`comp_id`, `deadline`, `salary`, `location`, `description`, `skillsreq`, `bond`, `stipend`, `willprovideinternship`, `internship_duration`, `ssccriteria`, `hsccriteria`, `cpicriteria`, `spicriteria`, `active_backlog`, `dead_backlog`, `dept_eligible`, `pdfdoc`, `no_of_job_role`, `job_role`, `applied_stu`, `inProcess`) VALUES
+    $query = "INSERT INTO drive (`comp_id`, `deadline`, `salary`, `location`, `description`, `skillsreq`, `bond`, `stipend`, `willprovideinternship`, `internship_duration`, `ssccriteria`, `hsccriteria`, `cpicriteria`, `spicriteria`, `active_backlog`, `total_backlog`, `dept_eligible`, `pdfdoc`, `no_of_job_role`, `job_role`, `applied_stu`, `inProcess`) VALUES
         ('$comp_id', '$deadline', '$salary','$location', '$desc', '$skills', '$bond', '$stipend', '$will_provide_intern','$intern_duration','$sscc','$hscc','$cpic', '$spic', '$abc', '$dbc','$deptEligible','$fileName','$no_of_role','$job_role','[]','1');";
     // echo $query;
     $update = $conn->query($query);

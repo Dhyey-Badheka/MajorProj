@@ -66,7 +66,7 @@ if (isset($_GET["updateid"]) || isset($_POST["id"])) {
         $cpic = $row["cpicriteria"];
         $spic = $row["spicriteria"];
         $abc = $row["active_backlog"];
-        $dbc = $row["dead_backlog"];
+        $dbc = $row["total_backlog"];
         $doc = $row["pdfdoc"];
         $inProcess = $row["inProcess"];
         $no_of_role = $row["no_of_job_role"];
@@ -93,7 +93,7 @@ if (isset($_POST["update-drive"])) {
     $cpic = $_POST["cpicriteria"];
     $spic = $_POST["spicriteria"];
     $abc = $_POST["active_backlog"];
-    $dbc = $_POST["dead_backlog"];
+    $dbc = $_POST["total_backlog"];
     $no_of_role = $_POST["no_of_job_role"];
     $deptEligible = array();
     $targetDir = "uploads/";
@@ -256,7 +256,7 @@ if (isset($_POST["update-drive"])) {
                                                                         <p class="m-b-5 f-w-600">Active Backlogs</p><input type="number" class="m-b-5 form-control" name="active_backlog" id="" value="<?php echo $abc ?>">
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <p class="m-b-5 f-w-600">Dead Backlogs</p><input type="number" class="m-b-5 form-control" name="dead_backlog" id="" value="<?php echo $dbc ?>">
+                                                                        <p class="m-b-5 f-w-600">Dead Backlogs</p><input type="number" class="m-b-5 form-control" name="total_backlog" id="" value="<?php echo $dbc ?>">
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <p class="m-b-5 f-w-600">No. of Openings</p><input type="number" class="m-b-5 form-control" name="no_of_job_role" id="" value="<?php echo $no_of_role ?>">

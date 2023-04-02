@@ -23,7 +23,7 @@ $drive = "CREATE TABLE IF NOT EXISTS drive(
     cpicriteria decimal(4,2),
     spicriteria decimal(4,2),
     active_backlog int(10),
-    dead_backlog int(10),
+    total_backlog int(10),
     dept_eligible json,
     pdfdoc varchar(10) 
     no_of_job_role int(10),

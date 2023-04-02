@@ -49,6 +49,9 @@ a {
 
 li {
 	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: start;
 }
 /* NAVBAR STYLING STARTS */
 

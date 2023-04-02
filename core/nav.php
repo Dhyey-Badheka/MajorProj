@@ -45,8 +45,8 @@ if (!isset($_GET["code"])) {
 
                 <li><a href="index.php">Home</a></li>
                 <li><a href="#">Team</a></li>
-                <li><a href="/tpc-main/student/index.php">Announcements</a></li>
-                <li><a href="/tpc-main/student/results.php">Results</a></li>
+                <li><a href="/tpc-main/announcements.php">Announcements</a></li>
+                <li><a href="/tpc-main/results.php">Results</a></li>
                 <!-- <li><a href="login.php" class="login">Login</a></li> -->
                 <li><a href="<?php echo $client->createAuthUrl(); ?>"><input type="button" name="login" class="login-with-google-btn" value="Login" /></a></li>
             </div>

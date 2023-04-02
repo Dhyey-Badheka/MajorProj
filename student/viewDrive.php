@@ -3,11 +3,13 @@
 $reqFor = "regis";
 include("../database.php");
 include("./helper/authorization.php");
+include("./applyDrive.php");
 $query = "SELECT * FROM student WHERE pemail = '$adminUserEmail' AND oauth_uid='$adminUserAuth' and is_registered='1' and is_approved='1'";
 $check_result = $conn->query($query);
 $row = $check_result->fetch_assoc();
 $name = $row["first_name"] . " " . $row["last_name"];
 $dept = $row["dept_id"];
+$id_number = $row["id_number"];
 
 
 
@@ -38,7 +40,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
         $cpic = $row["cpicriteria"];
         $spic = $row["spicriteria"];
         $abc = $row["active_backlog"];
-        $dbc = $row["dead_backlog"];
+        $dbc = $row["total_backlog"];
         $doc = $row["pdfdoc"];
         $inProcess = $row["inProcess"];
         $no_of_role = $row["no_of_job_role"];
@@ -80,6 +82,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                         <h6 class="m-b-20 p-b-5 b-b-default f-w-600">View Drive</h6>
 
                                         <input type="text" name="id" value="<?php echo $id ?>" hidden>
+                                        <input type="text" name="id" value="<?php echo $id_number ?>" hidden>
                                         <input type="text" name="inProcess" value="<?php echo $inProcess ?>" hidden>
                                         <div class="card user-card-full">
                                             <div class="row m-l-0 m-r-0">
@@ -215,12 +218,20 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
 
                                                             <div class=" col-sm-6">
                                                                 <p class="m-b-5 f-w-600">Attached PDF('s)</p>
-                                                                <a href="http://localhost/tpc-main/admin/uploads/<?php echo $doc; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                <a href="http://localhost/tpc-main/admin/uploads/<?php echo $doc; ?>"><button class="text-center btn btn-success" target="_blank" rel="noopener noreferrer">View</button></a>
                                                             </div>
                                                             <span id="eligible">
-                                                                <p>You are eligible for this drive</p>
-                                                                <button class="btn btn-success">Apply with Primary Resume</button>
-                                                                <button class="btn btn-danger">Apply with Secondary Resume</button>
+                                                                <?php if (checkEligiblity($id, $id_number) == 1) : ?>
+                                                                    <p style="color:green">You are eligible for this drive</p>
+                                                                    <?php if (checkApplied($id, $id_number) == 1) : ?>
+                                                                        <p style="color:blue">You have already applied for this drive</p>
+                                                                    <?php else : ?>
+                                                                        <a href="./applyDrive.php?drive_id=<?php echo $id ?>&stu_id=<?php echo $id_number ?>&resumeType=1" class=" btn text-white btn-warning btn-sm">Apply with Primary Resume</a>
+                                                                        <a href="./applyDrive.php?drive_id=<?php echo $id ?>&stu_id=<?php echo $id_number ?>&resumeType=2" class=" btn text-white btn-warning btn-sm">Apply with Secondary Resume</a>
+                                                                    <?php endif ?>
+                                                                <?php else : ?>
+                                                                    <p style="color:red"></p>You are not eligible for this drive</p>
+                                                                <?php endif ?>
                                                             </span>
                                                         </div>
                                                     </div>

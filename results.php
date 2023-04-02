@@ -8,6 +8,8 @@ include("./database.php");
 
 <head>
     <?php require_once("./core/header.php")    ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="/student/helper/index.js"></script>
     <link rel="stylesheet" href="./css/announcements.css">
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -35,25 +37,27 @@ include("./database.php");
 <body>
     <?php require_once("./core/nav.php") ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="/student/helper/index.js"></script>
     <main>
         <section class="column-list pr-lg-1 " id="one-column-list">
             <!-- <div class="container"> -->
             <div class="row">
                 <div class="col-lg-12">
                     <section aria-label="Announcements" class="announcements">
-                        <h2 class="font-weight-bold border-bottom pb-3 mt-1 mb-0 ">Announcements</h2>
+                        <h2 class="font-weight-bold border-bottom pb-3 mt-1 mb-0 ">Results</h2>
                         <div class="announcement-slider border-r-xs-0 border-r position-relative">
                             <div>
                                 <?php
-                                $search = $conn->query("SELECT * FROM  `announcement`");
+                                $search = $conn->query("SELECT * FROM  `result`");
                                 while ($row = $search->fetch_assoc()) {
                                 ?>
-                                    <ul class="nolist list-unstyled position-relative mb-0 px-lg-5">
-                                        <li class="border-bottom pb-3 mt-3">
+                                    <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-3">
+                                        <li class="border-bottom pb-3">
                                             <span class="meta text-uppercase"><?php echo $row["posted_on"] ?></span>
-                                            <h3 class="font-weight-bold mt-0">
-                                                <?php echo $row["title"] ?>
+                                            <div style="margin-left:1200px">
+                                                <a href="viewresult.php?ViewId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-success float-right display:block">View</button></a>
+                                            </div>
+                                            <h3 class="font-weight-bold" style="margin-top:-25px;margin-right:200px">
+                                                <?php echo $row["heading"] ?>
                                             </h3>
                                             <p class="m-0 post_intro bl"> <?php echo $row["description"] ?> </p>
                                         </li>
@@ -61,19 +65,12 @@ include("./database.php");
                                     </ul>
                                 <?php } ?>
                             </div>
-
                         </div>
                     </section>
                 </div>
+            </div>
         </section>
-        </div>
-        </div>
-        </div>
-        </section>
-
-    </main>
-
-    <?php require_once("./core/footer.php") ?>
+        <?php require_once("./core/footer.php") ?>
 </body>
 
 </html>

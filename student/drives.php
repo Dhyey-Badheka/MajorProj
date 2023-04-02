@@ -41,15 +41,15 @@ $id_number = $row["id_number"];
             $applied_stu = $row["applied_stu"];
             $drive_id = $row["drive_id"];
             $applied_stu = json_decode($applied_stu, true);
-            $sql = "select comp_name,job_role,deadline from drive,company where '$id_number' in ('" . implode('\',\'', $applied_stu)  . "') and drive_id='$drive_id' and company.comp_id=drive.comp_id";
+            $sql = "select comp_name,job_role,timestamp from drive,company,stu_drive where '$id_number' in ('" . implode('\',\'', $applied_stu)  . "') and drive.drive_id='$drive_id' and company.comp_id=drive.comp_id and stu_drive.stu_email_id='$adminUserEmail' and stu_drive.drive_id='$drive_id'";
             // echo "<br>" . $sql . "<br>";
             $search1 = $conn->query($sql);
-            $row1 = $search1->fetch_assoc();
-            if ($search1->num_rows == 1) {
+            if ($search1 != null && $search1->num_rows == 1) {
+                $row1 = $search1->fetch_assoc();
         ?>
                 <div class="p-5 bg-light" style="margin-top: 30px;">
                     <h3 class="mb-3 he"><?php echo $row1["comp_name"] . " - " . $row1["job_role"]; ?></h3>
-                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 23/10/2022</p>
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $row1["timestamp"] ?></p>
                     <span>Application Submitted to admin</span>
                 </div>
         <?php }

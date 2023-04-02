@@ -33,7 +33,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
         $cpic = $row["cpicriteria"];
         $spic = $row["spicriteria"];
         $abc = $row["active_backlog"];
-        $dbc = $row["dead_backlog"];
+        $dbc = $row["total_backlog"];
         $doc = $row["pdfdoc"];
         $inProcess = $row["inProcess"];
         $no_of_role = $row["no_of_job_role"];

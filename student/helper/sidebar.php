@@ -86,9 +86,9 @@ if ($check_result->num_rows == 1) {
         </ul>
     </div>
     <div class="sidebar-footer">
-        <a href="#" class="account tooltip-element" data-tooltip="0">
+        <!-- <a href="#" class="account tooltip-element" data-tooltip="0">
             <i class='bx bx-user'></i>
-        </a>
+        </a> -->
         <div class="admin-user tooltip-element" data-tooltip="1">
             <div class="admin-profile">
                 <?php if ($check_result->num_rows == 1) { ?>
@@ -98,8 +98,8 @@ if ($check_result->num_rows == 1) {
                     </div>
                 <?php } ?>
             </div>
-            <a href="#" class="log-out">
-                <box-icon name='log-out' color='#ff9600'></box-icon>
+            <a href="../../tpc-main/logout.php" class="log-out">
+                <i class='bx bx-log-out'></i>
             </a>
         </div>
         <div class="tooltip">
