@@ -4,10 +4,10 @@
             <h3>Connect with us</h3>
             <p>
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                4th Floor,B-Block,
-                Birla Vishvakarma Mahavidyalaya,
-                Vallabh Vidyanagar,Anand,
-                Gujarat 388120, India
+                4th Floor,B-Block,<br>
+                Birla Vishvakarma Mahavidyalaya,<br>
+                Vallabh Vidyanagar,Anand,<br>
+                Gujarat 388120, India<br>
             </p>
             <div class="social">
                 <i class="fa fa-linkedin-square"></i>
@@ -17,10 +17,10 @@
 
         <div class="column contact">
             <h3>Contact Us</h3>
-            Phone:
-            Prof. Mehul Patel
-            +91 99789 97088
-            Email:
+            Phone:<br>
+            Prof. Mehul Patel<br>
+            +91 99789 97088<br>
+            Email:<br>
             placement@bvmengineering.ac.in
         </div>
 

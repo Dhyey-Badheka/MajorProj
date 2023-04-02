@@ -59,13 +59,23 @@
                         <span class="link hide">Drives</span>
                     </a>
                 </li>
-                <?php if ($access == 1) : ?>
+                <!-- <?php if ($access == 1) : ?>
                     <li class="tooltip-element" data-tooltip="2">
                         <a href="../admin/requests.php" data-active="2">
                             <div class="icon">
                                 <box-icon name='git-pull-request' type='solid' color='#FF9600'></box-icon>
                             </div>
                             <span class="link hide">Requests</span>
+                        </a>
+                    </li>
+                <?php endif ?> -->
+                <?php if ($access == 1) : ?>
+                    <li class="tooltip-element" data-tooltip="3">
+                        <a href="../admin/company.php" data-active="3">
+                            <div class="icon">
+                                <box-icon type='solid' name='user-badge' color='#FF9600'></box-icon>
+                            </div>
+                            <span class="link hide">Company</span>
                         </a>
                     </li>
                 <?php endif ?>
@@ -111,6 +121,16 @@
                         </a>
                     </li>
                 <?php endif ?>
+                <?php if ($access == 1) : ?>
+                    <li class="tooltip-element" data-tooltip="1">
+                        <a href="../admin/tpo.php" data-active="1">
+                            <div class="icon">
+                                <box-icon type='solid' name='user-badge' color='#FF9600'></box-icon>
+                            </div>
+                            <span class="link hide">TPO</span>
+                        </a>
+                    </li>
+                <?php endif ?>
                 <?php if ($access == 1 || $access == 2) : ?>
                     <li class="tooltip-element" data-tooltip="1">
                         <a href="../admin/tpc.php" data-active="1">
@@ -121,24 +141,15 @@
                         </a>
                     </li>
                 <?php endif ?>
-                <?php if ($access == 1) : ?>
-                    <li class="tooltip-element" data-tooltip="3">
-                        <a href="../admin/company.php" data-active="3">
-                            <div class="icon">
-                                <box-icon type='solid' name='user-badge' color='#FF9600'></box-icon>
-                            </div>
-                            <span class="link hide">Company</span>
-                        </a>
-                    </li>
-                <?php endif ?>
-                <li class="tooltip-element" data-tooltip="2">
+
+                <!-- <li class="tooltip-element" data-tooltip="2">
                     <a href="../admin/settings.php" data-active="6">
                         <div class="icon">
                             <box-icon name='cog' type='solid' color='#FF9600'></box-icon>
                         </div>
                         <span class="link hide">Settings</span>
                     </a>
-                </li>
+                </li> -->
 
 
             </ul>

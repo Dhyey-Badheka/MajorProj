@@ -37,9 +37,9 @@ if ($access == 2 || $access == 3) {
                 <div class="row">
                     <div class="col-lg-10 pr-0">
                         <section aria-label="Announcements" class="announcements">
-                            <?php if ($access == 1) : ?>
+                            <!-- <?php if ($access == 1) : ?>
                                 <a href="addresult.php"> <button type="button" class="btn btn-primary" style="float:right">Add</button></a>
-                            <?php endif ?>
+                            <?php endif ?> -->
                             <h2 class="font-weight-bold border-bottom pb-3 mt-3 mb-0 pr-5">Results</h2>
 
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">

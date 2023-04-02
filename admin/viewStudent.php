@@ -13,10 +13,10 @@ $addFailure = 0;
 $id = $_GET["id"];
 if (isset($_POST["approval"])) {
     if ($_POST["approval"] == "Approve") {
-        $query = "update student set active=1 where comp_id='$id';";
+        $query = "update student set is_approved='1' where id_number=lower('$id');";
         $update = $conn->query($query);
     } else if ($_POST["approval"] == "Reject") {
-        $query = "update student set active=2 where comp_id='$id';";
+        $query = "update student set is_approved='2' where id_number=lower('$id');";
         $update = $conn->query($query);
     }
     // $update = $conn->query("update table `result` set `active`=1 where comp_id='$id');");
@@ -39,7 +39,7 @@ if (isset($_POST["approval"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <?php if ($addSuccess == 1 || $addFailure == 1) : ?>
-        <meta http-equiv="refresh" content="2;url=http://localhost/tpc-main/admin/company.php" />
+        <meta http-equiv="refresh" content="2;url=http://localhost/tpc-main/admin/student.php" />
     <?php endif ?>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -74,7 +74,7 @@ if (isset($_POST["approval"])) {
                                         <div class="col-sm-4 bg-c-lite-green user-profile">
                                             <div class="card-block text-center text-white">
                                                 <div class="m-b-25">
-                                                    <img src='http://localhost/tpc-main/admin/uploads/<?php echo $row["photo"]; ?>' class="img-radius" alt="User-Profile-Image">
+                                                    <img src='http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["photo"]; ?>' class="img-radius" alt="User-Profile-Image">
                                                 </div>
                                                 <p>
                                                     <?php if ($row["is_approved"] == 0) {
@@ -398,22 +398,22 @@ if (isset($_POST["approval"])) {
                                                 <div class="row m-b-20">
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">SSC Marksheet</p>
-                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["ssc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                        <a href="http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["ssc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HSC Marksheet</p>
-                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["hsc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                        <a href="http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["hsc_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">D2D Marksheet</p>
-                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["d2d_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                        <a href="http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["d2d_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <p class="m-b-5 f-w-600">BVM Marksheet</p><a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["bvm_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                        <p class="m-b-5 f-w-600">BVM Marksheet</p><a href="http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["bvm_marksheet"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">Resume</p>
-                                                        <a href="http://localhost/tpc-main/admin/uploads/<?php echo $row["resume"]; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                        <a href="http://localhost/tpc-main/student/uploads/<?php echo $row["pemail"] . "/" . $row["resume"]; ?>"><button class="text-center btn btn-success">View</button></a>
                                                     </div>
                                                 </div>
 

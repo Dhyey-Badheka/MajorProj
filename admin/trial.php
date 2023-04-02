@@ -57,17 +57,22 @@ if ($conn->connect_error) {
 // }
 
 
-$sql = "select applied_stu from drive where drive_id=1";
-$search = $conn->query($sql);
+$query = "SELECT * FROM `drive` , `company` where drive.comp_id=company.comp_id;";
+$search = $conn->query($query);
 $row = $search->fetch_assoc();
 $applied_stu = $row["applied_stu"];
-// var_dump($applied_stu);
+$drive_id = $row["drive_id"];
+var_dump($applied_stu);
+var_dump($drive_id);
 // $applied_stu = str_replace('"', '', $applied_stu);
 $applied_stu = json_decode($applied_stu, true);
-// var_dump($applied_stu);
-$sql = "select * from student where LOWER(id_number) in ('" . implode('\',\'', $applied_stu)  . "');";
+var_dump($applied_stu);
+// echo implode('\',\'', $applied_stu);
+// $sql = "select * from drive,company where LOWER(id_number) in ('" . implode('\',\'', $applied_stu)  . "');";         
+// $sql = "select * from student,drive,company where '19it450' in ('19it450','19cp015') and drive_id='1' and company.comp_id=drive.comp_id;";
+$sql = "select * from student,drive,company where '19it450' in ('" . implode('\',\'', $applied_stu)  . "') and drive_id='$drive_id' and company.comp_id=drive.comp_id";
 echo "<br>" . $sql . "<br>";
-$search = $conn->query($sql);
-while ($row = $search->fetch_assoc()) {
-    echo $row["first_name"] . $row["pemail"] . "<br>";
+$search1 = $conn->query($sql);
+while ($row1 = $search1->fetch_assoc()) {
+    echo $row1["comp_name"] . $row1["job_role"] . "<br>";
 }

@@ -40,7 +40,8 @@ if (isset($_POST["searchTpc"])) {
 if (isset($_POST["addTpc"])) {
     $id = $_POST["id"];
     $email = $_POST["email"];
-    $password = base64_encode(strrev(md5($pass)));
+    $oauth_uid = $_POST["oauth_uid"];
+    // $password = base64_encode(strrev(md5($pass)));
     $dept = $_POST["dept"];
     $acaYear = $_POST["acaYear"];
     $mobile = $_POST["mobile"];
@@ -49,8 +50,9 @@ if (isset($_POST["addTpc"])) {
     $name = $fname . ' ' . $lname;
     // var_dump($password);
     // var_dump($_POST);
-
-    $insert = $conn->query("INSERT INTO `tpc`(`tpc_id`, `tpc_name`, `tpc_email`, `tpc_mobile`, `tpc_password`, `tpc_dept_id`, `academic_year`) VALUES ('$id','$name','$email','$mobile','$password','$dept','$acaYear')");
+    $query = "INSERT INTO `tpc`(`tpc_id`, `oauth_uid`, `tpc_name`, `tpc_email`,  `tpc_mobile`, `tpc_dept_id`, `tpc_is_approved`, `academic_year`, `isActive`) VALUES ('$id','$oauth_uid','$name','$email','$mobile','$dept','1','$acaYear','1')";
+    // echo $query;
+    $insert = $conn->query($query);
     if ($conn->affected_rows) {
         $regisTpcSuccess = 1;
     } else {
@@ -166,9 +168,10 @@ if (isset($_POST["addTpc"])) {
                                                         <input type="text" hidden name="fname" value="<?php echo $row["first_name"] ?>">
                                                         <input type="text" hidden name="lname" value="<?php echo $row["last_name"] ?>">
                                                         <input type="text" hidden name="email" value="<?php echo $row["pemail"] ?>">
+                                                        <input type="text" hidden name="oauth_uid" value="<?php echo $row["oauth_uid"] ?>">
                                                         <input type="text" hidden name="mobile" value="<?php echo $row["mobile"] ?>">
                                                         <input type="text" hidden name="dept" value="<?php echo $row["dept_id"] ?>">
-                                                        <input type="text" hidden name="acaYear" value="<?php echo $row["academic_year"] ?>">
+                                                        <input type="text" hidden name="acaYear" value="<?php echo $row["bvm_passing_year"] ?>">
                                                         <input type="submit" value="Add TPC" name="addTpc" class="text-center btn btn-success m-5" />
                                                     </td>
                                                     <!-- <td><input type="button" value="Delete Row" onclick="deleteRows()" class="text-center btn btn-danger m-5" /></td> -->

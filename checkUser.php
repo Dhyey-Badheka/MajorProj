@@ -5,34 +5,34 @@ require 'vendor/autoload.php';
 require 'login.php';
 // include("./helper/authorization.php");
 
-echo "hello";
+// echo "hello";
 if (isset($_GET['code'])) {
-    echo "<br>got code";
-    echo "<br>got get var<br>";
+    // echo "<br>got code";
+    // echo "<br>got get var<br>";
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-    echo "<br>got token<br>";
+    // echo "<br>got token<br>";
     if (!isset($token["error"])) {
-        echo "<br>got no error<br>";
+        // echo "<br>got no error<br>";
         $client->setAccessToken($token['access_token']);
         $google_oauth = new Google_Service_Oauth2($client);
         $google_account_info = $google_oauth->userinfo->get();
         $id = mysqli_real_escape_string($conn, $google_account_info->id);
         $email = mysqli_real_escape_string($conn, $google_account_info->email);
-        echo "<br>email" . $email;
-        echo "<br>id" . $id;
+        // echo "<br>email" . $email;
+        // echo "<br>id" . $id;
         if (preg_match('/@bvmengineering.ac.in$/', $email)) {
-            echo "<br>email of bvmen<br>";
+            // echo "<br>email of bvmen<br>";
         } else {
             echo '<script> alert("Please Login from Email Address with bvmengineeing.ac.in !! ") </script>';
-            echo '<script> window.location.href="./login.php" </script>';
+            echo '<script> window.location.href="./index.php" </script>';
         }
     } else {
-        header('Location: login.php');
+        header('Location: index.php');
         echo "Some error occured";
         // exit;
     }
 } else {
-    header('Location: login.php');
+    header('Location: index.php');
     echo "Code not found";
     // exit;
 }

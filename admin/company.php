@@ -59,6 +59,9 @@ if ($access != 1) {
                     <li class="nav-item">
                         <a href="#" class="nav-link font-regular">Pending</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link font-regular">Completed</a>
+                    </li>
                 </ul>
             </div>
         </div>

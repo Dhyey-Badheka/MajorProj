@@ -1,3 +1,14 @@
+<?php
+$reqFor = "regis";
+$query = "SELECT *,student_document.photo FROM student,student_document WHERE pemail = '$adminUserEmail' AND oauth_uid='$adminUserAuth' and is_registered='1' and is_approved='1' and student.id_number=student_document.s_id";
+$check_result = $conn->query($query);
+if ($check_result->num_rows == 1) {
+    $row = $check_result->fetch_assoc();
+    $name = $row["first_name"] . " " . $row["last_name"];
+    $logo = $row["photo"];
+}
+
+?>
 <nav>
     <div class="sidebar-top">
         <span class="shrink-btn">
@@ -31,7 +42,7 @@
                     <div class="icon">
                         <box-icon name='buildings' type='solid' color='#FF9600'></box-icon>
                     </div>
-                    <span class="link hide si">Upcoming Companies</span>
+                    <span class="link hide si">All Drives</span>
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="3">
@@ -39,14 +50,14 @@
                     <div class="icon">
                         <box-icon type='solid' name='plane-take-off' color='#FF9600'></box-icon>
                     </div>
-                    <span class="link hide si">Current Drives</span>
+                    <span class="link hide si">Applied Drives</span>
                 </a>
             </li>
             <div class="tooltip">
                 <span>Announcements</span>
                 <span>Results</span>
-                <span>Upcoming Companies</span>
-                <span>Current Drives</span>
+                <span>All Drives</span>
+                <span>Applied Drives</span>
             </div>
         </ul>
         <h4 class="hide">Shortcuts</h4>
@@ -60,26 +71,17 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="1">
-                <a href="viewStudent.php" data-active="5">
+                <a href="updateProfile.php?id=<?php echo $adminUserEmail ?>" data-active="5">
                     <div class="icon">
                         <box-icon name='street-view' color='#FF9600' type='solid' color='#FF9600'></box-icon>
                     </div>
                     <span class="link hide si">Profile</span>
                 </a>
             </li>
-            <li class="tooltip-element" data-tooltip="2">
-                <a href="settings.php" data-active="6">
-                    <div class="icon">
-                        <box-icon name='cog' type='solid' color='#FF9600'></box-icon>
 
-                    </div>
-                    <span class="link hide si">Settings</span>
-                </a>
-            </li>
             <div class="tooltip">
                 <span class="show">Resume</span>
                 <span>Profile</span>
-                <span>Settings</span>
             </div>
         </ul>
     </div>
@@ -88,16 +90,16 @@
             <i class='bx bx-user'></i>
         </a>
         <div class="admin-user tooltip-element" data-tooltip="1">
-            <div class="admin-profile hide">
-                <img src="../../tpc/images/logo.png" alt="">
-                <div class="admin-info">
-                    <h3>Student</h3>
-                </div>
+            <div class="admin-profile">
+                <?php if ($check_result->num_rows == 1) { ?>
+                    <img src="http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail ?>/<?php echo $logo; ?>" alt="">
+                    <div class=" admin-info">
+                        <h3><?php echo $name ?></h3>
+                    </div>
+                <?php } ?>
             </div>
             <a href="#" class="log-out">
                 <box-icon name='log-out' color='#ff9600'></box-icon>
-
-
             </a>
         </div>
         <div class="tooltip">

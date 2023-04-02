@@ -136,8 +136,7 @@ if (isset($_POST["approval"])) {
                                                 <div class="row m-b-20">
                                                     <div class="col-sm-12">
                                                         <p class="m-b-5 f-w-600">Description</p>
-                                                        <a href="<?php echo $row["comp_url"]; ?>" class="text-reset">
-                                                            <h6 class="text-muted f-w-400"><?php echo $row["company_description"]; ?></h6>
+                                                        <h6 class="text-muted f-w-400"><?php echo $row["company_description"]; ?></h6>
                                                         </a>
                                                     </div>
                                                 </div>

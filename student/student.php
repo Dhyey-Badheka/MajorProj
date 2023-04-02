@@ -1,3 +1,13 @@
+<?php
+
+$reqFor = "regis";
+include("../database.php");
+include("./helper/authorization.php");
+
+// Session
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

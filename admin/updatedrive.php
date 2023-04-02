@@ -36,7 +36,7 @@ if (isset($_GET["deleteid"])) {
     $delete = $conn->query("DELETE FROM drive WHERE drive_id = '$id'");
     if ($conn->affected_rows) {
         echo "<script>
-    window.location.href = 'http://localhost/tpc-main/admin/viewDrive.php';
+    window.location.href = 'http://localhost/tpc-main/admin/drives.php';
 </script>";
     }
 }

@@ -1,3 +1,18 @@
+<?php
+
+$reqFor = "regis";
+include("../database.php");
+include("./helper/authorization.php");
+$query = "SELECT * FROM student WHERE pemail = '$adminUserEmail' AND oauth_uid='$adminUserAuth' and is_registered='1' and is_approved='1'";
+$check_result = $conn->query($query);
+$row = $check_result->fetch_assoc();
+$name = $row["first_name"] . " " . $row["last_name"];
+$dept = $row["dept_id"];
+
+// Session
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,193 +20,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./helper/company.css">
+    <link rel="stylesheet" href="./helper/index.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <title>Students</title>
+    <title>Drives</title>
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="/student/helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
-        <h1>Welcome Student,</h1>
+        <div class="container-fluid">
+            <div class="mb-npx">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                        <!-- Title -->
+                        <h1>Welcome <?php echo $name ?>,</h1>
+                    </div>
+                    <!-- Actions -->
+                    <div class="col-sm-6 col-12 text-sm-end">
+                        <div class="mx-n1">
+                        </div>
+                    </div>
+                </div>
 
-        <div class="p-5 bg-light" style="margin-top: 30px; overflow-y: scroll; height:350px;">
-            <h1 class="mb-3 he">Tata Consultancy Services</h1>
-            <img src="http://localhost/tpc-main/images/logo.png" class="float-end img-thumbnail " alt="..." style="height:200px;width:200px">
-            <h3 class="mb-3 ur">www.tcs.com</h3>
-            <h4 class="mb-3 jr">System Engineer</h4>
-            <p>Location : <span>Gandhinagar</span></p>
-            <p>Salary: <span>7,00,022</span></p>
-            <p>Job Description:
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
-                    Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam
-                    Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
-                    Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?
-                </span>
-            </p>
-            <p>No of Vacancies: <span>Approx 3</span></p>
-            <p>Bond: <span>1 year</span></p>
-            <p>Will Provide Internship:<span> Yes </span></p>
-            <p>Minimum Qualification:
-                <span>
-                    <ol>
-                        <li>No Backlog</li>
-                        <li>Atleast 6 SPI throughout all Semester</li>
-                        <li>B.E./B.TECH. equivalent degree</li>
-                        <li>IT/CP/EC/EL</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Skills Required:
-                <span>
-                    <ol>
-                        <li>Java And/Or Python(Programing Language)</li>
-                        <li>HTML,CSS,JS</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Download the attached PDF: </p>
-            <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
-            <p><span id="eligible">You are eligible for this drive
-                    <button class="btn btn-success">Apply with Primary Resume</button>
-                    <button class="btn btn-danger">Apply with Secondary Resume</button></span>
-            </p>
+                <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">Active</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link font-regular">All Drives</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link font-regular">Completed</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+        <?php
+        $search = $conn->query("SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
+        while ($row = $search->fetch_assoc()) {
+        ?>
+            <div class="row">
+                <!-- Total Students -->
+                <div class="col-xl-12 col-sm-12 col-12">
+                    <div class="card shadow border-0 my-2 card-width-full">
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h2 font-bold d-block mb-2"><?php
+                                                                            $comp_id = $row["comp_id"];
+                                                                            $search1 = $conn->query("SELECT comp_name FROM  `company` WHERE comp_id='$comp_id'");
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            echo $row1["comp_name"] ?></p></span>
+                                    <span class="h5 font-semibold mb-0"><?php echo $row["job_role"] ?></span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="text-white text-lg rounded-circle">
+                                        <?php
+                                        $comp_id = $row["comp_id"];
+                                        $search2 = $conn->query("SELECT comp_logo FROM  `company` WHERE comp_id='$comp_id'");
+                                        $row2 = $search2->fetch_assoc();
+                                        $comp_logo = $row2["comp_logo"];
+                                        echo '<img src="http://localhost/tpc-main/admin/uploads/' . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-0 text-m">
+                                    <span>
 
+                                        <a href="viewDrive.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-primary btn-sm">View</a>
+                                    </span>
 
-
-
-        <div class="p-5 bg-light" style="margin-top: 30px; overflow-y: scroll; height:350px;">
-            <h1 class="mb-3 he">Tata Consultancy Services</h1>
-            <img src="http://localhost/tpc-main/images/logo.png" class="float-end img-thumbnail " alt="..." style="height:200px;width:200px">
-            <h3 class="mb-3 ur">www.tcs.com</h3>
-            <h4 class="mb-3 jr">System Engineer</h4>
-            <p>Location : <span>Gandhinagar</span></p>
-            <p>Salary: <span>7,00,022</span></p>
-            <p>Job Description:
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
-                    Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam
-                    Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
-                    Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?
-                </span>
-            </p>
-            <p>No of Vacancies: <span>Approx 3</span></p>
-            <p>Bond: <span>1 year</span></p>
-            <p>Will Provide Internship:<span> Yes </span></p>
-            <p>Minimum Qualification:
-                <span>
-                    <ol>
-                        <li>No Backlog</li>
-                        <li>Atleast 6 SPI throughout all Semester</li>
-                        <li>B.E./B.TECH. equivalent degree</li>
-                        <li>IT/CP/EC/EL</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Skills Required:
-                <span>
-                    <ol>
-                        <li>Java And/Or Python(Programing Language)</li>
-                        <li>HTML,CSS,JS</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Download the attached PDF: </p>
-            <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
-            <p><span id="ineligible">You are not eligible for this drive
-                    <button class="btn btn-success">Apply with Primary Resume</button>
-                    <button class="btn btn-danger">Apply with Secondary Resume</button></span>
-            </p>
-        </div>
-
-
-        <div class="p-5 bg-light" style="margin-top: 30px; overflow-y: scroll; height:350px;">
-            <h1 class="mb-3 he">Tata Consultancy Services</h1>
-            <img src="http://localhost/tpc-main/images/logo.png" class="float-end img-thumbnail " alt="..." style="height:200px;width:200px">
-            <h3 class="mb-3 ur">www.tcs.com</h3>
-            <h4 class="mb-3 jr">System Engineer</h4>
-            <p>Location : <span>Gandhinagar</span></p>
-            <p>Salary: <span>7,00,022</span></p>
-            <p>Job Description:
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
-                    Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam
-                    Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
-                    Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?
-                </span>
-            </p>
-            <p>No of Vacancies: <span>Approx 3</span></p>
-            <p>Bond: <span>1 year</span></p>
-            <p>Will Provide Internship:<span> Yes </span></p>
-            <p>Minimum Qualification:
-                <span>
-                    <ol>
-                        <li>No Backlog</li>
-                        <li>Atleast 6 SPI throughout all Semester</li>
-                        <li>B.E./B.TECH. equivalent degree</li>
-                        <li>IT/CP/EC/EL</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Skills Required:
-                <span>
-                    <ol>
-                        <li>Java And/Or Python(Programing Language)</li>
-                        <li>HTML,CSS,JS</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Download the attached PDF: </p>
-            <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
-        </div>
-
-
-        <div class="p-5 bg-light" style="margin-top: 30px; overflow-y: scroll; height:350px;">
-            <h1 class="mb-3 he">Tata Consultancy Services</h1>
-            <img src="http://localhost/tpc-main/images/logo.png" class="float-end img-thumbnail " alt="..." style="height:200px;width:200px">
-            <h3 class="mb-3 ur">www.tcs.com</h3>
-            <h4 class="mb-3 jr">System Engineer</h4>
-            <p>Location : <span>Gandhinagar</span></p>
-            <p>Salary: <span>7,00,022</span></p>
-            <p>Job Description:
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!
-                    Ad dolore dignissimos asperiores dicta facere optio quod commodi nam tempore recusandae. Rerum sed nulla eum vero expedita ex delectus voluptates rem at neque quos facere sequi unde optio aliquam
-                    Tenetur quod quidem in voluptatem corporis dolorum dicta sit pariatur porro quaerat autem ipsam odit quam beatae tempora quibusdam illum! Modi velit odio nam nulla unde amet odit pariatur at!
-                    Consequatur rerum amet fuga expedita sunt et tempora saepe? Iusto nihil explicabo perferendis quos provident delectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?
-                </span>
-            </p>
-            <p>No of Vacancies: <span>Approx 3</span></p>
-            <p>Bond: <span>1 year</span></p>
-            <p>Will Provide Internship:<span> Yes </span></p>
-            <p>Minimum Qualification:
-                <span>
-                    <ol>
-                        <li>No Backlog</li>
-                        <li>Atleast 6 SPI throughout all Semester</li>
-                        <li>B.E./B.TECH. equivalent degree</li>
-                        <li>IT/CP/EC/EL</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Skills Required:
-                <span>
-                    <ol>
-                        <li>Java And/Or Python(Programing Language)</li>
-                        <li>HTML,CSS,JS</li>
-                    </ol>
-                </span>
-            </p>
-            <p>Download the attached PDF: </p>
-            <span><a href="http://localhost/tpc-main/demopdf/1.pdf" target="_blank"><button class="btn btn-primary">Download</button></a></span>
-        </div>
-
-
-
+                                    <!-- Status -->
+                                    <?php if ($row["inProcess"] == 0) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-success'></i>Results out
+                                </span>";
+                                    } else if ($row["inProcess"] == 1) {
+                                        echo "<span class='badge badge-lg badge-dot'>
+                                    <i class='bg-warning'></i>In Process
+                                </span>";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
 
 
         <p class="copyright">

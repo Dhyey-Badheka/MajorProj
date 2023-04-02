@@ -19,7 +19,6 @@ if ($access == 2 || $access == 3) {
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
-
     <title>Drives</title>
 </head>
 
@@ -94,6 +93,14 @@ if ($access == 2 || $access == 3) {
                                         <a href="viewDrive.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-primary btn-sm">View</a>
                                         <?php if ($access == 1) : ?>
                                             <a href="collectdata.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-warning btn-sm">Collect Data</a>
+                                            <?php
+                                            if ($row["inProcess"] == 0) { ?>
+                                                <a href="viewresult.php?ViewId=<?php echo $row["drive_id"]; ?>" class="btn btn-success btn-sm">View Result</a>
+                                                <a href="updateresult.php?updateId=<?php echo $row["drive_id"]; ?>" class="btn btn-info btn-sm">Update Result</a>
+                                                <a href="updateresult.php?deleteId=<?php echo $row["drive_id"]; ?>" class="btn btn-danger btn-sm">Delete Result</a>
+                                            <?php } else { ?>
+                                                <a href="addresult.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-success btn-sm">Add Result</a>
+                                            <?php } ?>
                                             <a href="./updatedrive.php?updateid=<?php echo $row["drive_id"]; ?>" class="btn btn-square btn-sm btn-neutral text-warning-hover"><i class="bi bi-pencil"></i></a>
                                             <a href="./updatedrive.php?deleteid=<?php echo $row["drive_id"]; ?>" class="btn btn-square btn-sm btn-neutral btn-danger-hover"><i class="bi bi-trash"></i></a>
                                         <?php endif ?>
@@ -102,11 +109,11 @@ if ($access == 2 || $access == 3) {
                                     <!-- Status -->
                                     <?php if ($row["inProcess"] == 0) {
                                         echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-warning'></i>In Process
+                                    <i class='bg-success'></i>Results out
                                 </span>";
                                     } else if ($row["inProcess"] == 1) {
                                         echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-success'></i>Results out
+                                    <i class='bg-warning'></i>In Process
                                 </span>";
                                     }
                                     ?>

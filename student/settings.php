@@ -1,15 +1,13 @@
 <?php
 
+$reqFor = "regis";
 include("../database.php");
+include("./helper/authorization.php");
 
-// $id_number = $_GET["id"];
-
-
-
+// Session
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

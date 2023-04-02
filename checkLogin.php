@@ -94,16 +94,16 @@ if (isset($_SESSION["admin"])) {
 //         echo '<script> window.location.href="./login.php" </script>';
 //     }
 // }
-echo "hello";
+// echo "hello";
 if (isset($_POST['login'])) {
-    echo "<br>got login";
+    // echo "<br>got login";
     if (isset($_POST["code"])) {
-        echo "<br>got code var<br>";
+        // echo "<br>got code var<br>";
         // $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-        echo "<br>got token<br>";
+        // echo "<br>got token<br>";
 
         if (!isset($token["error"])) {
-            echo "<br>got no error<br>";
+            // echo "<br>got no error<br>";
 
             // $client->setAccessToken($token['access_token']);
             // $google_oauth = new Google_Service_Oauth2($client);
@@ -119,7 +119,7 @@ if (isset($_POST['login'])) {
             if ($typeOfUser == 3) {
                 $typeOfUser = $_POST["typeOfAdmin"];
             }
-            echo "<br>type" . $typeOfUser;
+            // echo "<br>type" . $typeOfUser;
 
             // Flow of data 
             // 1) check for the user in the respective table
@@ -136,13 +136,13 @@ if (isset($_POST['login'])) {
             $email = $_POST["email"];
             $id = $_POST["id"];
             if ($typeOfUser == 4) {
-                $check_query = "SELECT * FROM tpo WHERE tpo_email = '$email' AND `oauth_uid`='$id'";
+                $check_query = "SELECT * FROM tpo WHERE tpo_email = '$email' AND oauth_uid='$id'";
             } else if ($typeOfUser == 5) {
-                $check_query = "SELECT * FROM tpf WHERE tpf_email = '$email' AND `oauth_uid`='$id'";
+                $check_query = "SELECT * FROM tpf WHERE tpf_email = '$email' AND oauth_uid='$id'";
             } else if ($typeOfUser == 6) {
-                $check_query = "SELECT * FROM tpc WHERE tpc_email = '$email' AND `oauth_uid`='$id'";
+                $check_query = "SELECT * FROM tpc WHERE tpc_email = '$email' AND oauth_uid='$id'";
             } else if ($typeOfUser == 1) {
-                $check_query = "SELECT id_number FROM student WHERE `oauth_uid`='$id' and 'pemail'='$email'";
+                $check_query = "SELECT * FROM student WHERE oauth_uid='$id' and pemail='$email'";
             }
             // $check_query = "SELECT id_number FROM student WHERE `oauth_uid`='$id' and 'pemail'='$email'";
 
@@ -180,8 +180,16 @@ if (isset($_POST['login'])) {
                         echo "<script> window.location.href = './admin/index.php'; </script>";
                     }
                 } else if ($check_result->num_rows == 1 && $typeOfUser == 1) {
-                    $_SESSION["studentUserId"] = $email;
-                    echo "<script> window.location.href = './student/index.php'; </script>";
+                    // echo "entered as student";
+                    $_SESSION['auth'] = $id;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['studentUserId'] = $email;
+                    $row = $check_result->fetch_assoc();
+                    if ($row["is_registered"] == 0) {
+                        echo "<script> window.location.href = './student/addStudent.php'; </script>";
+                    } else {
+                        echo "<script> window.location.href = './student/updateProfile.php?id=" . $email . "'; </script>";
+                    }
                 }
             } else {
                 if ($typeOfUser == 1) {
@@ -194,9 +202,10 @@ if (isset($_POST['login'])) {
                     $check_query = "Update TPC set oauth_uid='$id' where tpc_email='$email'";
                 }
                 $check_result = $conn->query($check_query);
-                $_SESSION['login_id'] = $id;
+                $_SESSION['auth'] = $id;
+                $_SESSION['email'] = $email;
                 echo '<script> alert("Account Created !! Please Login") </script>';
-                echo '<script> window.location.href="./login.php" </script>';
+                echo '<script> window.location.href="./index.php" </script>';
             }
         }
         // else {
@@ -204,7 +213,7 @@ if (isset($_POST['login'])) {
         //     // echo '<script> window.location.href="./login.php" </script>';
         // }
     } else {
-        header('Location: login.php');
+        header('Location: index.php');
         echo "Some error occured";
         // exit;
     }
@@ -212,5 +221,5 @@ if (isset($_POST['login'])) {
     //     echo "<br>got no post var ";
     // }
 } else {
-    echo "<br>got no code<br>";
+    // echo "<br>got no code<br>";
 }

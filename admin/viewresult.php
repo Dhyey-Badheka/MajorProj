@@ -17,7 +17,7 @@ $sql = "SELECT job_role,comp_name FROM `drive`,`company` where drive_id='$drived
 $search = mysqli_query($conn, $sql);
 while ($row = $search->fetch_assoc()) {
     $columnHeader = '';
-    $columnHeader = "\t" . "Birla Vishvakarma Mahavidyalaya" .   "\n"  . "\t" . "An Autonomous Institution" .   "\n" . "\t" . "VallabhVidyanagar-Anand 388120" .   "\n" . "\t" . $row["comp_name"] . " - " . $row["job_role"] .   "\n"  . "\n"  . "Sr. No." . "\t" . "Student ID" . "\t" . "Student Name" . "\t" . "Department";
+    $columnHeader = "\t" . "Birla Vishvakarma Mahavidyalaya" .   "\n"  . "\t" . "An Autonomous Institution" .   "\n" . "\t" . "VallabhVidyanagar-Anand 388120" .   "\n" . "\t" . $row["comp_name"] . " - " . $row["job_role"] .   "\n"  . "\n"  . "Sr. No." . "\t" . "Student ID" . "\t" . "Student Name" . "\t" . "Student Email" . "\t" . "Department";
 }
 
 $setData = '';
@@ -29,8 +29,8 @@ $applied_stu = $row["student_placed"];
 // $applied_stu = str_replace('"', '', $applied_stu);
 $applied_stu = json_decode($applied_stu, true);
 // var_dump($applied_stu);
-$sql = "select ROW_NUMBER() OVER (ORDER BY id_number),id_number,concat(first_name,' ',middle_name,' ',last_name),dept_name from student,Department where LOWER(id_number) in ('" . implode('\',\'', $applied_stu)  . "') and student.dept_id=department.dept_id;";
-echo "<br>" . $sql . "<br>";
+$sql = "select ROW_NUMBER() OVER (ORDER BY id_number),id_number,concat(first_name,' ',middle_name,' ',last_name),pemail,dept_name from student,Department where LOWER(id_number) in ('" . implode('\',\'', $applied_stu)  . "') and student.dept_id=department.dept_id;";
+// echo "<br>" . $sql . "<br>";
 // $search = $conn->query($sql);
 // while ($row = $search->fetch_assoc()) {
 $setRec = mysqli_query($conn, $sql);

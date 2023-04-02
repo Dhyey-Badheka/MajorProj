@@ -77,7 +77,7 @@ if (isset($_POST["add-annouce"])) {
     while ($row = $search->fetch_array(MYSQLI_NUM)) {
         if ($row[1] != null) {
             $mail->addAddress($row[1]);
-            $str = "Hi $row[0]," . "<br>" . $title . "<br>" . $desc;
+            $str = "Hello $row[0],<br>Greeting from Training and Placement Cell!!<br><br>" . "<br>" . $title . "<br>" . $desc;
             $mail->Body = $str;
             $mail->isHTML(true);
             $mail->send();
@@ -157,7 +157,7 @@ if (isset($_POST["add-annouce"])) {
                                             <p class="mx-10"><?php echo $date ?></p>
                                         </div>
                                         <form action="./addannouncement.php" method="post">
-                                            <input type="text" name="annouce-date" id="" value="<?php echo $date; ?>" hidden>
+                                            <input type="datetime-local" name="annouce-date" id="" value="<?php echo $date; ?>" hidden>
 
                                             <div class="col">
                                                 <p class="m-b-5 f-w-600 anno">Heading</p>

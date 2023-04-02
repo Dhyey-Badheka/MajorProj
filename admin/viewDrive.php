@@ -183,28 +183,28 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                                                     <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="0" <?php if ($isAll) echo "checked"; ?> disabled><label class="form-check-label"> All Department</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="1" <?php if (in_array(1, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Civil</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="1" <?php if (in_array(1, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label">Civil</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="2" <?php if (in_array(2, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Computer</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="2" <?php if (in_array(2, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label"> Computer</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3" <?php if (in_array(3, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electronics and Communications</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="3" <?php if (in_array(3, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label"> Electronics and Communications</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4" <?php if (in_array(4, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electrical</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="4" <?php if (in_array(4, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label"> Electrical</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5" <?php if (in_array(5, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label"> Electronics</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="5" <?php if (in_array(5, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label"> Electronics</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6" <?php if (in_array(6, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Information Technology</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="6" <?php if (in_array(6, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label">Information Technology</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="7" <?php if (in_array(7, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Mechanical</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="7" <?php if (in_array(7, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label">Mechanical</label>
                                                                 </div>
                                                                 <div class="form-check col-sm-3">
-                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="8" <?php if (in_array(8, $dept) && !$isAll) echo "checked" ?>disabled><label class="form-check-label">Production</label>
+                                                                    <input type="checkbox" class="form-check-input" name="eligible_dept[]" id="" value="8" <?php if (in_array(8, $dept) && !$isAll) echo "checked" ?> disabled><label class="form-check-label">Production</label>
                                                                 </div>
                                                             </div>
 

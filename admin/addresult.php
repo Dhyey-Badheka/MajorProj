@@ -29,6 +29,8 @@ if (isset($_POST["add-result"])) {
     $arr_json = json_encode($ids);
     $update = $conn->query("INSERT INTO `result` (`heading`, `description`, `no_of_stu`, `posted_on`, `student_placed`, `drive_id`, `comp_id`) VALUES
 ('$title', '$desc', '$no_of_stu', '$date_annouce', '$arr_json', '$comp_id', '$role_id');");
+    $update = $conn->query("UPDATE drive set inProcess=0 where drive_id='$role_id'");
+    $update = $conn->query("UPDATE company set active=2 where comp_id='$comp_id'");
 
     if ($conn->affected_rows) {
         $addSuccess = 1;
@@ -116,7 +118,7 @@ if (isset($_POST["add-result"])) {
                                                     <p class="mx-10"><?php echo $date ?></p>
                                                 </div>
                                                 <form action="./addresult.php" method="post">
-                                                    <input type="text" name="annouce-date" id="" value="<?php echo $date; ?>" hidden>
+                                                    <input type="datetime-local" name="annouce-date" id="" value="<?php echo $date; ?>" hidden>
                                                     <div class="col">
                                                         <p class="m-b-5 f-w-600 anno">Heading</p>
                                                         <input type="text" class="m-b-5 form-control" name="result-heading" id="" placeholder="Enter Title of Result">
@@ -127,16 +129,24 @@ if (isset($_POST["add-result"])) {
                                                     </div>
                                                     <div class="col">
                                                         <p class="m-b-5 f-w-600 anno">Company Name</p>
-
-                                                        <select name="add-comp_id" id="job_id" class="form-control">
+                                                        <p><?php
+                                                            $id = $_GET["id"];
+                                                            $search = $conn->query("SELECT company.comp_name,company.comp_id FROM  `drive`,`company` where drive_id='$id' and company.comp_id=drive.comp_id");
+                                                            while ($rows = $search->fetch_assoc()) {
+                                                                echo $rows['comp_name'];
+                                                                $comp_id = $rows['comp_id'];
+                                                                echo "<input hidden name='add-comp_id' value='" . $comp_id . "' />";
+                                                            }
+                                                            ?></p>
+                                                        <!-- <select name="add-comp_id" id="job_id" class="form-control">
                                                             <option value="0">Select Company</option>
                                                             <?php
-                                                            $search = $conn->query("SELECT comp_id,comp_name FROM  `company`; ");
-                                                            while ($rows = $search->fetch_assoc()) {
-                                                                echo "<option value='" . $rows['comp_id'] . "'>" . $rows['comp_name'] . "</option>";
-                                                            }
+                                                            // $search = $conn->query("SELECT comp_id,comp_name FROM  `company`; ");
+                                                            // while ($rows = $search->fetch_assoc()) {
+                                                            //     echo "<option value='" . $rows['comp_id'] . "'>" . $rows['comp_name'] . "</option>";
+                                                            // }
                                                             ?>
-                                                        </select>
+                                                        </select> -->
                                                     </div>
                                                     <!-- <input type="text" id="drive_id_val" value="" name="abc" hidden />
                                                     <script>
@@ -146,7 +156,7 @@ if (isset($_POST["add-result"])) {
                                                     </script> -->
                                                     <div class="col">
                                                         <p class="m-b-5 f-w-600 anno">Role Name</p>
-                                                        <select name="add-role_id" id="role_id" class="form-control">
+                                                        <!-- <select name="add-role_id" id="role_id" class="form-control">
 
                                                             <option value="0">Select Role</option>
                                                             <?php
@@ -154,12 +164,20 @@ if (isset($_POST["add-result"])) {
                                                             // while ($rows = $search->fetch_assoc()) {
                                                             //     echo "<option value='" . $rows['role_id'] . "'>" . $rows['role_name'] . "</option>";
                                                             // }
-                                                            $search = $conn->query("SELECT drive_id,job_role FROM  `drive`");
-                                                            while ($rows = $search->fetch_assoc()) {
-                                                                echo "<option value='" . $rows['drive_id'] . "'>" . $rows['job_role'] . "</option>";
-                                                            }
+                                                            // $search = $conn->query("SELECT drive_id,job_role FROM  `drive`");
+                                                            // while ($rows = $search->fetch_assoc()) {
+                                                            //     echo "<option value='" . $rows['drive_id'] . "'>" . $rows['job_role'] . "</option>";
+                                                            // }
                                                             ?>
-                                                        </select>
+                                                        </select> -->
+                                                        <p><?php
+                                                            $id = $_GET["id"];
+                                                            $search = $conn->query("SELECT job_role FROM  `drive` where drive_id='$id'");
+                                                            while ($rows = $search->fetch_assoc()) {
+                                                                echo $rows['job_role'];
+                                                                echo "<input hidden name='add-role_id' value='" . $id . "' />";
+                                                            }
+                                                            ?></p>
                                                     </div>
 
                                                     <div class="col">

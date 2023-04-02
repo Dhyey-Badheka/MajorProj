@@ -1,3 +1,16 @@
+<?php
+
+$reqFor = "regis";
+include("../database.php");
+include("./helper/authorization.php");
+$query = "SELECT * FROM student WHERE pemail = '$adminUserEmail' AND oauth_uid='$adminUserAuth' and is_registered='1' and is_approved='1'";
+$check_result = $conn->query($query);
+$row = $check_result->fetch_assoc();
+$name = $row["first_name"] . " " . $row["last_name"];
+$dept = $row["dept_id"];
+$id_number = $row["id_number"];
+// $query = "SELECT applied_stu FROM `drive` , `company` where drive.comp_id=company.comp_id;";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,30 +32,28 @@
     <script src="/student/helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
-        <h1>Welcome Student,Your Applied Drives</h1>
+        <h1>Welcome <?php echo $name ?>,Your Applied Drives</h1>
         <h5>Below you will find job roles you have applied for</h5>
-        <div class="p-5 bg-light" style="margin-top: 30px;">
-            <h3 class="mb-3 he">Tata Consultancy Services</h3>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 23/10/2022</p>
-            <span>Application Submitted to admin</span>
-        </div>
-        <div class="p-5 bg-light" style="margin-top: 30px;">
-            <h3 class="mb-3 he">CREST Infosystem</h3>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 23/01/2022</p>
-            <span>Application Submitted to admin</span>
-        </div>
-        <div class="p-5 bg-light" style="margin-top: 30px;">
-            <h3 class="mb-3 he">Zeus Learning</h3>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 05/01/2023</p>
-            <span>Application Submitted to admin</span>
-        </div>
-        <div class="p-5 bg-light" style="margin-top: 30px;">
-            <h3 class="mb-3 he">Infocusp</h3>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> 10/02/2023</p>
-            <span>Application Submitted to admin</span>
-        </div>
-
-
+        <?php
+        $query = "SELECT applied_stu,drive_id FROM `drive` , `company` where drive.comp_id=company.comp_id;";
+        $search = $conn->query($query);
+        while ($row = $search->fetch_assoc()) {
+            $applied_stu = $row["applied_stu"];
+            $drive_id = $row["drive_id"];
+            $applied_stu = json_decode($applied_stu, true);
+            $sql = "select comp_name,job_role,deadline from drive,company where '$id_number' in ('" . implode('\',\'', $applied_stu)  . "') and drive_id='$drive_id' and company.comp_id=drive.comp_id";
+            // echo "<br>" . $sql . "<br>";
+            $search1 = $conn->query($sql);
+            $row1 = $search1->fetch_assoc();
+            if ($search1->num_rows == 1) {
+        ?>
+                <div class="p-5 bg-light" style="margin-top: 30px;">
+                    <h3 class="mb-3 he"><?php echo $row1["comp_name"] . " - " . $row1["job_role"]; ?></h3>
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i> 23/10/2022</p>
+                    <span>Application Submitted to admin</span>
+                </div>
+        <?php }
+        } ?>
 
 
 
