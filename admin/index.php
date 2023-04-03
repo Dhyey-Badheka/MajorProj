@@ -33,7 +33,13 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Students</span>
-                                <span class="h3 font-bold mb-0">650</span>
+                                <span class="h3 font-bold mb-0"><?php
+                                                                $query = "select count(*) as total from student";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $total = $row["total"];
+                                                                echo $total;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -50,7 +56,13 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Interested Students</span>
-                                <span class="h3 font-bold mb-0">432</span>
+                                <span class="h3 font-bold mb-0"><?php
+                                                                $query = "select count(*) as total from student where isinterestedforplacement=1";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $interested = $row["total"];
+                                                                echo $interested;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -61,7 +73,9 @@ include("../helper/authorization.php");
                         <div class=" mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-danger">
                                 <h5><i class='bx bxs-error text-m'></i>
-                                    218</h5>
+                                    <?php
+                                    echo $total - $interested;
+                                    ?></h5>
                             </span>
                             <span class="text-nowrap text-m text-muted">Not Interested</span>
                         </div>
@@ -74,7 +88,12 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Students Placed</span>
-                                <span class="h3 font-bold mb-0">352</span>
+                                <span class="h3 font-bold mb-0"><?php $query = "select count(*) as total from student where is_placed=1";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $placed = $row["total"];
+                                                                echo $placed;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -84,7 +103,9 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
-                                <h5><i class='bx bxs-error'></i> 120</h5>
+                                <h5><i class='bx bxs-error'><?php
+                                                            echo $interested - $placed;
+                                                            ?></i></h5>
                             </span>
                             <span class="text-nowrap text-m text-muted">Remaining for Placement</span>
                         </div>
@@ -97,7 +118,12 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Companies Visited</span>
-                                <span class="h3 font-bold mb-0">14</span>
+                                <span class="h3 font-bold mb-0"><?php $query = "select count(*) as total from company";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $company = $row["total"];
+                                                                echo $company;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -107,7 +133,12 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-success text-success me-2">
-                                <h5><i class='bx bx-share bx-flip-horizontal'></i> 5
+                                <h5><i class='bx bx-share bx-flip-horizontal'></i> <?php $query = "select count(*) as total from company where active=2";
+                                                                                    $search = $conn->query($query);
+                                                                                    $row = $search->fetch_assoc();
+                                                                                    $company_visited = $row["total"];
+                                                                                    echo $company_visited;
+                                                                                    ?>
                                 </h5>
                             </span>
                             <span class="text-nowrap text-m text-muted">On-Going</span>
@@ -121,7 +152,12 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Drives Completed</span>
-                                <span class="h3 font-bold mb-0">19</span>
+                                <span class="h3 font-bold mb-0"><?php $query = "select count(*) as total from drive";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $drives = $row["total"];
+                                                                echo $drives;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -131,7 +167,12 @@ include("../helper/authorization.php");
                         </div>
                         <div class="mt-2 mb-0 text-sm">
                             <span class="badge badge-pill bg-primary bg-soft-warning text-warning me-2">
-                                <h5> <i class="bi bi-hourglass-split"></i> 3</h5>
+                                <h5> <i class="bi bi-hourglass-split"></i> <?php $query = "select count(*) as total from drive where inProcess=1";
+                                                                            $search = $conn->query($query);
+                                                                            $row = $search->fetch_assoc();
+                                                                            $drives_comp = $row["total"];
+                                                                            echo $drives_comp;
+                                                                            ?></h5>
                             </span>
                             <span class="text-nowrap text-m text-muted">On-Going</span>
                         </div>
@@ -144,7 +185,14 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Student Coordinators</span>
-                                <span class="h3 font-bold mb-0">19</span>
+                                <span class="h3 font-bold mb-0"><?php
+                                                                $year = date("Y");
+                                                                $query = "select count(*) as total from tpc where academic_year = '$year'";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $tpc = $row["total"];
+                                                                echo $tpc;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"><i class="bi bi-award-fill"></i>
@@ -160,7 +208,14 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Faculty Coordinators</span>
-                                <span class="h3 font-bold mb-0">10</span>
+                                <span class="h3 font-bold mb-0"><?php
+                                                                $year = date("Y");
+                                                                $query = "select count(*) as total from tpf where academic_year = '$year'";
+                                                                $search = $conn->query($query);
+                                                                $row = $search->fetch_assoc();
+                                                                $tpf = $row["total"];
+                                                                echo $tpf;
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"><i class="bi bi-award-fill"></i>
@@ -176,7 +231,19 @@ include("../helper/authorization.php");
                         <div class="row">
                             <div class="col">
                                 <span class="h6 font-semibold text-muted text-sm d-block mb-2">Average Package</span>
-                                <span class="h3 font-bold mb-0">5.6 LPA</span>
+                                <span class="h3 font-bold mb-0"><?php
+                                                                $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                $search = $conn->query($query);
+                                                                $tot = 0;
+                                                                while ($row = $search->fetch_assoc()) {
+                                                                    $array = $row["student_placed"];
+                                                                    $arr_json = json_decode($array);
+                                                                    $count = count($arr_json);
+                                                                    $salary = $row["salary"];
+                                                                    $tot += ($count * $salary);
+                                                                }
+                                                                echo $tot / 100000 . " LPA";
+                                                                ?></span>
                             </div>
                             <div class="col-auto">
                                 <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -204,8 +271,37 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Civil</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "1") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='1' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -228,8 +324,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Computer</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "2") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='2' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -251,8 +374,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics and Communications</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "3") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='3' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -274,8 +424,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electrical </span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "4") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='4' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -297,8 +474,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "5") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='5' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -320,8 +524,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Information Technology</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "6") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='6' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -343,8 +574,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Mechanical</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "7") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $totStu += $count;
+                                                                        $salary = $row["salary"];
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='7' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -366,8 +624,35 @@ include("../helper/authorization.php");
                             <div class="row">
                                 <div class="col">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Production</span>
-                                    <span class="h3 font-bold mb-0">5.5 LPA</span> <br>
-                                    <span class="h3 font-bold mb-0">55/60 Placed</span>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    while ($row = $search->fetch_assoc()) {
+                                                                        $array = $row["student_placed"];
+                                                                        $arr_json = json_decode($array);
+                                                                        $count = 0;
+                                                                        foreach ($arr_json as $stu) {
+                                                                            $query = "SELECT dept_id FROM student where id_number='$stu';";
+                                                                            $search1 = $conn->query($query);
+                                                                            $row1 = $search1->fetch_assoc();
+                                                                            $dept_id = $row1["dept_id"];
+                                                                            if ($dept_id == "8") {
+                                                                                $count++;
+                                                                            }
+                                                                        }
+                                                                        $tot += ($count * $salary);
+                                                                    }
+                                                                    echo $tot / 100000 . " LPA";
+                                                                    ?></span> <br>
+                                    <span class="h3 font-bold mb-0"><?php
+                                                                    $query = "SELECT count(*) as total FROM student where dept_id='8' and isinterestedforplacement='1'";
+                                                                    $search = $conn->query($query);
+                                                                    $tot = 0;
+                                                                    $totStu = 0;
+                                                                    $row = $search->fetch_assoc();
+                                                                    echo $totStu . "/" . $row["total"] ?> Placed</span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
