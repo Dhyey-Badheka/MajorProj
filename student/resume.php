@@ -61,7 +61,7 @@ if (isset($_POST["addresume"])) {
                             with the data submitted by
                             student from "Profile" tab.</span>
                     </div>
-                    <button type="button" class="btn btn-success">View Resume</button>
+                    <a href="./trials.php?id=<?php echo $adminUserEmail ?>"><button type="button" class="btn btn-success">View Resume</button></a>
                 </div>
             </div>
             <div class="col-sm-5">

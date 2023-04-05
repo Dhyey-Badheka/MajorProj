@@ -1,5 +1,6 @@
 {
     "require": {
-        "google/apiclient": "^2.7"
+        "google/apiclient": "^2.7",
+        "spipu/html2pdf": "^5.2"
     }
 }
