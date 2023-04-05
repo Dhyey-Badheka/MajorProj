@@ -74,7 +74,7 @@ if (isset($_POST["approval"])) {
                                         <div class="col-sm-4 bg-c-lite-green user-profile">
                                             <div class="card-block text-center text-white">
                                                 <div class="m-b-25">
-                                                    <img src='http://localhost/tpc-main/admin/uploads/<?php echo $row["comp_logo"]; ?>' class="img-radius" alt="User-Profile-Image">
+                                                    <img src='http://localhost/tpc-main/admin/uploads/<?php echo $row["comp_name"] . "/" . $row["comp_logo"]; ?>' class="img-radius" alt="User-Profile-Image">
                                                 </div>
                                                 <p>
                                                     <span class="badge text-white badge-lg badge-dot">
@@ -152,7 +152,7 @@ if (isset($_POST["approval"])) {
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HR Email</p>
                                                         <h6 class="text-muted f-w-400"><?php echo
-                                                                                        $row["comp_hr_name"]; ?></h6>
+                                                                                        $row["comp_hr_email"]; ?></h6>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p class="m-b-5 f-w-600">HR Mobile</p>

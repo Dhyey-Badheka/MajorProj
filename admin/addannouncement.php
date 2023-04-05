@@ -24,7 +24,6 @@ $insertFailure = 0;
 if (isset($_POST["add-annouce"])) {
     $title = $_POST["annouce-heading"];
     $desc = $_POST["annouce-desc"];
-    $date_annouce = $_POST["annouce-date"];
     $deptEligible = array();
     foreach ($_POST["eligible_dept"] as $selected) {
         if ($selected == 0) {
@@ -38,7 +37,7 @@ if (isset($_POST["add-annouce"])) {
     }
     $deptEligible = json_encode($deptEligible);
     // var_dump($deptEligible);
-    $insert = $conn->query("INSERT INTO `announcement`( `title`, `description`, `posted_on`, `dept`) VALUES ('$title','$desc','$date_annouce','$deptEligible')");
+    $insert = $conn->query("INSERT INTO `announcement`( `title`, `description`,  `dept`) VALUES ('$title','$desc','$deptEligible')");
 
 
 
@@ -77,7 +76,7 @@ if (isset($_POST["add-annouce"])) {
     while ($row = $search->fetch_array(MYSQLI_NUM)) {
         if ($row[1] != null) {
             $mail->addAddress($row[1]);
-            $str = "Hello $row[0],<br>Greeting from Training and Placement Cell!!<br><br>" . "<br>" . $title . "<br>" . $desc;
+            $str = "Hello $row[0],<br>Greetings from Training and Placement Cell !!<br><br>" . "<br>" . $title . "<br>" . $desc;
             $mail->Body = $str;
             $mail->isHTML(true);
             $mail->send();

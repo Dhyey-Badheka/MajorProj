@@ -54,23 +54,23 @@ if (isset($_POST["update-company"])) {
     $comp_hr_mobile = $_POST["comp_hr_mobile"];
     $comp_url = $_POST["comp_url"];
     $active = $_POST["active"];
-    $targetDir = "uploads/";
+    $targetDir = "uploads/" . $name . "/";
+    if (!file_exists($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
     $fileName = basename($_FILES["file"]["name"]);
     $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-    $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
-
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-        $update = $conn->query("UPDATE company SET company_description='$desc', location='$location', comp_hr_name='$comp_hr_name', comp_hr_email='$comp_hr_email', comp_hr_mobile='$comp_hr_mobile',comp_url='$comp_url',comp_logo='$fileName' WHERE comp_id = '$id'");
-
-        if ($conn->affected_rows) {
-
-            $updateSuccess = 1;
-        } else {
-            $updateFailure = 1;
-        }
+    move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
+    $query = "UPDATE company SET company_description='$desc', location='$location', comp_hr_name='$comp_hr_name', comp_hr_email='$comp_hr_email', comp_hr_mobile='$comp_hr_mobile',comp_url='$comp_url',comp_logo='$fileName' WHERE comp_id = '$id'";
+    // echo $query;
+    $update = $conn->query($query);
+    if ($conn->affected_rows) {
+        $updateSuccess = 1;
+    } else {
+        $updateFailure = 1;
     }
 }
+
 ?>
 
 

@@ -53,10 +53,20 @@ if (isset($_POST["add-drive"])) {
     $dbc = $_POST["dbc"];
     $no_of_role = $_POST["no_of_job_role"];
     $deptEligible = array();
-    $targetDir = "uploads/";
+    $query = "select comp_name from company where comp_id='$comp_id';";
+    // echo $query;
+    $update = $conn->query($query);
+    $row = $update->fetch_assoc();
+    $targetDir = "uploads/" . $row["comp_name"] . "/";
+    if (!file_exists($targetDir)) {
+        mkdir(
+            $targetDir,
+            0777,
+            true
+        );
+    }
     $fileName = basename($_FILES["file"]["name"]);
     $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
     move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
     foreach ($_POST["eligible_dept"] as $selected) {
         if ($selected == 0) {

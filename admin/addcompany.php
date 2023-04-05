@@ -25,30 +25,19 @@ if (isset($_POST["add-comp"])) {
     $hr_email = $_POST["hr_email"];
     $desc = $_POST["desc"];
     $location = $_POST["location"];
-    $targetDir = "uploads/";
+    $targetDir = "uploads/" . $name . "/";
+    if (!file_exists($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
     $fileName = basename($_FILES["file"]["name"]);
     $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-    $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
-    if (in_array($fileType, $allowTypes)) {
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-            $insert = $conn->query("INSERT INTO `company` (`comp_name`, `company_description`,`location`, `comp_hr_name`, `comp_hr_email`, `comp_hr_mobile`, `comp_url`, `comp_logo`) VALUES
+    move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath);
+    $insert = $conn->query("INSERT INTO `company` (`comp_name`, `company_description`,`location`, `comp_hr_name`, `comp_hr_email`, `comp_hr_mobile`, `comp_url`, `comp_logo`) VALUES
 ('$name', '$desc', '$location', '$hr_name', '$hr_email', '$hr_phone', '$url', '$fileName');");
-            if ($conn->affected_rows) {
-                $addSuccess = 1;
-            } else {
-                $addFailure = 1;
-            }
-            if ($insert) {
-                $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
-            } else {
-                $statusMsg = "File upload failed, please try again.";
-            }
-        } else {
-            $statusMsg = "Sorry, there was an error uploading your file.";
-        }
+    if ($conn->affected_rows) {
+        $addSuccess = 1;
     } else {
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+        $addFailure = 1;
     }
 }
 ?>

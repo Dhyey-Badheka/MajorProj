@@ -13,7 +13,7 @@ $query = "SELECT * FROM student WHERE pemail = '$adminUserEmail' AND oauth_uid='
 $check_result = $conn->query($query);
 $row = $check_result->fetch_assoc();
 $name = $row["first_name"] . " " . $row["last_name"];
-$dept = $row["dept_id"];    
+$dept = $row["dept_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,16 +24,16 @@ $dept = $row["dept_id"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/index.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'> -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <title>TPC</title>
 </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src="/student/helper/index.js"></script>
+    <script src="./helper/index.js"></script>
     <?php include("./helper/sidebar.php") ?>
     <main>
         <h1>Welcome <?php echo $name ?>,</h1>

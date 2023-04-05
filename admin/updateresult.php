@@ -13,10 +13,14 @@ $desc = "";
 $id = "";
 $dateAnnouce = "";
 $ids = array();
+$no_of_stu = "";
+$drive_id = "";
+$comp_id = "";
 
 if (isset($_GET["deleteId"])) {
     $id = $_GET["deleteId"];
-    $delete = $conn->query("DELETE FROM result WHERE result_id = '$id'");
+    $delete = $conn->query("DELETE FROM result WHERE drive_id = '$id'");
+    $delete = $conn->query("update drive set inProcess='1' where drive_id = '$id'");
     if ($conn->affected_rows) {
         echo "<script> window.location.href = 'http://localhost/tpc-main/admin/results.php'; </script>";
     }
@@ -24,7 +28,7 @@ if (isset($_GET["deleteId"])) {
 
 if (isset($_GET["updateId"]) || isset($_POST["id"])) {
     $id = isset($_GET["updateId"]) ? $_GET["updateId"] : $_POST["id"];
-    $search = $conn->query("SELECT * FROM  `result` WHERE result_id = '$id'");
+    $search = $conn->query("SELECT * FROM  `result` WHERE drive_id = '$id'");
 
     if ($search->num_rows == 1) {
         $row = $search->fetch_assoc();
@@ -33,7 +37,7 @@ if (isset($_GET["updateId"]) || isset($_POST["id"])) {
         $dateAnnouce = $row["posted_on"];
         $no_of_stu = $row["no_of_stu"];
         $drive_id = $row["drive_id"];
-        $comp_id = $row["comp_id"];;
+        $comp_id = $row["comp_id"];
         $ids = json_decode($row["student_placed"], true);
     }
     // var_dump($isAll);
@@ -172,7 +176,7 @@ if (isset($_POST["update-result"])) {
                                                         <form action="./updateresult.php" method="post">
                                                             <table id="emptbl">
                                                                 <?php
-                                                                $search = $conn->query("SELECT * FROM  `result` where result_id='$id'");
+                                                                $search = $conn->query("SELECT * FROM  `result` where drive_id='$id'");
                                                                 $row = $search->fetch_assoc();
                                                                 $arr = json_decode($row["student_placed"], true);
                                                                 for ($i = 0; $i < count($arr); $i++) {

@@ -84,7 +84,9 @@ if ($access == 2 || $access == 3) {
                                         $search2 = $conn->query("SELECT comp_logo FROM  `company` WHERE comp_id='$comp_id'");
                                         $row2 = $search2->fetch_assoc();
                                         $comp_logo = $row2["comp_logo"];
-                                        echo '<img src="http://localhost/tpc-main/admin/uploads/' . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
+                                        echo '<img src="http://localhost/tpc-main/admin/uploads/'
+                                            .  $row1["comp_name"] . "/"
+                                            . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-m">

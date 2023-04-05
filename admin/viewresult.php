@@ -8,12 +8,12 @@ if ($access != 1) {
 mysqli_select_db($conn, 'tpc');
 $id = $_GET["ViewId"];
 
-$sql = "SELECT drive_id FROM `result` where result_id='$id'";
-$search = mysqli_query($conn, $sql);
-while ($row = $search->fetch_assoc()) {
-    $drived_id = $row["drive_id"];
-}
-$sql = "SELECT job_role,comp_name FROM `drive`,`company` where drive_id='$drived_id' and drive.comp_id=company.comp_id";
+// $sql = "SELECT drive_id FROM `result` where drive_id='$id'";
+// $search = mysqli_query($conn, $sql);
+// while ($row = $search->fetch_assoc()) {
+//     $drived_id = $row["drive_id"];
+// }
+$sql = "SELECT job_role,comp_name FROM `drive`,`company` where drive_id='$id' and drive.comp_id=company.comp_id";
 $search = mysqli_query($conn, $sql);
 while ($row = $search->fetch_assoc()) {
     $columnHeader = '';
@@ -21,7 +21,7 @@ while ($row = $search->fetch_assoc()) {
 }
 
 $setData = '';
-$sql = "select student_placed from result where result_id='$id'";
+$sql = "select student_placed from result where drive_id='$id'";
 $search = $conn->query($sql);
 $row = $search->fetch_assoc();
 $applied_stu = $row["student_placed"];

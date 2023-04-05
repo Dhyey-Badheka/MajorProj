@@ -93,11 +93,11 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                                         </div>
                                                         <p>
                                                             <span class="badge text-white badge-lg badge-dot">
-                                                                <?php if ($inProcess == 0) {
+                                                                <?php if ($inProcess == 1) {
                                                                     echo "<span class='badge badge-lg badge-dot'>
                                     <i class='bg-warning'></i>In Process
                                 </span>";
-                                                                } else if ($inProcess == 1) {
+                                                                } else if ($inProcess == 0) {
                                                                     echo "<span class='badge badge-lg badge-dot'>
                                     <i class='bg-success'></i>Results Out
                                 </span>";
@@ -230,7 +230,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                                                         <a href="./applyDrive.php?drive_id=<?php echo $id ?>&stu_id=<?php echo $id_number ?>&resumeType=2" class=" btn text-white btn-warning btn-sm">Apply with Secondary Resume</a>
                                                                     <?php endif ?>
                                                                 <?php else : ?>
-                                                                    <p style="color:red"></p>You are not eligible for this drive</p>
+                                                                    <p style="color:red">You are not eligible for this drive</p>
                                                                 <?php endif ?>
                                                             </span>
                                                         </div>

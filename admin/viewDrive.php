@@ -81,15 +81,15 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                                 <div class="col-sm-4 bg-c-lite-green user-profile">
                                                     <div class="card-block text-center text-white">
                                                         <div class="m-b-25">
-                                                            <img id="showLogo" src='http://localhost/tpc-main/admin/uploads/<?php echo $comp_logo ?>' class="img-radius" alt="User-Profile-Image" />
+                                                            <img id="showLogo" src='http://localhost/tpc-main/admin/uploads/<?php echo $c_name . "/" . $comp_logo ?>' class="img-radius" alt="User-Profile-Image" />
                                                         </div>
                                                         <p>
                                                             <span class="badge text-white badge-lg badge-dot">
-                                                                <?php if ($inProcess == 0) {
+                                                                <?php if ($inProcess == 1) {
                                                                     echo "<span class='badge badge-lg badge-dot'>
                                     <i class='bg-warning'></i>In Process
                                 </span>";
-                                                                } else if ($inProcess == 1) {
+                                                                } else if ($inProcess == 0) {
                                                                     echo "<span class='badge badge-lg badge-dot'>
                                     <i class='bg-success'></i>Results Out
                                 </span>";
@@ -210,7 +210,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
 
                                                             <div class=" col-sm-6">
                                                                 <p class="m-b-5 f-w-600">Attached PDF('s)</p>
-                                                                <a href="http://localhost/tpc-main/admin/uploads/<?php echo $doc; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                <a href="http://localhost/tpc-main/admin/uploads/<?php echo $c_name . "/" . $doc; ?>"><button class="text-center btn btn-success">View</button></a>
                                                             </div>
                                                         </div>
                                                     </div>

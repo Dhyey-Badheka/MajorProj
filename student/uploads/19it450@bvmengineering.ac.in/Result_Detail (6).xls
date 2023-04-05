@@ -1,0 +1,11 @@
+<br />
+<b>Notice</b>:  Trying to access array offset on value of type null in <b>E:\software\xamp\htdocs\tpc-main\admin\viewresult.php</b> on line <b>27</b><br />
+<br />
+<b>Warning</b>:  implode(): Invalid arguments passed in <b>E:\software\xamp\htdocs\tpc-main\admin\viewresult.php</b> on line <b>32</b><br />
+	Birla Vishvakarma Mahavidyalaya
+	An Autonomous Institution
+	VallabhVidyanagar-Anand 388120
+	InfocusP - Software Developer
+
+Sr. No.	Student ID	Student Name	Student Email	Department
+

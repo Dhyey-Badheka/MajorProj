@@ -48,9 +48,9 @@ $id_number = $row["id_number"];
                 $row1 = $search1->fetch_assoc();
         ?>
                 <div class="p-5 bg-light" style="margin-top: 30px;">
-                    <h3 class="mb-3 he"><?php echo $row1["comp_name"] . " - " . $row1["job_role"]; ?></h3>
                     <p><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo $row1["timestamp"] ?></p>
-                    <span>Application Submitted to admin</span>
+                    <h2 class="mb-3 he"><?php echo $row1["comp_name"] . " - " . $row1["job_role"]; ?></h2>
+                    <span id="sub">Application Submitted to admin</span>
                 </div>
         <?php }
         } ?>

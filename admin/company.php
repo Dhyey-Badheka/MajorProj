@@ -100,7 +100,7 @@ if ($access != 1) {
                                     <?php echo $row["comp_hr_mobile"] ?>
                                 </td>
                                 <td>
-                                    <img alt="..." src="uploads/<?php echo $row["comp_logo"]; ?>" class="avatar avatar-xs rounded-circle me-2">
+                                    <img alt="..." src="uploads/<?php echo $row["comp_name"] . "/" . $row["comp_logo"]; ?>" class="avatar avatar-xs rounded-circle me-2">
                                 </td>
                                 <td>
                                     <?php if ($row["active"] == 0) {
@@ -109,11 +109,11 @@ if ($access != 1) {
                                 </span>";
                                     } else if ($row["active"] == 1) {
                                         echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-success'></i>Approved
+                                    <i class='bg-success'></i>Drive In Process 
                                 </span>";
                                     } else if ($row["active"] == 2) {
                                         echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-danger'></i>Rejected
+                                    <i class='bg-danger'></i>Drive Completed
                                 </span>";
                                     }
 

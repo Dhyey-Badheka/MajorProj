@@ -21,6 +21,7 @@ $dept = $row["dept_id"];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./helper/index.css">
+    <link rel="stylesheet" href="./helper/company.css">
     <link rel="stylesheet" href="./helper/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
@@ -79,10 +80,10 @@ $dept = $row["dept_id"];
                                     <div class="text-white text-lg rounded-circle">
                                         <?php
                                         $comp_id = $row["comp_id"];
-                                        $search2 = $conn->query("SELECT comp_logo FROM  `company` WHERE comp_id='$comp_id'");
+                                        $search2 = $conn->query("SELECT comp_name,comp_logo FROM  `company` WHERE comp_id='$comp_id'");
                                         $row2 = $search2->fetch_assoc();
                                         $comp_logo = $row2["comp_logo"];
-                                        echo '<img src="http://localhost/tpc-main/admin/uploads/' . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
+                                        echo '<img src="http://localhost/tpc-main/admin/uploads/' . $row2["comp_name"] . "/" . $comp_logo . '" alt="logo" height="80" width="80"/>' ?>
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-m">

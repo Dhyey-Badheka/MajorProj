@@ -55,8 +55,8 @@ if ($access == 2 || $access == 3) {
                                                 <div style="float:right;" class="mt-5">
                                                     <a href="viewresult.php?ViewId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-success float-right">View</button></a>
                                                     <?php if ($access == 1) : ?>
-                                                        <a href="updateresult.php?updateId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-warning float-right">Update</button></a>
-                                                        <a href="updateresult.php?deleteId=<?php echo $row["result_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
+                                                        <a href="updateresult.php?updateId=<?php echo $row["drive_id"]; ?>"><button type="button" class="btn btn-warning float-right">Update</button></a>
+                                                        <a href="updateresult.php?deleteId=<?php echo $row["drive_id"]; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
                                                         <!-- <button type="button" class="btn btn-danger float-right">Delete</button> -->
                                                     <?php endif ?>
                                                 </div>

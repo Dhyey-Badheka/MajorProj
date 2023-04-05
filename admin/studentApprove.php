@@ -46,215 +46,54 @@ if ($access >= 1 && $access <= 3) {
                         </div>
                     </div>
                 </div>
-                <!-- Nav -->
-                <!-- <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">Active</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#" class="nav-link font-regular">All Drives</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Completed</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Civil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Mechanical</a>
-                    </li>
-                </ul> -->
             </div>
         </div>
 
         <div class="row">
 
-            <!-- Total Students -->
-            <div class="col-xl-12 col-sm-12 col-12 row">
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
+            <?php
+            if ($access == 1) {
+                $query = "SELECT * FROM  `student`;";
+                $result = mysqli_query($conn, $query);
+            } elseif ($access == 2 || $access == 3) {
+                $query = "SELECT * FROM  `student` WHERE dept_id='$dept';";
+                $result = mysqli_query($conn, $query);
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <div class="col-xl-10 col-sm-10 col-10 row">
+                    <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
+                        <div class="card-body  ">
+                            <div class="row ">
+                                <div class="col d-flex align-items-center">
+                                    <span class="h3 font-bold d-block"><?php echo $row["id_number"] ?> - <?php
+                                                                                                            $dept_id = $row["dept_id"];
+                                                                                                            $search = $conn->query("SELECT dept_name FROM  `department` WHERE dept_id='$dept_id'");
+                                                                                                            $row1 = $search->fetch_assoc();
+                                                                                                            echo $row1["dept_name"] ?></span>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col d-flex align-items-center">
+                                    <span class="h3 font-semibold mb-0"><?php echo $row["first_name"] . " " . $row["last_name"]; ?></span>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                            <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
+
+                                <a href="./viewStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-primary btn-sm ">View</a>
+                                <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
+                                <a href="#" class="btn btn-danger btn-sm ">Reject</a>
+
                             </div>
                         </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
+                    <?php }
+                    ?>
                     </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                    <div class="card-body  ">
-                        <div class="row ">
-                            <div class="col d-flex align-items-center">
-                                <span class="h3 font-bold d-block">19CP015 - </span>
-                                <span class="h3 font-semibold mb-0">Dhyey Badheka</span>
-                            </div>
-                        </div>
-                        <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
-
-                            <a href="#" class="btn btn-primary btn-sm mx-2">View</a>
-                            <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                            <a href="#" class="btn btn-danger btn-sm mx-2">Reject</a>
-
-                        </div>
-                    </div>
-
                 </div>
 
 
 
-            </div>
         </div>
 
 

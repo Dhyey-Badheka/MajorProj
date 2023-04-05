@@ -235,14 +235,16 @@ include("../helper/authorization.php");
                                                                 $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
                                                                 $search = $conn->query($query);
                                                                 $tot = 0;
+                                                                $totStu = 0;
                                                                 while ($row = $search->fetch_assoc()) {
                                                                     $array = $row["student_placed"];
                                                                     $arr_json = json_decode($array);
                                                                     $count = count($arr_json);
                                                                     $salary = $row["salary"];
                                                                     $tot += ($count * $salary);
+                                                                    $totStu += $count;
                                                                 }
-                                                                echo $tot / 100000 . " LPA";
+                                                                echo (($tot / 100000) / $totStu) . " LPA";
                                                                 ?></span>
                             </div>
                             <div class="col-auto">

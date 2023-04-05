@@ -27,8 +27,9 @@ if (isset($_POST["add-result"])) {
     $date_annouce = $_POST["annouce-date"];
     $no_of_stu = count($_POST["add_ids"]);
     $arr_json = json_encode($ids);
-    $update = $conn->query("INSERT INTO `result` (`heading`, `description`, `no_of_stu`, `posted_on`, `student_placed`, `drive_id`, `comp_id`) VALUES
-('$title', '$desc', '$no_of_stu', '$date_annouce', '$arr_json', '$comp_id', '$role_id');");
+    $query = "INSERT INTO `result` (`heading`, `description`, `no_of_stu`, `posted_on`, `student_placed`, `drive_id`, `comp_id`) VALUES ('$title', '$desc', '$no_of_stu', current_timestamp(), '$arr_json', '$role_id','$comp_id');";
+    // echo $query;
+    $update = $conn->query($query);
     $update = $conn->query("UPDATE drive set inProcess=0 where drive_id='$role_id'");
     $update = $conn->query("UPDATE company set active=2 where comp_id='$comp_id'");
 
@@ -101,7 +102,7 @@ if (isset($_POST["add-result"])) {
                             <p class="bg-success text-white text-center">Successfully Added </p>
                         <?php endif ?>
                         <?php if ($addFailure == 1) : ?>
-                            <p class="bg-danger text-white text-center">Error in Adding the Result </p>
+                            <!-- <p class="bg-danger text-white text-center">Error in Adding the Result </p> -->
                         <?php endif ?>
                         <form action="./addresult.php" method="post">
                             <div class="container">

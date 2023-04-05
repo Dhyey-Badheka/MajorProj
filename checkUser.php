@@ -64,7 +64,7 @@ if (!isset($_POST["code"])) {
                         <i class="fa fa-user-o fa-fw"></i>
                         <select name="typeOfUser" required id="user">
                             <option value="1">Student</option>
-                            <option value="2">Company</option>
+                            <!-- <option value="2">Company</option> -->
                             <option value="3">Admin</option>
                         </select>
                     </div>
