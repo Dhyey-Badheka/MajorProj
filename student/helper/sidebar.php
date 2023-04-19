@@ -47,7 +47,8 @@ if ($check_result->num_rows == 1) {
             <li class="tooltip-element" data-tooltip="2">
                 <a href="companies.php">
                     <div class="icon">
-                        <i class="bi bi-building-add" style="color: #ff9600" type='solid'></i>
+                        <!-- <i class="bi bi-building-add" style="color: #ff9600" type='solid'></i> -->
+                        <i class="bi bi-circle-square" style="color: #ff9600" type='solid'></i>
                         <!-- <box-icon name='buildings' type='solid' color='#FF9600'></box-icon> -->
                     </div>
                     <span class="link hide si">All Drives</span>
@@ -75,7 +76,7 @@ if ($check_result->num_rows == 1) {
                 <a href="resume.php">
                     <div class="icon">
                         <!-- <box-icon name='clipboard' type='solid' color='#FF9600'></box-icon> -->
-                        <i class="bi bi-clipboard-heart-fill" style="color: #ff9600" type='solid'></i>
+                        <i class="bi bi-columns" style="color: #ff9600" type='solid'></i>
                     </div>
                     <span class="link hide si">Resume</span>
                 </a>

@@ -52,15 +52,26 @@ if ($access != 1) {
                     </div>
                 </div>
                 <!-- Nav -->
+                <?php
+                $show = isset($_GET["show"]) ? $_GET["show"] : "all";
+                $query = "SELECT comp_id,comp_name,comp_hr_name,comp_hr_mobile,active,comp_logo FROM `company` ";
+                if ($show == "all") {
+                } elseif ($show == "pending") {
+                    $query = $query . " WHERE active=1 ";
+                } else {
+                    $query = $query . " WHERE active=2 ";
+                }
+                $search = $conn->query($query);
+                ?>
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link active">All Companies</a>
+                        <a href="./company.php?show=all" class="nav-link font-regular <?php if ($show == "all") echo "active" ?>">All Companies</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Pending</a>
+                        <a href="./company.php?show=pending" class="nav-link font-regular <?php if ($show == "pending") echo "active" ?>">In Process</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Completed</a>
+                        <a href="./company.php?show=completed" class="nav-link font-regular <?php if ($show == "completed") echo "active" ?>">Completed</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +95,6 @@ if ($access != 1) {
                     </thead>
                     <tbody>
                         <?php
-                        $search = $conn->query("SELECT comp_id,comp_name,comp_hr_name,comp_hr_mobile,active,comp_logo FROM  `company`");
                         while ($row = $search->fetch_assoc()) {
                         ?>
                             <tr>

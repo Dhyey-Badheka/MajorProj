@@ -27,7 +27,9 @@ if (!isset($_GET["code"])) {
 
         <!-- LOGO -->
 
-        <div class="logo">TPC
+        <div class="logo">
+            <img src="http://localhost/tpc-main/images/logo.png" style="height:80px;width:80px;"></img>
+            Training &amp Placement Cell
         </div>
         <!-- NAVIGATION MENU -->
 
@@ -44,7 +46,7 @@ if (!isset($_GET["code"])) {
             <div class="menu">
 
                 <li><a href="index.php">Home</a></li>
-                <li><a href="#">Team</a></li>
+                <li><a href="/tpc-main/teams.php">Team</a></li>
                 <li><a href="/tpc-main/announcements.php">Announcements</a></li>
                 <li><a href="/tpc-main/results.php">Results</a></li>
                 <!-- <li><a href="login.php" class="login">Login</a></li> -->

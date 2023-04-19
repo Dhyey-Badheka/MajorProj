@@ -244,7 +244,8 @@ include("../helper/authorization.php");
                                                                     $tot += ($count * $salary);
                                                                     $totStu += $count;
                                                                 }
-                                                                echo (($tot / 100000) / $totStu) . " LPA";
+                                                                echo
+                                                                number_format((float)(($tot / 100000) / $totStu), 2, '.', '') . " LPA";
                                                                 ?></span>
                             </div>
                             <div class="col-auto">
@@ -295,7 +296,11 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='1' and isinterestedforplacement='1'";
@@ -348,7 +353,11 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='2' and isinterestedforplacement='1'";
@@ -398,7 +407,11 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='3' and isinterestedforplacement='1'";
@@ -448,7 +461,11 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='4' and isinterestedforplacement='1'";
@@ -496,7 +513,11 @@ include("../helper/authorization.php");
                                                                         }
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='5' and isinterestedforplacement='1'";
@@ -548,7 +569,11 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='6' and isinterestedforplacement='1'";
@@ -598,7 +623,15 @@ include("../helper/authorization.php");
                                                                         $salary = $row["salary"];
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='7' and isinterestedforplacement='1'";
@@ -646,7 +679,11 @@ include("../helper/authorization.php");
                                                                         }
                                                                         $tot += ($count * $salary);
                                                                     }
-                                                                    echo $tot / 100000 . " LPA";
+                                                                    if ($totStu > 0) {
+                                                                        echo ($tot / 100000) / $totStu . " LPA";
+                                                                    } else {
+                                                                        echo "Yet to begin Placement";
+                                                                    }
                                                                     ?></span> <br>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT count(*) as total FROM student where dept_id='8' and isinterestedforplacement='1'";

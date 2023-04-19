@@ -74,6 +74,11 @@ li {
 
 .logo {
 	font-size: 32px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-content: stretch;
+	justify-content: space-evenly;
+	align-items: center;
 }
 
 /* NAVBAR MENU */

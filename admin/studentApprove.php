@@ -53,17 +53,20 @@ if ($access >= 1 && $access <= 3) {
 
             <?php
             if ($access == 1) {
-                $query = "SELECT * FROM  `student`;";
+                $query = "SELECT * FROM  `student` where is_registered=1;";
                 $result = mysqli_query($conn, $query);
             } elseif ($access == 2 || $access == 3) {
-                $query = "SELECT * FROM  `student` WHERE dept_id='$dept';";
+                $query = "SELECT * FROM  `student` WHERE dept_id='$dept' and  is_registered=1 and is_approved=0;";
+                // $query = "SELECT * FROM  `student`;";
                 $result = mysqli_query($conn, $query);
             }
+            ?>
+            <?php
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                <div class="col-xl-10 col-sm-10 col-10 row">
-                    <div class="card shadow border-0 mt-5 card-width-sm card-height-sm mx-2 col-sm-6">
-                        <div class="card-body  ">
+                <div class="col-lg-4 col-md-6 mb-4 mt-5">
+                    <div class="card h-100">
+                        <div class="card-body">
                             <div class="row ">
                                 <div class="col d-flex align-items-center">
                                     <span class="h3 font-bold d-block"><?php echo $row["id_number"] ?> - <?php
@@ -82,25 +85,21 @@ if ($access >= 1 && $access <= 3) {
                             <div class="mt-2 mb-0 text-sm d-flex justify-content-start">
 
                                 <a href="./viewStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-primary btn-sm ">View</a>
-                                <a href="#" class="btn btn-success btn-sm mx-2">Approve</a>
-                                <a href="#" class="btn btn-danger btn-sm ">Reject</a>
+                                <a href="./viewStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-success btn-sm mx-2" value="Approve" name="approval">Approve</a>
+                                <a href="./viewStudent.php?id=<?php echo $row["id_number"] ?>" class="btn btn-danger btn-sm " value="Reject" name="approval">Reject</a>
 
                             </div>
                         </div>
-                    <?php }
-                    ?>
                     </div>
                 </div>
 
+            <?php }
+            ?>
 
 
-        </div>
-
-
-
-        <p class="copyright">
-            &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.
-        </p>
+            <p class="copyright">
+                &copy; 2023 - <span>Dhyey Badheka</span> All Rights Reserved.
+            </p>
     </main>
 
     <script src="./helper/sidebar.js"></script>

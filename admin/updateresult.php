@@ -39,6 +39,11 @@ if (isset($_GET["updateId"]) || isset($_POST["id"])) {
         $drive_id = $row["drive_id"];
         $comp_id = $row["comp_id"];
         $ids = json_decode($row["student_placed"], true);
+        foreach ($ids as $stu_id) {
+            $query = "update `student` set is_placed=0 WHERE id_number = '$stu_id';";
+            // echo $query;
+            $update = $conn->query($query);
+        }
     }
     // var_dump($isAll);
 }
@@ -49,10 +54,17 @@ if (isset($_POST["update-result"])) {
     foreach ($_POST["update_ids"] as $selected) {
         array_push($ids, $selected);
     }
+    // echo "After post<br>";
     $no_of_stu = count($_POST["update_ids"]);
     $arr_json = json_encode($ids);
-    $update = $conn->query("UPDATE `result` SET heading='$title', description='$desc', no_of_stu='$no_of_stu', student_placed='$arr_json' WHERE result_id = '$id'");
-
+    $query = "UPDATE `result` SET heading='$title', description='$desc', no_of_stu='$no_of_stu', student_placed='$arr_json' WHERE drive_id = '$id'; ";
+    // echo $query;
+    $update = $conn->query($query);
+    foreach ($ids as $stu_id) {
+        $query = "update `student` set is_placed=1 WHERE id_number = '$stu_id'; ";
+        $search = $conn->query($query);
+        // echo $query;
+    }
     if ($conn->affected_rows) {
         $updateSuccess = 1;
     } else {
@@ -200,7 +212,6 @@ if (isset($_POST["update-result"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <button class="text-center btn btn-primary">Add </button>
                             </div>
                     </div>
         </main>

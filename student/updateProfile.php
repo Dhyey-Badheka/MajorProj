@@ -276,9 +276,17 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
         $query = "update student_academic set `s_id`='$id_number',`s_email`='$adminUserEmail', `ssc_passing_year`='$spy',`ssc_th_percentage`='$sp', `ssc_total`='$spo6', `ssc_board`='$sboard', `ssc_school`='$ssname', `ssc_educational_gap`='$sedug',`isd2d`='$isdiploma', `hsc_passing_year`='$hpy', `hsc_th_percentage`='$hpt', `hsc_th_p_percentage`='$hppt', `hsc_th_marks`='$hto5', `hsc_th_p_marks`='$hmtp6', `hsc_board`='$hboard', `hsc_school`='$hsname',  `hsc_educational_gap`='$heg', `d2d_passing_year`='$dpy', `d2d_cgpa`='$dcgpa', `d2d_college`='$dcn', `d2d_sem1`='$dvms1', `d2d_sem2`='$dvms2', `d2d_sem3`='$dvms3', `d2d_sem4`='$dvms4', `d2d_sem5`='$dvms5', `d2d_sem6`='$dvms6', `d2d_backlogs`='$dtbl', `d2d_educational_gap`='$degp', `bvm_sem1`='$bvms1', `bvm_sem2`='$bvms2', `bvm_sem3`='$bvms3', `bvm_sem4`='$bvms4', `bvm_sem5`='$bvms5', `bvm_sem6`='$bvms6', `bvm_sem7`='$bvms7', `bvm_sem8`='$bvms8', `bvm_active_backlog`='$babl', `bvm_dead_backlog`='$bcbl', `bvm_total_backlog`='$btbl', `bvm_cpi`='$bccpi' where `s_email`='$adminUserEmail';";
         //echo $query . "<br>";
         $add = $conn->query($query);
-        $query = "update student_document set `s_id`='$id_number',`s_email`='$adminUserEmail', `ssc_marksheet`='$fileName2', `hsc_marksheet`='$fileName3', `d2d_marksheet`='$fileName4', `bvm_marksheet`='$fileName5', `photo`='$fileName1' where s_email='$adminUserEmail';";
+        $query = "update student_document set `s_id`='$id_number',`s_email`='$adminUserEmail', `ssc_marksheet`='$fileName2', `hsc_marksheet`='$fileName3', `d2d_marksheet`='$fileName4', `bvm_marksheet`='$fileName5', `photo`='$fileName1' where `s_email`='$adminUserEmail';";
         //echo $query . "<br>";
         $add = $conn->query($query);
+        echo "<script> window.location.href = ./trials.php?id=" . $adminUserEmail . "</script>";
+        // $fileName6 = basename($html2pdf);
+        // $targetFilePath = $targetDir . $fileName6;
+        // move_uploaded_file($html2pdf, $targetFilePath);
+
+        // $query = "update student_document set `primary_resume`='$html2pdf' where s_email='$adminUserEmail';";
+        // echo $query . "<br>";
+        // $add = $conn->query($query);
         if ($conn->affected_rows) {
             $updateSuccess = 1;
         } else {

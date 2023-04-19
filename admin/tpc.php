@@ -9,6 +9,8 @@ if ($access == 1 || $access == 2) {
 } else {
     echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
+
+$show = isset($_GET["show"]) ? $_GET["show"] : "all";
 ?>
 <html lang="en">
 
@@ -44,24 +46,24 @@ if ($access == 1 || $access == 2) {
                     </div>
                 </div>
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">Active</a>
+                    <li class="nav-item ">
+                        <a href="./tpc.php?show=all" class="nav-link font-regular" <?php if ($show == "all") echo " active" ?>>All TPC</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link font-regular">All Students Co-ordinators</a>
+                        <a href="./tpc.php?show=active" class="nav-link font-regular" <?php if ($show == "active") echo " active" ?>>Active TPC</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">In-Active</a>
+                    <li class=" nav-item">
+                        <a href="./tpc.php?show=inactive" class="nav-link font-regular" <?php if ($show == "inactive") echo " active" ?>>Inactive TPC</a>
                     </li>
-                    <?php if ($access == 1) {
-                        $search = $conn->query("SELECT dept_name FROM  `department`");
-                    } elseif ($access == 2) {
-                        $search = $conn->query("SELECT dept_name FROM  `department` WHERE dept_id='$dept'");
+                    <?php
+                    if ($access == 1) {
+                        $search = $conn->query("SELECT dept_id,dept_name FROM  `department`");
+                    } elseif ($access == 2 || $access == 3) {
+                        $search = $conn->query("SELECT dept_id,dept_name FROM  `department` WHERE dept_id='$dept'");
                     }
-                    while ($row = $search->fetch_assoc()) {
-                    ?>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link font-regular"><?php echo $row["dept_name"] ?></a>
+                    while ($row = $search->fetch_assoc()) { ?>
+                        <li class=" nav-item">
+                            <a href="./tpc.php?show=<?php echo $row["dept_id"] ?>" class="nav-link font-regular" <?php if ($show == $row["dept_id"]) echo " active" ?>><?php echo $row["dept_name"] ?></a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -84,12 +86,29 @@ if ($access == 1 || $access == 2) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if ($access == 1) {
-                            $search = $conn->query("SELECT * FROM  `tpc`");
-                        } elseif ($access == 2) {
-                            $search = $conn->query("SELECT * FROM  `tpc` WHERE tpc_dept_id='$dept'");
+                        <?php
+                        $query = "SELECT * FROM  `tpc` ";
+                        if ($access == 1) {
+                            if ($show == "inactive") {
+                                $query = $query . " where isActive=0";
+                            } else if ($show == "all") {
+                            } else if ($show == "active") {
+                                $query = $query . " where isActive=1";
+                            } else {
+                                $query = $query . " where tpc_dept_id='$show';";
+                            }
+                        } elseif ($access == 2 || $access == 3) {
+                            if ($show == "inactive") {
+                                $query = $query . " where tpc_dept_id='$dept' and isActive=0;";
+                            } else if ($show == "all") {
+                                $query = $query . " where tpc_dept_id='$dept';";
+                            } else {
+                                $query = $query . " where tpc_dept_id='$dept';";
+                            }
                         }
-                        while ($row = $search->fetch_assoc()) { ?>
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
                             <tr>
                                 <td>
                                     <a class="text-heading font-semibold" href="#">

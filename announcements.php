@@ -55,7 +55,7 @@ include("./database.php");
                                             <h3 class="font-weight-bold mt-0">
                                                 <?php echo $row["title"] ?>
                                             </h3>
-                                            <p class="m-0 post_intro bl"> <?php echo $row["description"] ?> </p>
+                                            <p class="m-0 post_intro bl"></p> <?php echo $row["description"] ?> </p>
                                         </li>
 
                                     </ul>

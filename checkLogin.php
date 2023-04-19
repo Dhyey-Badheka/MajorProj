@@ -155,7 +155,7 @@ if (isset($_POST['login'])) {
                     $_SESSION["access"] = 1;
                     $_SESSION["adminId"] = $row["tpo_id"];
                     $_SESSION["adminEmail"] = $row["tpo_email"];
-                    var_dump($_SESSION);
+                    // var_dump($_SESSION);
                     echo "<script> window.location.href = './admin/index.php'; </script>";
                 } else if ($check_result->num_rows == 1 && $typeOfUser == 5) {
                     $row = $check_result->fetch_assoc();

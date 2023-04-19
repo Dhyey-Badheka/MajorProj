@@ -50,7 +50,8 @@ if (isset($_POST["addTpc"])) {
     $name = $fname . ' ' . $lname;
     // var_dump($password);
     // var_dump($_POST);
-    $query = "INSERT INTO `tpc`(`tpc_id`, `oauth_uid`, `tpc_name`, `tpc_email`,  `tpc_mobile`, `tpc_dept_id`, `tpc_is_approved`, `academic_year`, `isActive`) VALUES ('$id','$oauth_uid','$name','$email','$mobile','$dept','1','$acaYear','1')";
+    // $query = "INSERT INTO `tpc`(`tpc_id`, `oauth_uid`, `tpc_name`, `tpc_email`,  `tpc_mobile`, `tpc_dept_id`, `tpc_is_approved`, `academic_year`, `isActive`) VALUES ('$id','$oauth_uid','$name','$email','$mobile','$dept','1','$acaYear','1')";
+    $query = "INSERT INTO `tpc`(`tpc_id`, `tpc_name`, `tpc_email`,  `tpc_mobile`, `tpc_dept_id`, `tpc_is_approved`, `academic_year`, `isActive`) VALUES ('$id','$name','$email','$mobile','$dept','1','$acaYear','1')";
     // echo $query;
     $insert = $conn->query($query);
     if ($conn->affected_rows) {

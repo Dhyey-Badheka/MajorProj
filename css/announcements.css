@@ -226,7 +226,6 @@
 }
 
 .events-section .slick-slider .events-date {
-	
 	min-width: 81px;
 	height: 88px;
 	background-color: #e00000 !important;
@@ -251,7 +250,6 @@
 }
 
 .events-section .slick-slider .events-date span {
-	
 	font-weight: 300;
 	font-size: 2.5rem;
 	display: block;
@@ -275,6 +273,7 @@ a {
 }
 .bl {
 	color: #e07400;
+	text-align: left;
 }
 .copyright {
 	color: #e00000;

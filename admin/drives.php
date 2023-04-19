@@ -41,26 +41,48 @@ if ($access == 2 || $access == 3) {
                         </div>
                     </div>
                 </div>
+                <?php
+                $show = isset($_GET["show"]) ? $_GET["show"] : "active";
+                $query = "SELECT * FROM `drive`";
+                if ($access == 1) {
+                    if ($show == "all") {
+                    } elseif ($show == "active") {
+                        $query = $query . " WHERE inProcess=1 ";
+                    } else {
+                        $query = $query . " WHERE inProcess=0 ";
+                    }
+                } else if ($access == 2 || $access == 3) {
+                    if ($show == "all") {
+                        $query = $query . " WHERE JSON_CONTAINS(dept_eligible,'$dept');";
+                    } elseif ($show == "active") {
+                        $query = $query . " WHERE inProcess=1 and JSON_CONTAINS(dept_eligible,'$dept');";
+                    } else {
+                        $query = $query . " WHERE inProcess=0 and JSON_CONTAINS(dept_eligible,'$dept');";
+                    }
+                }
+                // echo $query;
+                $search = $conn->query($query);
+                ?>
 
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Active</a>
+                        <a href="./drives.php?show=active" class="nav-link font-regular <?php if ($show == "active") echo "active" ?>">Active</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link font-regular">All Drives</a>
+                        <a href="./drives.php?show=all" class="nav-link font-regular <?php if ($show == "all") echo "active" ?>">All Drives</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Completed</a>
+                        <a href="./drives.php?show=completed" class="nav-link font-regular <?php if ($show == "completed") echo "active" ?>">Completed</a>
                     </li>
                 </ul>
             </div>
         </div>
         <?php
-        if ($access == 1) {
-            $search = $conn->query("SELECT * FROM  `drive`");
-        } elseif ($access == 2 || $access == 3) {
-            $search = $conn->query("SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
-        }
+        // if ($access == 1) {
+        //     $search = $conn->query("SELECT * FROM  `drive`");
+        // } elseif ($access == 2 || $access == 3) {
+        //     $search = $conn->query("SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
+        // }
         while ($row = $search->fetch_assoc()) {
         ?>
             <div class="row">
@@ -94,7 +116,8 @@ if ($access == 2 || $access == 3) {
 
                                         <a href="viewDrive.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-primary btn-sm">View</a>
                                         <?php if ($access == 1) : ?>
-                                            <a href="collectdata.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-warning btn-sm">Collect Data</a>
+                                            <a href="collectdata.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-warning btn-sm">Generate Excel</a>
+                                            <a href="trial.php?id=<?php echo $row["drive_id"]; ?>" class="btn btn-warning btn-sm">Collect Resume</a>
                                             <?php
                                             if ($row["inProcess"] == 0) { ?>
                                                 <a href="viewresult.php?ViewId=<?php echo $row["drive_id"]; ?>" class="btn btn-success btn-sm">View Result</a>

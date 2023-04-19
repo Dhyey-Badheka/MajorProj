@@ -6,6 +6,7 @@ include("../helper/authorization.php");
 if ($access == 2 || $access == 3) {
     $dept = $_SESSION["adminDept"];
 }
+$show = isset($_GET["show"]) ? $_GET["show"] : "all";
 
 ?>
 <!DOCTYPE html>
@@ -51,20 +52,20 @@ if ($access == 2 || $access == 3) {
                 <!-- Nav -->
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link active">All Students</a>
+                        <a href="./student.php?show=all" class="nav-link font-regular" <?php if ($show == "all") echo " active" ?>>All Students</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Pending</a>
+                    <li class=" nav-item">
+                        <a href="./student.php?show=pending" class="nav-link font-regular" <?php if ($show == "pending") echo " active" ?>>Pending</a>
                     </li>
                     <?php
                     if ($access == 1) {
-                        $search = $conn->query("SELECT dept_name FROM  `department`");
+                        $search = $conn->query("SELECT dept_id,dept_name FROM  `department`");
                     } elseif ($access == 2 || $access == 3) {
-                        $search = $conn->query("SELECT dept_name FROM  `department` WHERE dept_id='$dept'");
+                        $search = $conn->query("SELECT dept_id,dept_name FROM  `department` WHERE dept_id='$dept'");
                     }
                     while ($row = $search->fetch_assoc()) { ?>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link font-regular"><?php echo $row["dept_name"] ?></a>
+                        <li class=" nav-item">
+                            <a href="./student.php?show=<?php echo $row["dept_id"] ?>" class="nav-link font-regular" <?php if ($show == $row["dept_id"]) echo " active" ?>><?php echo $row["dept_name"] ?></a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -89,13 +90,24 @@ if ($access == 2 || $access == 3) {
                     </thead>
                     <tbody>
                         <?php
+                        $query = "SELECT * FROM  `student` ";
                         if ($access == 1) {
-                            $query = "SELECT * FROM  `student`;";
-                            $result = mysqli_query($conn, $query);
+                            if ($show == "pending") {
+                                $query = $query . " where is_placed=0";
+                            } else if ($show == "all") {
+                            } else {
+                                $query = $query . " where dept_id='$show';";
+                            }
                         } elseif ($access == 2 || $access == 3) {
-                            $query = "SELECT * FROM  `student` WHERE dept_id='$dept';";
-                            $result = mysqli_query($conn, $query);
+                            if ($show == "pending") {
+                                $query = $query . " where dept_id='$dept' and is_placed=0;";
+                            } else if ($show == "all") {
+                                $query = $query . " where dept_id='$dept';";
+                            } else {
+                                $query = $query . " where dept_id='$dept';";
+                            }
                         }
+                        $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_assoc($result)) {
                         ?>
                             <tr>
@@ -147,9 +159,7 @@ if ($access == 2 || $access == 3) {
                     </tbody>
                 </table>
             </div>
-            <!-- <div class="card-footer border-0 py-5">
-                 <span class="text-muted text-sm">Showing 10 items out of 250 results found</span> 
-            </div> -->
+
         </div>
 
 
