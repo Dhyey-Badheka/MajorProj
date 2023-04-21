@@ -12,10 +12,10 @@ $addSuccess = 0;
 $addFailure = 0;
 $id = $_GET["id"];
 if (isset($_POST["approval"])) {
-    if ($_POST["approval"] == "Approve") {
+    if ($_POST["approval"] == "In Process") {
         $query = "update company set active=1 where comp_id='$id';";
         $update = $conn->query($query);
-    } else if ($_POST["approval"] == "Reject") {
+    } else if ($_POST["approval"] == "Completed") {
         $query = "update company set active=2 where comp_id='$id';";
         $update = $conn->query($query);
     }
@@ -84,11 +84,11 @@ if (isset($_POST["approval"])) {
                                 </span>";
                                                         } else if ($row["active"] == 1) {
                                                             echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-success'></i>Approved
+                                    <i class='bg-success'></i>Drive in Process
                                 </span>";
                                                         } else if ($row["active"] == 2) {
                                                             echo "<span class='badge badge-lg badge-dot'>
-                                    <i class='bg-danger'></i>Rejected
+                                    <i class='bg-danger'></i>Drive Completed
                                 </span>";
                                                         }
                                                         ?>
@@ -97,10 +97,10 @@ if (isset($_POST["approval"])) {
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <form action="./viewCompany.php?id=<?php echo $id; ?>" method="post">
-                                                            <input type="submit" value="Approve" name="approval" class="text-center btn btn-success m-5" />
+                                                            <input type="submit" value="In Process" name="approval" class="text-center btn btn-success m-5" />
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <input type="submit" value="Reject" name="approval" class="text-center btn btn-danger m-5" />
+                                                        <input type="submit" value="Completed" name="approval" class="text-center btn btn-danger m-5" />
                                                         </form>
                                                     </div>
                                                 </div>
