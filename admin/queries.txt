@@ -1,0 +1,10 @@
+/all
+/all,interested=1
+
+/all,placed=1,company //only placed detials
+/all,interested=1,placed=1,company //master data type
+/all,interested=1,placed=0
+
+/all,dept=1,interested=1,placed=0
+/all,dept=1,placed=1,company //only placed detials
+/all,dept=1,interested=1,placed=1,company //master data type

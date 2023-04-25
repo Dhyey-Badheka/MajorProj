@@ -30,18 +30,26 @@
                     </a>
                 </li>
 
-                <li class="tooltip-element" data-tooltip="2">
-                    <a href="../admin/announcements.php" data-active="2">
+                <li class="tooltip-element" data-tooltip="1">
+                    <a href="../admin/announcements.php" data-active="1">
                         <div class="icon">
                             <box-icon type='solid' name='message-alt-detail' type='solid' color='#FF9600'></box-icon>
                         </div>
                         <span class="link hide">Annoucements</span>
                     </a>
                 </li>
+                <li class="tooltip-element" data-tooltip="2">
+                    <a href="../admin/downloaddata.php" data-active="2">
+                        <div class="icon">
+                            <box-icon type='solid' name='data' type='solid' color='#FF9600'></box-icon>
+                        </div>
+                        <span class="link hide">Data Download</span>
+                    </a>
+                </li>
 
             </ul>
 
-            <h4 class="hide">Placment Drive</h4>
+            <h4 class="hide">Placement Drive</h4>
             <ul>
                 <li class="tooltip-element" data-tooltip="3">
                     <a href="../admin/results.php" data-active="3">

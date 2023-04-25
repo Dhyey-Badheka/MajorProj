@@ -39,7 +39,7 @@ if ($access >= 1 && $access <= 3) {
             <div class="mb-npx">
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                        <h1 class="h2 mb-0 ls-tight">Welcome, TPC</h1>
+                        <h1>Welcome <?php echo $_SESSION["admin"] ?>,</h1>
                     </div>
                     <div class="col-sm-6 col-12 text-sm-end">
                         <div class="mx-n1">

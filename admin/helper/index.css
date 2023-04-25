@@ -93,3 +93,16 @@
 	margin-left: 0.3rem;
 	font-family: sans-serif;
 }
+
+.main-card-body {
+	height: 170px;
+	flex: 1 1 auto;
+	padding: 1.5rem 1.5rem;
+	color: #525f7f;
+}
+.dept-card-body {
+	height: 220px;
+	flex: 1 1 auto;
+	padding: 1.5rem 1.5rem;
+	color: #525f7f;
+}
