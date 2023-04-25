@@ -39,17 +39,32 @@ if (isset($_POST["add-annouce"])) {
     // var_dump($deptEligible);
     $insert = $conn->query("INSERT INTO `announcement`( `title`, `description`,  `dept`) VALUES ('$title','$desc','$deptEligible')");
 
-
-
+    $select = $conn->query("select * from credentials");
+    $row = $select->fetch_assoc();
     $mail = new PHPMailer(true);
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'badhekadhyey@gmail.com';
-    $mail->Password = 'kjohaebcqvsbijey';
+    $encrypted_username = $row["enc_username"];
+    $encrypted_password = $row["enc_password"];
+    // $encrypted_username = openssl_encrypt($username, "AES-256-CBC", $secret_key, 0);
+    // $encrypted_password = openssl_encrypt($password, "AES-256-CBC", $secret_key, 0);
+    // echo $encrypted_username . " <br>";
+    // echo $encrypted_password . " <br>";
+    $secret_key = $row["secret_key"];
+    $decrypted_username = openssl_decrypt($encrypted_username, "AES-256-CBC", $secret_key);
+    $decrypted_password = openssl_decrypt($encrypted_password, "AES-256-CBC", $secret_key);
+
+    // echo $decrypted_username . " <br>";
+    // echo $decrypted_password . " <br>";
+    $mail->Username = $decrypted_username;
+    // $mail->Username = 'badhekadhyey@gmail.com';
+    // $secret_key = $row["enc_password"];
+    $mail->Password = $decrypted_password;
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
-    $mail->setFrom('badhekadhyey@gmail.com');
+    $mail->setFrom($row["email"]);
+    // $mail->setFrom('badhekadhyey@gmail.com');
     $mail->isHTML(true);
     $mail->Subject = $title;
 

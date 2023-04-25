@@ -122,8 +122,30 @@
                 <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
             </div>
         </div>
+        <?php
+        $serverName = "localhost";
+        $userName = "root";
+        $password = "";
+        $dbName = "tpc";
 
+        // Connection Object
+        $conn = new mysqli($serverName, $userName, $password, $dbName);
 
+        $select = $conn->query("select * from credentials");
+        $row = $select->fetch_assoc();
+        $username = $row["email"];
+        $secret_key = $row["secret_key"];
+        $password = $row["password"];
+        $encrypted_username = openssl_encrypt($username, "AES-256-CBC", $secret_key, 0);
+        $encrypted_password = openssl_encrypt($password, "AES-256-CBC", $secret_key, 0);
+        echo $encrypted_username . " <br>";
+        echo $encrypted_password . " <br>";
+        $decrypted_username = openssl_decrypt($encrypted_username, "AES-256-CBC", $secret_key);
+        $decrypted_password = openssl_decrypt($encrypted_password, "AES-256-CBC", $secret_key);
+        echo $decrypted_username . " <br>";
+        echo $decrypted_password . " <br>";
+
+        ?>
 
 
 
