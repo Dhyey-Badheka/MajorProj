@@ -54,7 +54,19 @@ if ($check_result->num_rows == 1) {
                     <span class="link hide si">All Drives</span>
                 </a>
             </li>
-            <li class="tooltip-element" data-tooltip="3">
+
+            <div class="tooltip">
+                <span>Announcements</span>
+                <span>Results</span>
+                <span>All Drives</span>
+            </div>
+        </ul>
+    </div>
+
+    <div class="sidebar-links">
+        <h4 class="hide">Shortcuts</h4>
+        <ul>
+            <li class="tooltip-element" data-tooltip="0">
                 <a href="drives.php">
                     <div class="icon">
                         <!-- <box-icon type='solid' name='plane-take-off' color='#FF9600'></box-icon> -->
@@ -63,16 +75,8 @@ if ($check_result->num_rows == 1) {
                     <span class="link hide si">Applied Drives</span>
                 </a>
             </li>
-            <div class="tooltip">
-                <span>Announcements</span>
-                <span>Results</span>
-                <span>All Drives</span>
-                <span>Applied Drives</span>
-            </div>
-        </ul>
-        <h4 class="hide">Shortcuts</h4>
-        <ul>
-            <li class="tooltip-element" data-tooltip="4">
+
+            <li class="tooltip-element" data-tooltip="1">
                 <a href="resume.php">
                     <div class="icon">
                         <!-- <box-icon name='clipboard' type='solid' color='#FF9600'></box-icon> -->
@@ -81,7 +85,7 @@ if ($check_result->num_rows == 1) {
                     <span class="link hide si">Resume</span>
                 </a>
             </li>
-            <li class="tooltip-element" data-tooltip="5">
+            <li class="tooltip-element" data-tooltip="2">
                 <a href="updateProfile.php?id=<?php echo $adminUserEmail ?>" data-active="5">
                     <div class="icon">
                         <i class="bi bi-person-check" style="color: #ff9600" type='solid'></i>
@@ -90,15 +94,15 @@ if ($check_result->num_rows == 1) {
                     <span class="link hide si">Profile</span>
                 </a>
             </li>
-
             <div class="tooltip">
-                <span class="show">Resume</span>
+                <span>Applied Drives</span>
+                <span>Resume</span>
                 <span>Profile</span>
             </div>
         </ul>
     </div>
     <div class="sidebar-footer">
-        <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-user tooltip-element" data-tooltip="6">
             <div class="admin-profile">
                 <?php if ($check_result->num_rows == 1) { ?>
                     <img src="http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail ?>/<?php echo $logo; ?>" alt="">

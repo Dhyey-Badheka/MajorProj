@@ -5,6 +5,21 @@ include("../helper/authorization.php");
 if ($access != 1) {
     echo "<script> window.location.href = 'http://localhost/tpc-main/helper/noAccess.php'; </script>";
 }
+
+
+
+// Header 
+/*
+
+    Birla Vishvakarma Mahavidhyalaya
+    An Autonomous Institution
+    VallabhVidhyanagar-Anand 388120
+    Company Name - Job Role Name
+
+    Sr.no   Student ID  Student_name  Department  Phone   Email   Gender  SSC%    HSC%    D2D_CPI Current_Cpi   Active_Backlogs
+
+
+*/
 mysqli_select_db($conn, 'tpc');
 $id = $_GET["id"];
 $sql = "SELECT job_role,comp_name FROM `drive`,`company` where drive_id='$id' and drive.comp_id=company.comp_id";

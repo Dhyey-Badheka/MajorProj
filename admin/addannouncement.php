@@ -22,8 +22,8 @@ $insertFailure = 0;
 
 
 if (isset($_POST["add-annouce"])) {
-    $title = $_POST["annouce-heading"];
-    $desc = $_POST["annouce-desc"];
+    $title = mysqli_real_escape_string($conn, $_POST["annouce-heading"]);
+    $desc = mysqli_real_escape_string($conn, $_POST["annouce-desc"]);
     $deptEligible = array();
     foreach ($_POST["eligible_dept"] as $selected) {
         if ($selected == 0) {

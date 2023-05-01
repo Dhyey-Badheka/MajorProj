@@ -15,13 +15,13 @@ $pass = "Tpf@1234";
 
 // add new tpf
 if (isset($_POST["add-tpf"])) {
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
+    $fname = mysqli_real_escape_string($conn, $_POST["fname"]);
+    $lname = mysqli_real_escape_string($conn, $_POST["lname"]);
     $name = $fname . " " . $lname;
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
-    $dept = $_POST["department"];
-    $aYear = $_POST["a-year"];
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $mobile = mysqli_real_escape_string($conn, $_POST["mobile"]);
+    $dept = mysqli_real_escape_string($conn, $_POST["department"]);
+    $aYear = mysqli_real_escape_string($conn, $_POST["a-year"]);
     $password = base64_encode(strrev(md5($pass)));
 
     // check if the email address is already registered 

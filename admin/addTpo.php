@@ -15,12 +15,12 @@ $pass = "Tpo@1234";
 
 // add new tpo
 if (isset($_POST["add-tpo"])) {
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
+    $fname = mysqli_real_escape_string($conn,$_POST["fname"]);
+    $lname = mysqli_real_escape_string($conn,$_POST["lname"]);
     $name = $fname . " " . $lname;
-    $email = $_POST["email"];
-    $mobile = $_POST["mobile"];
-    $aYear = $_POST["a-year"];
+    $email = mysqli_real_escape_string($conn,$_POST["email"]);
+    $mobile = mysqli_real_escape_string($conn,$_POST["mobile"]);
+    $aYear = mysqli_real_escape_string($conn, $_POST["a-year"]);
     $password = base64_encode(strrev(md5($pass)));
 
     // check if the email address is already registered 

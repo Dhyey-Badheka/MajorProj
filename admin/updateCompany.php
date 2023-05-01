@@ -45,15 +45,15 @@ if (isset($_GET["updateId"]) || isset($_POST["id"])) {
     }
 }
 if (isset($_POST["update-company"])) {
-    $id = $_POST["id"];
-    $name = $_POST["comp_name"];
-    $desc = $_POST["comp_description"];
-    $location = $_POST["location"];
-    $comp_hr_name = $_POST["comp_hr_name"];
-    $comp_hr_email = $_POST["comp_hr_email"];
-    $comp_hr_mobile = $_POST["comp_hr_mobile"];
-    $comp_url = $_POST["comp_url"];
-    $active = $_POST["active"];
+    $id = mysqli_real_escape_string($conn, $_POST["id"]);
+    $name = mysqli_real_escape_string($conn, $_POST["comp_name"]);
+    $desc = mysqli_real_escape_string($conn, $_POST["comp_description"]);
+    $location = mysqli_real_escape_string($conn, $_POST["location"]);
+    $comp_hr_name = mysqli_real_escape_string($conn, $_POST["comp_hr_name"]);
+    $comp_hr_email = mysqli_real_escape_string($conn, $_POST["comp_hr_email"]);
+    $comp_hr_mobile = mysqli_real_escape_string($conn, $_POST["comp_hr_mobile"]);
+    $comp_url = mysqli_real_escape_string($conn, $_POST["comp_url"]);
+    $active = mysqli_real_escape_string($conn, $_POST["active"]);
     $targetDir = "uploads/" . $name . "/";
     if (!file_exists($targetDir)) {
         mkdir($targetDir, 0777, true);

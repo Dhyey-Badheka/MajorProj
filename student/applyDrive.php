@@ -77,7 +77,7 @@ function checkEligiblity($drive_id, $stu_id)
     global $conn;
     $drive_fetch = $conn->query("SELECT * FROM drive WHERE drive_id = '$drive_id'");
     $driveDetails = $drive_fetch->fetch_assoc();
-    $student_fetch = $conn->query("SELECT * FROM student_academic WHERE s_id = '$stu_id'");
+    $student_fetch = $conn->query("SELECT * FROM student_academic,student WHERE s_id = '$stu_id' and id_number='$stu_id'");
     $studentDetails = $student_fetch->fetch_assoc();
     $isEligible = 0;
     if ((floatval($driveDetails["hsccriteria"]) <= floatval($studentDetails["hsc_th_p_percentage"]))
@@ -85,6 +85,8 @@ function checkEligiblity($drive_id, $stu_id)
         && (floatval($driveDetails["cpicriteria"]) <= floatval($studentDetails["bvm_cpi"]))
         && (floatval($driveDetails["total_backlog"]) >= floatval($studentDetails["bvm_total_backlog"]))
         && (floatval($driveDetails["active_backlog"]) >= floatval($studentDetails["bvm_active_backlog"]))
+        && ($studentDetails["is_placed"] == "0")
+        && ($driveDetails["inProcess"] == "1")
     ) {
         $isEligible = 1;
     }

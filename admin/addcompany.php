@@ -18,13 +18,13 @@ $desc = "";
 $location = "";
 
 if (isset($_POST["add-comp"])) {
-    $name = $_POST["name"];
-    $url = $_POST["url"];
-    $hr_name = $_POST["hr_name"];
-    $hr_phone = $_POST["hr_phone"];
-    $hr_email = $_POST["hr_email"];
-    $desc = $_POST["desc"];
-    $location = $_POST["location"];
+    $name = mysqli_real_escape_string($conn, $_POST["name"]);
+    $url = mysqli_real_escape_string($conn, $_POST["url"]);
+    $hr_name = mysqli_real_escape_string($conn, $_POST["hr_name"]);
+    $hr_phone = mysqli_real_escape_string($conn, $_POST["hr_phone"]);
+    $hr_email = mysqli_real_escape_string($conn, $_POST["hr_email"]);
+    $desc = mysqli_real_escape_string($conn, $_POST["desc"]);
+    $location = mysqli_real_escape_string($conn, $_POST["location"]);
     $targetDir = "uploads/" . $name . "/";
     if (!file_exists($targetDir)) {
         mkdir($targetDir, 0777, true);

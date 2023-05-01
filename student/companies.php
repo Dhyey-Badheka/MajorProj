@@ -8,7 +8,7 @@ $check_result = $conn->query($query);
 $row = $check_result->fetch_assoc();
 $name = $row["first_name"] . " " . $row["last_name"];
 $dept = $row["dept_id"];
-
+$show = isset($_GET["show"]) ? $_GET["show"] : "active";
 // Session
 
 
@@ -36,7 +36,9 @@ $dept = $row["dept_id"];
                 <div class="row align-items-center">
                     <div class="col-sm-6 col-12 mb-4 mb-sm-0">
                         <!-- Title -->
-                        <h1>Welcome <?php echo $name ?>,</h1>
+                        <h1 style="
+    width: max-content;
+">Welcome <?php echo $name ?>,</h1>
                     </div>
                     <!-- Actions -->
                     <div class="col-sm-6 col-12 text-sm-end">
@@ -47,19 +49,26 @@ $dept = $row["dept_id"];
 
                 <ul class="nav nav-tabs mt-4 overflow-x border-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Active</a>
+                        <a href="./companies.php?show=active" class="nav-link font-regular <?php if ($show == "active") echo "active" ?>">Active</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="#" class="nav-link font-regular">All Drives</a>
+                        <a href="./companies.php?show=all" class="nav-link font-regular <?php if ($show == "all") echo "active" ?>">All Drives</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link font-regular">Completed</a>
+                        <a href="./companies.php?show=completed" class="nav-link font-regular <?php if ($show == "completed") echo "active" ?>">Completed</a>
                     </li>
                 </ul>
             </div>
         </div>
         <?php
-        $search = $conn->query("SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept')");
+        $query = "SELECT * FROM  `drive` WHERE JSON_CONTAINS(dept_eligible,'$dept') ";
+        if ($show == "all") {
+        } elseif ($show == "active") {
+            $query = $query . " and inProcess=1 ";
+        } else {
+            $query = $query . " and inProcess=0 ";
+        }
+        $search = $conn->query($query);
         while ($row = $search->fetch_assoc()) {
         ?>
             <div class="row">

@@ -89,7 +89,7 @@ if (isset($_GET["id"]) || isset($_POST["id"])) {
                                                 <div class="col-sm-4 bg-c-lite-green user-profile">
                                                     <div class="card-block text-center text-white">
                                                         <div class="m-b-25">
-                                                            <img id="showLogo" src='http://localhost/tpc-main/admin/uploads/<?php echo $comp_logo ?>' class="img-radius" alt="User-Profile-Image" />
+                                                            <img id="showLogo" src='http://localhost/tpc-main/admin/uploads/<?php echo $c_name . "/" . $comp_logo ?>' class="img-radius" alt="User-Profile-Image" />
                                                         </div>
                                                         <p>
                                                             <span class="badge text-white badge-lg badge-dot">

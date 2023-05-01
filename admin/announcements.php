@@ -45,9 +45,9 @@ if ($access == 2 || $access == 3) {
                                 <div>
                                     <?php
                                     if ($access == 1) {
-                                        $search = $conn->query("SELECT * FROM  `announcement`");
+                                        $search = $conn->query("SELECT * FROM  `announcement` ORDER BY posted_on DESC");
                                     } elseif ($access == 2 || $access == 3) {
-                                        $search = $conn->query("SELECT * FROM  `announcement` WHERE JSON_CONTAINS(dept,'$dept')");
+                                        $search = $conn->query("SELECT * FROM  `announcement` WHERE JSON_CONTAINS(dept,'$dept')  ORDER BY posted_on DESC");
                                     }
 
                                     while ($row = $search->fetch_assoc()) {

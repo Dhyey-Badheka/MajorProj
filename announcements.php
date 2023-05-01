@@ -46,7 +46,7 @@ include("./database.php");
                         <div class="announcement-slider border-r-xs-0 border-r position-relative">
                             <div>
                                 <?php
-                                $search = $conn->query("SELECT * FROM  `announcement`");
+                                $search = $conn->query("SELECT * FROM  `announcement`  ORDER BY posted_on DESC");
                                 while ($row = $search->fetch_assoc()) {
                                 ?>
                                     <ul class="nolist list-unstyled position-relative mb-0 px-lg-5">

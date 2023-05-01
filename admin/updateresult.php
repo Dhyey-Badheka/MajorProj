@@ -48,8 +48,10 @@ if (isset($_GET["updateId"]) || isset($_POST["id"])) {
     // var_dump($isAll);
 }
 if (isset($_POST["update-result"])) {
-    $title = $_POST["update-title"];
-    $desc = $_POST["update-desc"];
+    $title =
+    mysqli_real_escape_string($conn, $_POST["update-title"]);
+    $desc =
+    mysqli_real_escape_string($conn, $_POST["update-desc"]);
     $ids = array();
     foreach ($_POST["update_ids"] as $selected) {
         array_push($ids, $selected);

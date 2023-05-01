@@ -16,15 +16,15 @@ $dateAnnouce = "";
 $ids = array();
 
 if (isset($_POST["add-result"])) {
-    $title = $_POST["result-heading"];
-    $desc = $_POST["result-desc"];
-    $comp_id = $_POST["add-comp_id"];
-    $role_id = $_POST["add-role_id"];
+    $title = mysqli_real_escape_string($conn, $_POST["result-heading"]);
+    $desc = mysqli_real_escape_string($conn, $_POST["result-desc"]);
+    $comp_id = mysqli_real_escape_string($conn, $_POST["add-comp_id"]);
+    $role_id = mysqli_real_escape_string($conn, $_POST["add-role_id"]);
     $ids = array();
     foreach ($_POST["add_ids"] as $selected) {
         array_push($ids, $selected);
     }
-    $date_annouce = $_POST["annouce-date"];
+    $date_annouce = mysqli_real_escape_string($conn, $_POST["annouce-date"]);
     $no_of_stu = count($_POST["add_ids"]);
     $arr_json = json_encode($ids);
     $query = "INSERT INTO `result` (`heading`, `description`, `no_of_stu`, `posted_on`, `student_placed`, `drive_id`, `comp_id`) VALUES ('$title', '$desc', '$no_of_stu', current_timestamp(), '$arr_json', '$role_id','$comp_id');";

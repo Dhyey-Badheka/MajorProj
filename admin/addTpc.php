@@ -38,15 +38,15 @@ if (isset($_POST["searchTpc"])) {
 // var_dump($studentRegis, $foundTpc);
 
 if (isset($_POST["addTpc"])) {
-    $id = $_POST["id"];
-    $email = $_POST["email"];
-    $oauth_uid = $_POST["oauth_uid"];
+    $id = mysqli_real_escape_string($conn, $_POST["id"]);
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $oauth_uid = mysqli_real_escape_string($conn, $_POST["oauth_uid"]);
     // $password = base64_encode(strrev(md5($pass)));
-    $dept = $_POST["dept"];
-    $acaYear = $_POST["acaYear"];
-    $mobile = $_POST["mobile"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
+    $dept = mysqli_real_escape_string($conn, $_POST["dept"]);
+    $acaYear = mysqli_real_escape_string($conn, $_POST["acaYear"]);
+    $mobile = mysqli_real_escape_string($conn, $_POST["mobile"]);
+    $fname = mysqli_real_escape_string($conn, $_POST["fname"]);
+    $lname = mysqli_real_escape_string($conn, $_POST["lname"]);
     $name = $fname . ' ' . $lname;
     // var_dump($password);
     // var_dump($_POST);

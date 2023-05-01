@@ -48,7 +48,7 @@ $dept = $row["dept_id"];
                             <div class="announcement-slider border-r-xs-0 border-r position-relative">
                                 <div>
                                     <?php
-                                    $search = $conn->query("SELECT * FROM  `announcement` WHERE JSON_CONTAINS(dept,'$dept')");
+                                    $search = $conn->query("SELECT * FROM  `announcement` WHERE JSON_CONTAINS(dept,'$dept')  ORDER BY posted_on DESC");
                                     while ($row = $search->fetch_assoc()) {
                                     ?>
                                         <ul class="nolist list-unstyled position-relative mb-0 px-lg-5 pt-lg-5">

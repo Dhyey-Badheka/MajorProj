@@ -39,9 +39,9 @@ if (isset($_GET["updateId"]) || isset($_POST["id"])) {
     // var_dump($isAll);
 }
 if (isset($_POST["update-annouce"])) {
-    $id = $_POST["id"];
-    $title = $_POST["update-title"];
-    $desc = $_POST["update-desc"];
+    $id = mysqli_real_escape_string($conn, $_POST["id"]);
+    $title = mysqli_real_escape_string($conn, $_POST["update-title"]);
+    $desc = mysqli_real_escape_string($conn, $_POST["update-desc"]);
     $deptEligible = array();
     foreach ($_POST["eligible_dept"] as $selected) {
         if ($selected == 0) {

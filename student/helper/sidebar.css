@@ -39,7 +39,7 @@ nav {
 	left: 0;
 	height: 100vh;
 	background-color: var(--main-color);
-	width: 20rem;
+	width: 22rem;
 	padding: 1.8rem 0.85rem;
 	color: #fff;
 	display: flex;
@@ -50,7 +50,7 @@ nav {
 nav::before {
 	content: "";
 	position: absolute;
-	width: 2rem;
+	width: 3rem;
 	height: 100%;
 	top: 0;
 	left: 100%;
