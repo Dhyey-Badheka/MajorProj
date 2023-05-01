@@ -32,3 +32,5 @@ $update = $conn->query($sql);
 //     echo "<script> console.log('false') </script>";
 //     echo "false";
 // }
+?>
+<embed src="<?php echo 'http://localhost/tpc-main/student/uploads/' . $_GET["id"] . '/' . $fileName6 ?>" type="application/pdf" height="100%" width="100%" class="responsive">

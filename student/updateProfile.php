@@ -72,9 +72,8 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
     $btbl = "";
     $targetDir = "";
     $profilefile = "";
+    $isApproved = 0;
     $targetFilePath = "";
-
-
 
     if (isset($_GET["id"])) {
         $email = isset($_GET["id"]) ? $_GET["id"] : $_POST["pemail"];
@@ -156,15 +155,20 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
             }
             $targetDir = $path;
             $fileName1 = $row["photo"];
-            $fileName1 = $targetDir . $fileName1;
+            // $fileName1 = $targetDir . $fileName1;
             $fileName2 = $row["ssc_marksheet"];
-            $fileName2 = $targetDir . $fileName2;
+            // $fileName2 = $targetDir . $fileName2;
             $fileName3 = $row["hsc_marksheet"];
-            $fileName3 = $targetDir . $fileName3;
+            // $fileName3 = $targetDir . $fileName3;
             $fileName4 = $row["d2d_marksheet"];
-            $fileName4 = $targetDir . $fileName4;
+            // $fileName4 = $targetDir . $fileName4;
             $fileName5 = $row["bvm_marksheet"];
-            $fileName5 = $targetDir . $fileName5;
+            // $fileName5 = $targetDir . $fileName5;
+            // echo $fileName1 . "<br>";
+            // echo $fileName2 . "<br>";
+            // echo $fileName3 . "<br>";
+            // echo $fileName4 . "<br>";
+            // echo $fileName5 . "<br>";
         }
     }
 
@@ -235,8 +239,6 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
         $btbl =  mysqli_real_escape_string($conn, $_POST["btbl"]);
 
 
-
-
         $path = "./uploads/" . $adminUserEmail . "/";
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
@@ -269,23 +271,44 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
         $targetFilePath = $targetDir . $fileName5;
         move_uploaded_file($_FILES["bvmsheets"]["tmp_name"], $targetFilePath);
         // }
-
+        if ($fileName5 == null || $fileName5 == "") {
+            $fileName5 =  $_POST["filename5"];
+        }
+        if ($fileName4 == null || $fileName4 == "") {
+            $fileName4 =  $_POST["filename4"];
+        }
+        if ($fileName3 == null || $fileName3 == "") {
+            $fileName3 =  $_POST["filename3"];
+        }
+        if ($fileName2 == null || $fileName2 == "") {
+            $fileName2 =  $_POST["filename2"];
+        }
+        if ($fileName1 == null || $fileName1 == "") {
+            $fileName1 =  $_POST["filename1"];
+        }
+        $score = 0;
         $query = "update student set `id_number`='$id_number', `first_name`='$fname', `middle_name`='$lname', `last_name`='$mname', `gender`='$gender', `mobile`='$mobile', `pemail`='$adminUserEmail', `semail`='$semail', `dept_id`='$department', `linkedinurl`='$linkedin_url', `dob`='$dob', `enrolno`='$enro', `category`='$category', `isinterestedforplacement`='$pgoal', `paddressline1`='$pplotno', `paddresslcity`='$pcity', `paddressldis`='$pdistrict', `paddresslpin`='$ppin', `paddresslstate`='$pstate', `paddresslcountry`='$pcountry', `tpaddressline1`='$splotno', `taddresslcity`='$scity', `taddressldis`='$sdistrict', `taddresslpin`='$spin', `taddresslstate`='$sstate', `taddresslcountry`='$scountry', `is_registered`='1', `is_approved`='0', `is_placed`='0', `bvm_passing_year`='$py' where pemail='$adminUserEmail';";
         //echo $query . "<br>";
         $add = $conn->query($query);
+
         $query = "update student_academic set `s_id`='$id_number',`s_email`='$adminUserEmail', `ssc_passing_year`='$spy',`ssc_th_percentage`='$sp', `ssc_total`='$spo6', `ssc_board`='$sboard', `ssc_school`='$ssname', `ssc_educational_gap`='$sedug',`isd2d`='$isdiploma', `hsc_passing_year`='$hpy', `hsc_th_percentage`='$hpt', `hsc_th_p_percentage`='$hppt', `hsc_th_marks`='$hto5', `hsc_th_p_marks`='$hmtp6', `hsc_board`='$hboard', `hsc_school`='$hsname',  `hsc_educational_gap`='$heg', `d2d_passing_year`='$dpy', `d2d_cgpa`='$dcgpa', `d2d_college`='$dcn', `d2d_sem1`='$dvms1', `d2d_sem2`='$dvms2', `d2d_sem3`='$dvms3', `d2d_sem4`='$dvms4', `d2d_sem5`='$dvms5', `d2d_sem6`='$dvms6', `d2d_backlogs`='$dtbl', `d2d_educational_gap`='$degp', `bvm_sem1`='$bvms1', `bvm_sem2`='$bvms2', `bvm_sem3`='$bvms3', `bvm_sem4`='$bvms4', `bvm_sem5`='$bvms5', `bvm_sem6`='$bvms6', `bvm_sem7`='$bvms7', `bvm_sem8`='$bvms8', `bvm_active_backlog`='$babl', `bvm_dead_backlog`='$bcbl', `bvm_total_backlog`='$btbl', `bvm_cpi`='$bccpi' where `s_email`='$adminUserEmail';";
         //echo $query . "<br>";
         $add = $conn->query($query);
-        $query = "update student_document set `s_id`='$id_number', `ssc_marksheet`='$fileName2', `hsc_marksheet`='$fileName3', `d2d_marksheet`='$fileName4', `bvm_marksheet`='$fileName5', `photo`='$fileName1' where `s_email`='$adminUserEmail';";
+        $query = "update student_document set `s_id`='$id_number', `ssc_marksheet`='$fileName2' where `s_email`='$adminUserEmail';";
+        //echo $query . "<br>";
+        $add = $conn->query($query);
+        $query = "update student_document set `hsc_marksheet`='$fileName3' where `s_email`='$adminUserEmail';";
+        $add = $conn->query($query);
+        $query = "update student_document set `d2d_marksheet`='$fileName4' where `s_email`='$adminUserEmail';";
+        $add = $conn->query($query);
+        $query = "update student_document set  `bvm_marksheet`='$fileName5' where `s_email`='$adminUserEmail';";
+        $add = $conn->query($query);
+        $query = "update student_document set  `photo`='$fileName1'  where `s_email`='$adminUserEmail';";
         //echo $query . "<br>";
         $add = $conn->query($query);
         echo "<script> window.location.href = ./trials.php?id=" . $adminUserEmail . "</script>";
-        if ($conn->affected_rows) {
-            $updateSuccess = 1;
-        } else {
-            // var_dump($conn->error_list);
-            $updateFailure = 1;
-        }
+
+        $updateSuccess = 1;
     }
 
 
@@ -339,6 +362,9 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                 <?php if ($updateFailure == 1) : ?>
                                     <p class="bg-danger text-white text-center">Error in Updating your profile.Try again </p>
                                 <?php endif ?>
+                                <?php if ($updateSuccess == 1) : ?>
+                                    <p class="bg-success text-white text-center">Updated your profile.Wait for Approval </p>
+                                <?php endif ?>
                                 <form action="./updateProfile.php" method="post">
                                     <div class="">
                                         <div class="card user-card-full">
@@ -346,8 +372,8 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                                 <div class="col-sm-4 bg-c-lite-green user-profile">
                                                     <div class="card-block text-center text-white">
                                                         <div class="m-b-25">
-                                                            <img src="<?php echo $fileName1 ?>" id="showLogo" class="img-radius my-5" alt="Profile-Iamge">
-                                                            <input type="file" name="profilefile" id="file" class="inputfile" value="<?php echo $filename1  ?>" />
+                                                            <img src="<?php echo "./uploads/" . $adminUserEmail . "/" . $fileName1; ?>" id="showLogo" class="img-radius my-5" alt="Profile-Iamge">
+                                                            <input type="file" name="profilefile" id="file" class="inputfile" value="<?php echo $fileName1  ?>" />
                                                             <label for="file">Upload</label>
                                                         </div>
                                                         <p>
@@ -502,8 +528,8 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                                                     </div>
                                                                     <div class="col-sm-3">
                                                                         <p class="m-b-5 f-w-600">Upload Marksheet</p>
-                                                                        <input type="file" id="actual-btn" name="sscsheet" value="<?php echo $filename2  ?>" />
-                                                                        <a href="http://localhost/tpc-main/student/<?php echo $fileName2; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                        <input type="file" id="actual-btn" name="sscsheet" value="<?php echo $fileName2  ?>" />
+                                                                        <a href="http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail . "/" . $fileName2; ?>"><button class="text-center btn btn-success">View</button></a>
                                                                     </div>
                                                                     <div class="row m-b-20">
                                                                         <div class="col-sm-4">
@@ -560,8 +586,8 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                                                         </div>
                                                                         <div class="col-sm-3">
                                                                             <p class="m-b-5 f-w-600">Upload Marksheet</p>
-                                                                            <input type="file" id="actual-btn" name="hscsheet" value="<?php echo $filename3  ?>" />
-                                                                            <a href="http://localhost/tpc-main/student/<?php echo $fileName3; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                            <input type="file" id="actual-btn" name="hscsheet" value="<?php echo $fileName3  ?>" />
+                                                                            <a href="http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail . "/" .  $fileName3; ?>"><button class="text-center btn btn-success">View</button></a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -613,7 +639,7 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
 
                                                                         <div class="col-sm-4">
                                                                             <p class="m-b-5 f-w-600">Diploma All Marksheets</p>
-                                                                            <input type="file" id="actual-btn" name="d2dsheets" value="<?php echo $filename4  ?>" /> <a href=" http://localhost/tpc-main/student/<?php echo $fileName3; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                            <input type="file" id="actual-btn" name="d2dsheets" value="<?php echo $fileName4  ?>" /> <a href=" http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail . "/" . $fileName4; ?>"><button class="text-center btn btn-success">View</button></a>
                                                                         </div>
 
                                                                         <div class="col-sm-3">
@@ -687,7 +713,7 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                                                                 </div>
                                                                                 <div class="col-sm-4">
                                                                                     <p class="m-b-5 f-w-600">BVM All Marksheets</p>
-                                                                                    <input type="file" id="actual-btn" name="bvmsheets" value="<?php echo $filename5  ?>" /> <a href="http://localhost/tpc-main/student/<?php echo $fileName5; ?>"><button class="text-center btn btn-success">View</button></a>
+                                                                                    <input type="file" id="actual-btn" name="bvmsheets" value="<?php echo $fileName5;  ?> " /> <a href="http://localhost/tpc-main/student/uploads/<?php echo $adminUserEmail . "/" .  $fileName5; ?>"><button class="text-center btn btn-success">View</button></a>
                                                                                 </div>
 
 
@@ -696,6 +722,11 @@ if (isset($_SESSION["studentUserId"]) && $access == 1) {
                                                                         </div>
 
                                                                     </div>
+                                                                    <input type="text" value="<?php echo $fileName1; ?>" name="filename1" hidden />
+                                                                    <input type="text" value="<?php echo $fileName2; ?>" name="filename2" hidden />
+                                                                    <input type="text" value="<?php echo $fileName3; ?>" name="filename3" hidden />
+                                                                    <input type="text" value="<?php echo $fileName4; ?>" name="filename4" hidden />
+                                                                    <input type="text" value="<?php echo $fileName5; ?>" name="filename5" hidden />
                                                                     <input type="submit" value="Submit" name="update-profile" class="text-center btn btn-primary m-5" />
                                                                 </div>
                                                             </div>
