@@ -177,13 +177,11 @@ if (isset($_POST["company"])) {
             }
         }
     }
-    global $rowdata;
-    global $value;
     global $setData;
     $sql = $sql . " " . $conditions;
     $setRec = mysqli_query($conn, $sql);
     while ($rec = mysqli_fetch_row($setRec)) {
-        // $rowData = '';
+        $rowData = '';
         foreach ($rec as $value) {
             $value = '"' . $value . '"' . "\t";
             $rowData .= $value;
