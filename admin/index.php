@@ -272,7 +272,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Civil</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -329,7 +331,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Computer</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -383,7 +387,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics and Communications</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -437,7 +443,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electrical </span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -491,7 +499,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Electronics</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -545,7 +555,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Information Technology</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -599,7 +611,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Mechanical</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
@@ -625,10 +639,10 @@ include("../helper/authorization.php");
                                                                     }
                                                                     if ($totStu > 0) {
                                                                         if ($totStu > 0) {
-                                                                        echo ($tot / 100000) / $totStu . " LPA";
-                                                                    } else {
-                                                                        echo "Yet to begin Placement";
-                                                                    }
+                                                                            echo ($tot / 100000) / $totStu . " LPA";
+                                                                        } else {
+                                                                            echo "Yet to begin Placement";
+                                                                        }
                                                                     } else {
                                                                         echo "Yet to begin Placement";
                                                                     }
@@ -657,7 +671,9 @@ include("../helper/authorization.php");
                     <div class="card shadow border-0">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col" style="
+    padding-right: 0;
+">
                                     <span class="h6 font-semibold text-muted text-sm d-block mb-2">Production</span>
                                     <span class="h3 font-bold mb-0"><?php
                                                                     $query = "SELECT student_placed,salary FROM result,drive where result.drive_id=drive.drive_id;";
